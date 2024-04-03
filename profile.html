@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <title>Profile - Second-Hand Website</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <header>
+        <a href="index.html">Second-Hand Website</a>
+        <form action="search.php" method="get">
+            <input type="text" name="search" placeholder="Search for items...">
+            <input type="submit" value="Search">
+        </form>
+        <button onclick="location.href='login.html'">Login</button>
+        <button onclick="location.href='register.html'">Register</button>
+        <a href="profile.html">Profile</a>
+    </header>
+    <main>
+        <h1>John Doe's profile</h1>
+        <form action="/update-name" method="post">
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" name="name" value="John Doe"><br>
+            <input type="submit" value="Update Name">
+        </form>
+        <form action="/update-username" method="post">
+            <label for="username">Username:</label><br>
+            <input type="text" id="username" name="username" value="jdoe"><br>
+            <input type="submit" value="Update Username">
+        </form>
+        <form action="/update-email" method="post">
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email" value="jdoe@example.com"><br>
+            <input type="submit" value="Update Email">
+        </form>
+        <form action="/update-password" method="post">
+            <label for="password">Password:</label><br>
+            <input type="password" id="password" name="password" value="password"><br>
+            <input type="submit" value="Update Password">
+        </form>
+        <section id="wardrobe">
+        <h2>Wardrobe</h2>
+        <article>
+            <h4>Item: iPhone 12</h4>
+            <p>Status: For Sale</p>
+            <p>Price: $699.99</p>
+        </article>
+        <article>
+            <h4>Item: Nike Running Shoes</h4>
+            <p>Status: Sold</p>
+            <p>Price: $99.99</p>
+        </article>
+        <a href="sell.html">Sell More Items!!!</a>
+        </section>
+        
+    </main>
+    <footer>
+        <p>&copy; 2024 Second-Hand Website. All rights reserved.</p>
+    </footer>
+</body>
+</html>

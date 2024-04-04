@@ -1,3 +1,11 @@
+<?php
+    require_once ('database/connection.php');
+    require_once ('database/items.php');
+    $db = getDatabaseConnection();
+
+    $items = getItems($db);
+?>
+
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
@@ -27,34 +35,17 @@
     <main>
     <aside id="random_items">
         <h1>Item Feed</h1>
-            <article>
-            <h3>iPhone 12</h3>
-            <img src="path/to/iphone12.jpg" alt="iPhone 12">
-            <p>Seller: jdoe</p>
-            <p>Size: Small</p>
-            <p>Condition: New</p>
-            <p>Brand: Apple</p>
-            <p>Price: $699.99</p>
-            </article>
-
-            <article>
-            <h3>Nike Running Shoes</h3>
-            <img src="path/to/nike_shoes.jpg" alt="Nike Running Shoes">
-            <p>Seller: cjohnson</p>
-            <p>Size: X-Large</p>
-            <p>Condition: New</p>
-            <p>Brand: Nike</p>
-            <p>Price: $99.99</p>
-            </article>
-            <article>
-            <h3>Adidas Sports T-Shirt</h3>
-            <img src="path/to/adidas_shirt.jpg" alt="Adidas Sports T-Shirt">
-            <p>Seller: ewhite</p>
-            <p>Size: XX-Large</p>
-            <p>Condition: New</p>
-            <p>Brand: Adidas</p>
-            <p>Price: $29.99</p>
-            </article>
+            <?php foreach ($items as $item) { ?>
+                <article>
+                    <h3><?= $item['description'] ?></h3>
+                    <img src=<?= getImage($db, $item['id']) ?> alt="iPhone 12">
+                    <p>Seller: <?= getSeller($db, $item['seller']) ?></p>
+                    <p>Size: <?= getSize($db, $item['size']) ?></p>
+                    <p>Condition: <?= getCondition($db, $item['condition']) ?></p>
+                    <p>Brand: <?= getBrand($db, $item['brand']) ?></p>
+                    <p>Price: <?= getPrice($db, $item['id']) ?></p>
+                </article>
+            <?php } ?>    
     </aside>
     </main>
 <footer>

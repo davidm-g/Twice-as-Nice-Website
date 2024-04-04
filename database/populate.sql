@@ -62,5 +62,5 @@ INSERT INTO images (id, item_id, image_url) VALUES
 (1, 1, 'database/images/IPHONE_12.jpg'),
 (2, 2, 'database/images/SAMSUNG_S21.jpg'),
 (3, 3, 'database/images/PS5.jpg'),
-(4, 4, 'database/images/NIKE_SHOES.jpg'),
+(4, 4, 'database/images/NIKE_SHOES.jpeg'),
 (5, 5, 'database/images/ADIDAS_TEE.jpg');

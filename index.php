@@ -14,7 +14,7 @@
 </head>
 <body>
     <header>
-        <a href="index.html">Second-Hand Website</a>
+        <a href="index.php">Second-Hand Website</a>
         <form action="search.php" method="get">
             <input type="text" name="search" placeholder="Search for items...">
             <input type="submit" value="Search">
@@ -35,17 +35,9 @@
     <main>
     <aside id="random_items">
         <h1>Item Feed</h1>
-            <?php foreach ($items as $item) { ?>
-                <article>
-                    <h3><?= $item['description'] ?></h3>
-                    <img src=<?= getImage($db, $item['id']) ?> alt="iPhone 12">
-                    <p>Seller: <?= getSeller($db, $item['seller']) ?></p>
-                    <p>Size: <?= getSize($db, $item['size']) ?></p>
-                    <p>Condition: <?= getCondition($db, $item['condition']) ?></p>
-                    <p>Brand: <?= getBrand($db, $item['brand']) ?></p>
-                    <p>Price: <?= getPrice($db, $item['id']) ?></p>
-                </article>
-            <?php } ?>    
+            <?php foreach ($items as $item) { 
+                outputItem($db,$item);
+             } ?>    
     </aside>
     </main>
 <footer>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>Second-Hand Website</title>
+</head>
+<body>
+    <header>
+        <a href="index.php">Second-Hand Website</a>
+        <form action="search.php" method="get">
+            <input type="text" name="search" placeholder="Search for items...">
+            <input type="submit" value="Search">
+        </form>
+        <a href="wishlist.html"><i class="fa-solid fa-heart"></i></a>
+         <a href="cart.html"> <i class="fa-solid fa-cart-shopping"></i></a>
+        <a href="register.html">Register</a>
+        <a href="login.html">Login</a>
+        <a href="profile.html">Profile</a>
+    </header>
+    <div id="item-details">
+        <h2 id="item-description">Example Item</h2>
+        <img id="item-image" src="example.jpg" alt="Example Item image">
+        <p>Seller: <span id="item-seller">Example Seller</span></p>
+        <p>Size: <span id="item-size">Medium</span></p>
+        <p>Condition: <span id="item-condition">New</span></p>
+        <p>Brand: <span id="item-brand">Example Brand</span></p>
+        <p>Category: <span id="item-category">Example Category</span></p>
+    </div>
+
+    <button id="wishlist-button" onclick="addToWishlist()">Add to Wishlist</button>
+    <button id="negotiate-button" onclick="window.location.href='negotiate_price_page.html'">Negotiate Price</button>
+    <button id="cart-button" onclick="addToCart()">Add to Cart</button>
+
+    <footer>
+        <p>&copy; 2024 Second-Hand Website. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function addToWishlist() {
+            // Add code here to send a request to your server to add the item to the user's wishlist
+        }
+
+        function addToCart() {
+            // Add code here to send a request to your server to add the item to the user's shopping cart
+        }
+    </script>
+</body>
+</html>

@@ -71,7 +71,9 @@
         $price=getPrice($db,$item['id']);  ?>
     <article>
         <h3><?= $item['description'] ?></h3>
-        <img src=<?=$img_url?> alt="iPhone 12">
+        <a href="item_page.html">
+        <img src=<?=$img_url?> alt=<?=$item['description']?>>
+        </a>
         <p>Seller: <?=$seller?></p>
         <p>Size: <?=$size?></p>
         <p>Condition: <?= $condition?></p>

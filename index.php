@@ -9,6 +9,7 @@
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
+<script src="https://kit.fontawesome.com/6e1a58f88e.js" crossorigin="anonymous"></script>
     <title>Second-Hand Website</title>
     <meta charset="UTF-8">
 </head>
@@ -19,8 +20,10 @@
             <input type="text" name="search" placeholder="Search for items...">
             <input type="submit" value="Search">
         </form>
-        <button onclick="location.href='login.html'">Login</button>
-        <button onclick="location.href='register.html'">Register</button>
+        <a href="wishlist.html"><i class="fa-solid fa-heart"></i></a>
+         <a href="cart.html"> <i class="fa-solid fa-cart-shopping"></i></a>
+        <a href="register.html">Register</a>
+        <a href="login.html">Login</a>
         <a href="profile.html">Profile</a>
     </header>
     <nav>
@@ -39,6 +42,7 @@
                 outputItem($db,$item);
              } ?>    
     </aside>
+
     </main>
 <footer>
     <p>&copy; 2024 Second-Hand Website. All rights reserved.</p>

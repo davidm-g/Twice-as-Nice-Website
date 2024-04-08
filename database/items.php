@@ -70,7 +70,7 @@
         $brand=getBrand($db,$item['brand']);
         $price=getPrice($db,$item['id']);  ?>
     <article>
-        <h3><?= $item['description'] ?></h3>
+        <h3><?= $item['name'] ?></h3>
         <a href="item_page.html">
         <img src=<?=$img_url?> alt=<?=$item['description']?>>
         </a>
@@ -79,5 +79,6 @@
         <p>Condition: <?= $condition?></p>
         <p>Brand: <?=$brand?></p>
         <p>Price: <?= $price?></p>
+        <p>Description: <?= $item['description']?></p>
     </article>
 <?php } ?>

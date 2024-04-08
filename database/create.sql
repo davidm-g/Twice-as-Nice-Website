@@ -34,6 +34,7 @@ CREATE TABLE conditions (
 DROP TABLE IF EXISTS items;
 CREATE TABLE items (
   id INTEGER PRIMARY KEY,
+  name VARCHAR NOT NULL,
   seller VARCHAR NOT NULL REFERENCES users,
   size INTEGER NOT NULL REFERENCES sizes,
   condition INTEGER NOT NULL REFERENCES conditions,
@@ -84,12 +85,7 @@ CREATE TABLE wishlist (
   PRIMARY KEY (user_id, item_id)
 );
 
-DROP TABLE IF EXISTS shopping_cart;
-CREATE TABLE shopping_cart (
-  user_id VARCHAR NOT NULL REFERENCES users,
-  item_id INTEGER NOT NULL REFERENCES items,
-  PRIMARY KEY (user_id, item_id)
-);
+
 
 DROP TABLE IF EXISTS shipping_forms;
 CREATE TABLE shipping_forms (

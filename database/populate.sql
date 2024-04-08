@@ -34,13 +34,13 @@ INSERT OR IGNORE INTO conditions (id, name) VALUES
 (3, 'Used'),
 (4, 'Fair'),
 (5, 'Poor');
--- Inserting data into items
-INSERT OR IGNORE INTO items (id, seller, size, condition, description, brand) VALUES 
-(1, 'jdoe', 1, 1, 'iPhone 12', 1),
-(2, 'asmith', 2, 1, 'Samsung Galaxy S21', 2),
-(3, 'bturner', 3, 1, 'Sony PlayStation 5', 3),
-(4, 'cjohnson', 4, 1, 'Nike Shoes', 4),
-(5, 'ewhite', 5, 1, 'Adidas Sports T-Shirt', 5);
+
+INSERT OR IGNORE INTO items (id, name, seller, size, condition, description, brand) VALUES 
+(1, 'iPhone 12', 'jdoe', 1, 1, 'Brand new iPhone 12', 1),
+(2, 'Samsung Galaxy S21', 'asmith', 2, 1, 'Latest Samsung Galaxy S21', 2),
+(3, 'Sony PlayStation 5', 'bturner', 3, 1, 'New Sony PlayStation 5', 3),
+(4, 'Nike Shoes', 'cjohnson', 4, 1, 'Comfortable Nike Shoes', 4),
+(5, 'Adidas Sports T-Shirt', 'ewhite', 5, 1, 'Adidas T-Shirt for sports', 5);
 
 -- Inserting data into items_categories
 INSERT OR IGNORE INTO item_categories (item_id, category_id) VALUES 

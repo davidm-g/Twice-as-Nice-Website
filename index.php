@@ -9,9 +9,10 @@
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
-<script src="https://kit.fontawesome.com/6e1a58f88e.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/6e1a58f88e.js" crossorigin="anonymous"></script>
     <title>Second-Hand Website</title>
     <meta charset="UTF-8">
+    <link href="css/main_page.css" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -20,11 +21,11 @@
             <input type="text" name="search" placeholder="Search for items...">
             <input type="submit" value="Search">
         </form>
-        <a href="wishlist.html"><i class="fa-solid fa-heart"></i></a>
-         <a href="cart.html"> <i class="fa-solid fa-cart-shopping"></i></a>
+        <a href="wishlist.html"><i class="fa-regular fa-heart"></i></i></a>
+         <a href="messages.html"> <i class="fa-regular fa-message"></i></a>
+         <a href="profile.html">Profile</a>
         <a href="register.html">Register</a>
         <a href="login.html">Login</a>
-        <a href="profile.html">Profile</a>
     </header>
     <nav>
         <ul>

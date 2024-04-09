@@ -16,7 +16,7 @@
 </head>
 <body>
     <header>
-        <a href="index.php">Second-Hand Website</a>
+        <h1><a href="index.php">Second-Hand Website</a></h1>
         <form action="search.php" method="get">
             <input type="text" name="search" placeholder="Search for items...">
             <input type="submit" value="Search">

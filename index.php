@@ -21,11 +21,8 @@
             <input type="text" name="search" placeholder="Search for items...">
             <input type="submit" value="Search">
         </form>
-        <a href="wishlist.html"><i class="fa-regular fa-heart"></i></i></a>
-         <a href="messages.html"> <i class="fa-regular fa-message"></i></a>
-         <a href="profile.html">Profile</a>
-        <a href="register.html">Register</a>
-        <a href="login.html">Login</a>
+        <a id="register" href="register.html">Register</a>
+        <a id="login" href="login.html">Login</a>
     </header>
     <nav>
         <ul>
@@ -35,7 +32,7 @@
           <li><a href="#home-kitchen">Home & Kitchen</a></li>
           <li><a href="#sports-outdoors">Sports & Outdoors</a></li>
         </ul>
-      </nav>
+    </nav>
     <main>
     <aside id="random_items">
         <h1>Item Feed</h1>

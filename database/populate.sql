@@ -62,9 +62,9 @@ SELECT "Other", id FROM categories;
 
 INSERT OR IGNORE INTO subcategories (name, category_id) VALUES
 ("Smartphones", 1),
-("Gaming Consoles", 2),
+("Gaming Consoles", 1),
 ("Shoes", 3),
-("T-Shirts", 4);
+("T-Shirts", 3);
 
 INSERT OR IGNORE INTO item_categories (item_id, category_id, subcategory_id) VALUES
 (1, 1, (SELECT id FROM subcategories WHERE name = 'Smartphones')), -- iPhone 12 belongs to Smartphones

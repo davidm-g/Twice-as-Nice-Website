@@ -6,7 +6,27 @@
         return $items;
     }
 
-
+    function getSizes($db) {
+        $stmt = $db->prepare("SELECT * FROM sizes");
+        $stmt->execute();
+        $sizes = $stmt->fetchAll();
+        return $sizes;
+    }
+    
+    function getConditions($db) {
+        $stmt = $db->prepare("SELECT * FROM conditions");
+        $stmt->execute();
+        $conditions = $stmt->fetchAll();
+        return $conditions;
+    }
+    
+    function getBrands($db) {
+        $stmt = $db->prepare("SELECT * FROM brands");
+        $stmt->execute();
+        $brands = $stmt->fetchAll();
+        return $brands;
+    }
+    
     function getCategories($db) {
         $stmt = $db->prepare("SELECT * FROM categories");
         $stmt->execute();

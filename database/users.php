@@ -8,5 +8,12 @@
         } else {
             return false;
         }
+    }    
+    function addUser($db, $un, $nm, $em, $pw) {
+        $hash = password_hash($pw, PASSWORD_DEFAULT);
+        $stmt = $db->prepare(
+            "INSERT OR IGNORE INTO users (username, name, password, email, role) VALUES
+            ('$un', '$nm', '$hash', '$em', 'user')"
+        );
+        $stmt->execute();
     }
-?>

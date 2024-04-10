@@ -21,8 +21,8 @@
             <input type="text" name="search" placeholder="Search for items...">
             <input type="submit" value="Search">
         </form>
-        <a id="register" href="register.html">Register</a>
-        <a id="login" href="login.html">Login</a>
+        <a href="login.html"><button type="button" class="login">Login</button></a>
+        <a href="register.html"><button type="button" class="register">Register</button></a>
     </header>
     <nav>
         <ul>

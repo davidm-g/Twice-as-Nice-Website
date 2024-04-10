@@ -6,59 +6,6 @@
         return $items;
     }
 
-    function getImage($db, $it_id) {
-        $stmt = $db->prepare(
-            "SELECT image_url from images
-            WHERE item_id = :it_id");
-        $stmt->execute([':it_id' => $it_id]);
-        $img = $stmt->fetch();
-        return $img['image_url'];
-    }
-    
-    function getSeller($db, $uname) {
-        $stmt = $db->prepare(
-            "SELECT name from users
-            WHERE username = :uname");
-        $stmt->execute([':uname' => $uname]);
-        $nm = $stmt->fetch();
-        return $nm['name'];
-    }
-    
-    function getSize($db, $sz) {
-        $stmt = $db->prepare(
-            "SELECT name from sizes
-            WHERE id = :sz");
-        $stmt->execute([':sz' => $sz]);
-        $size = $stmt->fetch();
-        return $size['name'];
-    }
-
-    function getCondition($db, $cd) {
-        $stmt = $db->prepare(
-            "SELECT name from conditions
-            WHERE id = :cd");
-        $stmt->execute([':cd' => $cd]);
-        $cond = $stmt->fetch();
-        return $cond['name'];
-    }
-    
-    function getBrand($db, $bd) {
-        $stmt = $db->prepare(
-            "SELECT name from brands
-            WHERE id = :bd");
-        $stmt->execute([':bd' => $bd]);
-        $brd = $stmt->fetch();
-        return $brd['name'];
-    }
-
-    function getPrice($db, $it_id) {
-        $stmt = $db->prepare(
-            "SELECT price from transactions
-            WHERE item_id = :it_id");
-        $stmt->execute([':it_id' => $it_id]);
-        $prc = $stmt->fetch();
-        return $prc['price'];
-    }
 
     function getCategories($db) {
         $stmt = $db->prepare("SELECT * FROM categories");

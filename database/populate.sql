@@ -42,14 +42,6 @@ INSERT OR IGNORE INTO items (id, name, seller, size, condition, description, bra
 (4, 'Nike Shoes', 'cjohnson', 4, 1, 'Comfortable Nike Shoes', 4),
 (5, 'Adidas Sports T-Shirt', 'ewhite', 5, 1, 'Adidas T-Shirt for sports', 5);
 
--- Inserting data into items_categories
-INSERT OR IGNORE INTO item_categories (item_id, category_id) VALUES 
-(1, 1), -- iPhone 12 belongs to Electronics
-(2, 1), -- Samsung Galaxy S21 belongs to Electronics
-(3, 1), -- Sony PlayStation 5 belongs to Electronics
-(4, 3), -- Nike Shoes belongs to Clothing
-(5, 3); -- Adidas Sports T-Shirt belongs to Clothing
-
 -- Inserting data into transactions
 INSERT OR IGNORE INTO transactions (id, item_id, seller, buyer, status, price, transaction_date) VALUES 
 (1, 1, 'jdoe', NULL, 'for sale', 699.99, 1711371741),
@@ -64,3 +56,19 @@ INSERT OR IGNORE INTO images (id, item_id, image_url) VALUES
 (3, 3, 'database/images/PS5.jpg'),
 (4, 4, 'database/images/NIKE_SHOES.jpeg'),
 (5, 5, 'database/images/ADIDAS_TEE.jpg');
+
+INSERT INTO subcategories (name, category_id) 
+SELECT "Other", id FROM categories;
+
+INSERT OR IGNORE INTO subcategories (name, category_id) VALUES
+("Smartphones", 1),
+("Gaming Consoles", 2),
+("Shoes", 3),
+("T-Shirts", 4);
+
+INSERT OR IGNORE INTO item_categories (item_id, category_id, subcategory_id) VALUES
+(1, 1, (SELECT id FROM subcategories WHERE name = 'Smartphones')), -- iPhone 12 belongs to Smartphones
+(2, 1, (SELECT id FROM subcategories WHERE name = 'Smartphones')), -- Samsung Galaxy S21 belongs to Smartphones
+(3, 2, (SELECT id FROM subcategories WHERE name = 'Gaming Consoles')), -- Sony PlayStation 5 belongs to Gaming Consoles
+(4, 3, (SELECT id FROM subcategories WHERE name = 'Shoes')), -- Nike Shoes belongs to Shoes
+(5, 3, (SELECT id FROM subcategories WHERE name = 'T-Shirts')); -- Adidas Sports T-Shirt belongs to T-Shirts

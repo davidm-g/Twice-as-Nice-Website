@@ -1,4 +1,5 @@
 <?php
+    session_start();
     require_once ('database/connection.php');
     require_once ('database/items.php');
     $db = getDatabaseConnection();
@@ -21,16 +22,20 @@
             <input type="text" name="search" placeholder="Search for items...">
             <input type="submit" value="Search">
         </form>
-        <a href="login.html"><button type="button" class="login">Login</button></a>
-        <a href="register.html"><button type="button" class="register">Register</button></a>
+        <?php if (isset($_SESSION['username'])) { ?>
+            <a href="action_logout.php"><button type="button" class="logout">Logout</button></a>
+        <?php } else { ?>
+            <a href="login.html"><button type="button" class="login">Login</button></a>
+            <a href="register.html"><button type="button" class="register">Register</button></a>
+        <?php } ?>
     </header>
     <nav>
         <ul>
           <li><a href="electronics.html">Electronics</a></li>
-          <li><a href="#books">Books</a></li>
-          <li><a href="#clothing">Clothing</a></li>
-          <li><a href="#home-kitchen">Home & Kitchen</a></li>
-          <li><a href="#sports-outdoors">Sports & Outdoors</a></li>
+          <li><a href="books.html">Books</a></li>
+          <li><a href="clothes.html">Clothing</a></li>
+          <li><a href="kitchen.html">Home & Kitchen</a></li>
+          <li><a href="sports.html">Sports & Outdoors</a></li>
         </ul>
     </nav>
     <main>

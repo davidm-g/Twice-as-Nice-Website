@@ -2,7 +2,7 @@ DROP TABLE IF EXISTS users;
 CREATE TABLE users (
   username VARCHAR PRIMARY KEY,  
   name VARCHAR NOT NULL,
-  password VARCHAR NOT NULL,  -- password in SHA-2 format
+  password VARCHAR NOT NULL,  -- password in SHA-1 format
   email VARCHAR NOT NULL UNIQUE,
   role VARCHAR NOT NULL  -- 'user',  'admin'
 );
@@ -11,6 +11,13 @@ DROP TABLE IF EXISTS categories;
 CREATE TABLE categories (
   id INTEGER PRIMARY KEY,
   name VARCHAR NOT NULL UNIQUE
+);
+
+DROP TABLE IF EXISTS subcategories;
+CREATE TABLE subcategories (
+  id INTEGER PRIMARY KEY,
+  name VARCHAR NOT NULL,
+  category_id INTEGER NOT NULL REFERENCES categories
 );
 
 DROP TABLE IF EXISTS sizes;
@@ -44,9 +51,9 @@ CREATE TABLE items (
 
 DROP TABLE IF EXISTS item_categories;
 CREATE TABLE item_categories (
-  item_id INTEGER REFERENCES items,
+  item_id INTEGER PRIMARY KEY REFERENCES items,
   category_id INTEGER REFERENCES categories,
-  PRIMARY KEY (item_id, category_id)
+  subcategory_id INTEGER REFERENCES subcategories
 );
 
 DROP TABLE IF EXISTS images;

@@ -1,11 +1,11 @@
 PRAGMA foreign_keys = ON;
 
 INSERT OR IGNORE INTO users (username, name, password, email, role) VALUES
-('jdoe', 'John Doe', '99fb2f48c6af4761f904fc85f95eb56190e5d40b1f44ec3a9c1fa319', 'jdoe@example.com', 'user'),
-('asmith', 'Alice Smith', '99fb2f48c6af4761f904fc85f95eb56190e5d40b1f44ec3a9c1fa319', 'asmith@example.com', 'user'),
-('bturner', 'Bob Turner', '99fb2f48c6af4761f904fc85f95eb56190e5d40b1f44ec3a9c1fa319', 'bturner@example.com', 'admin'),
-('cjohnson', 'Charlie Johnson', '99fb2f48c6af4761f904fc85f95eb56190e5d40b1f44ec3a9c1fa319', 'cjohnson@example.com', 'admin'),
-('ewhite', 'Emily White',  '99fb2f48c6af4761f904fc85f95eb56190e5d40b1f44ec3a9c1fa319', 'ewhite@example.com', 'user');
+('jdoe', 'John Doe', '$2y$10$UUFh9FCRBXEs7w4Kx27Ma.X7UOCXEzMPbk6w7zd5EH6.QFcirwseK', 'jdoe@example.com', 'user'),
+('asmith', 'Alice Smith', '$2y$10$UUFh9FCRBXEs7w4Kx27Ma.X7UOCXEzMPbk6w7zd5EH6.QFcirwseK', 'asmith@example.com', 'user'),
+('bturner', 'Bob Turner', '$2y$10$UUFh9FCRBXEs7w4Kx27Ma.X7UOCXEzMPbk6w7zd5EH6.QFcirwseK', 'bturner@example.com', 'admin'),
+('cjohnson', 'Charlie Johnson', '$2y$10$UUFh9FCRBXEs7w4Kx27Ma.X7UOCXEzMPbk6w7zd5EH6.QFcirwseK', 'cjohnson@example.com', 'admin'),
+('ewhite', 'Emily White',  '$2y$10$UUFh9FCRBXEs7w4Kx27Ma.X7UOCXEzMPbk6w7zd5EH6.QFcirwseK', 'ewhite@example.com', 'user');
 
 INSERT OR IGNORE INTO categories (id, name) VALUES
 (1, 'Electronics'),

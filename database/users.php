@@ -1,8 +1,12 @@
 <?php
     function userExists($db, $username, $password) {
-        $password = sha1($password);
-        $query = $db->prepare('SELECT * FROM users WHERE username = ? AND password = ?');
-        $query->execute(array($username, $password));
-        return $query !== false;
+        $hash = $db->prepare('SELECT password FROM users WHERE username = ?');
+        $hash->execute(array($username));
+        $result = $hash->fetch(); // Fetch the result
+        if ($result && password_verify($password, $result['password'])) {
+            return true;
+        } else {
+            return false;
+        }
     }
 ?>

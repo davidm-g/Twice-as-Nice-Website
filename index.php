@@ -25,7 +25,7 @@
         <?php if (isset($_SESSION['username'])) { ?>
             <a href="action_logout.php"><button type="button" class="logout">Logout</button></a>
         <?php } else { ?>
-            <a href="login.html"><button type="button" class="login">Login</button></a>
+            <a href="login.php"><button type="button" class="login">Login</button></a>
             <a href="register.html"><button type="button" class="register">Register</button></a>
         <?php } ?>
     </header>
@@ -42,7 +42,7 @@
     <aside id="random_items">
         <h1>Item Feed</h1>
             <?php foreach ($items as $item) { 
-                outputItem($db,$item);
+                outputItem($db,$item['id']);
              } ?>    
     </aside>
 

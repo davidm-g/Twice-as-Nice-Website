@@ -23,6 +23,7 @@
             <input type="submit" value="Search">
         </form>
         <?php if (isset($_SESSION['username'])) { ?>
+            <a href="profile.html"><button type="button" class="profile"><i class="fa-solid fa-user"></i></button></a>
             <a href="action_logout.php"><button type="button" class="logout">Logout</button></a>
         <?php } else { ?>
             <a href="login.php"><button type="button" class="login">Login</button></a>

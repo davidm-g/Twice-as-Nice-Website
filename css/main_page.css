@@ -1,3 +1,4 @@
+
 body {
     font-family: 'Hanken Grotesk', sans-serif;
     background-color: #F2E9E4;
@@ -30,6 +31,26 @@ header h1 {
     text-transform: lowercase;
 }
 
+.navbar {
+    padding: 20px;
+    width: 200px;
+    border-radius: 50px;
+    border: 1px solid #9A8C98;
+    font-size: 16px;
+}
+
+.navbar input[type="text"] {
+    flex: 1;
+    height: 10px;
+    border: none;
+    outline: none;
+
+}
+
+.fa-solid.fa-magnifying-glass {
+    color: #C9ADA7;
+}
+
 .login {
     width: 9.375rem;
     height: 3.5625rem;
@@ -45,6 +66,13 @@ header h1 {
     font-weight: 200;
     line-height: normal;
     text-transform: lowercase;
+    transition: all 0.25s ease;
+}
+
+.login:hover {
+    background:#b9a09a;
+    border: 2px solid #b9a09a;
+    transition: all 0.25s ease;
 }
 
 .register {
@@ -62,22 +90,12 @@ header h1 {
     font-weight: 200;
     line-height: normal;
     text-transform: lowercase;
+    transition: background 0.25s ease;
 }
 
-nav {
-    border-bottom: 1px solid #C9ADA7;
-}
-
-nav > ul {
-    display: flex;
-    width: 75%;
-    height: 70px;
-    justify-content: space-around;
-    margin: auto;
-    padding: 0;
-    list-style-type: none;
-    align-items: center;
-    font-size: 102;
+.register:hover {
+    background:#C9ADA7;
+    transition: background 0.25s ease;
 }
 
 nav a {

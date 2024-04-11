@@ -17,12 +17,14 @@
 <body>
     <header>
         <h1><a href="index.php">Second-Hand Website</a></h1>
-        <form action="search.php" method="get">
-            <input type="text" name="search" placeholder="Search for items...">
-            <input type="submit" value="Search">
-        </form>
-        <a href="login.html"><button type="button" class="login">Login</button></a>
+        <div class="navbar">
+            <form action="search.php" method="get">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" name="search" placeholder="search">
+            </form>
+        </div>
         <a href="register.html"><button type="button" class="register">Register</button></a>
+        <a href="login.html"><button type="button" class="login">Login</button></a>
     </header>
     <nav>
         <ul>

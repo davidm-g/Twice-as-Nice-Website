@@ -12,17 +12,15 @@
     <script src="https://kit.fontawesome.com/6e1a58f88e.js" crossorigin="anonymous"></script>
     <title>Second-Hand Website</title>
     <meta charset="UTF-8">
-    <link href="css/main_page.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
 </head>
 <body>
     <header>
         <h1><a href="index.php">Second-Hand Website</a></h1>
-        <div class="navbar">
-            <form action="search.php" method="get">
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="text" name="search" placeholder="search">
-            </form>
-        </div>
+        <form action="search.php" method="get">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input action = "search.php" type="text" name="search" placeholder="search">
+        </form>
         <a href="register.html"><button type="button" class="register">Register</button></a>
         <a href="login.html"><button type="button" class="login">Login</button></a>
     </header>
@@ -36,12 +34,12 @@
         </ul>
     </nav>
     <main>
-    <aside id="random_items">
         <h1>Item Feed</h1>
-            <?php foreach ($items as $item) { 
-                outputItem($db,$item);
-             } ?>    
-    </aside>
+            <aside id="random_items">
+                <?php foreach ($items as $item) { 
+                    outputItem($db,$item);
+                } ?>    
+            </aside>
 
     </main>
 <footer>

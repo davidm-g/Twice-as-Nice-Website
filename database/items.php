@@ -70,15 +70,19 @@
         $brand=getBrand($db,$item['brand']);
         $price=getPrice($db,$item['id']);  ?>
     <article>
-        <h3><?= $item['name'] ?></h3>
+        <!-- <h3><?= $item['name'] ?></h3> -->
         <a href="item_page.html">
         <img src=<?=$img_url?> alt=<?=$item['description']?>>
         </a>
-        <p>Seller: <?=$seller?></p>
+        <p id="prod_price"><?= $item['name']?></p>
+        <!-- <p>Seller: <?=$seller?></p>
         <p>Size: <?=$size?></p>
         <p>Condition: <?= $condition?></p>
-        <p>Brand: <?=$brand?></p>
-        <p>Price: <?= $price?></p>
-        <p>Description: <?= $item['description']?></p>
+        <p>Brand: <?=$brand?></p> -->
+        <p><?= $price?></p>
+        <!-- <p>Description: <?= $item['description']?></p> -->
     </article>
 <?php } ?>
+
+
+

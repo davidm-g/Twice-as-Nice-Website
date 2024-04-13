@@ -74,12 +74,12 @@
         <a href="item_page.html">
         <img src=<?=$img_url?> alt=<?=$item['description']?>>
         </a>
-        <p id="prod_price"><?= $item['name']?></p>
+        <p><?= $item['name']?></p>
         <!-- <p>Seller: <?=$seller?></p>
         <p>Size: <?=$size?></p>
         <p>Condition: <?= $condition?></p>
         <p>Brand: <?=$brand?></p> -->
-        <p><?= $price?></p>
+        <p id="prod_price"><?= $price?></p>
         <!-- <p>Description: <?= $item['description']?></p> -->
     </article>
 <?php } ?>

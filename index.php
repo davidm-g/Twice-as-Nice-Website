@@ -13,6 +13,7 @@
     <title>Second-Hand Website</title>
     <meta charset="UTF-8">
     <link href="css/style.css" rel="stylesheet">
+    <link href="css/layout.css" rel="stylesheet">
 </head>
 <body>
     <header>

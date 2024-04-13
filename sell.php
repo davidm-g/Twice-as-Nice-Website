@@ -9,6 +9,7 @@
     $conditions = getConditions($db);
     $brands = getBrands($db);
     $categories = getCategories($db);
+    
 ?>
 <!DOCTYPE html>
 <html lang="en-US">

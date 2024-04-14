@@ -1,0 +1,191 @@
+body{
+    background-color: #F2E9E4;
+    padding: 0;
+    margin: 0;
+    color: #22223B;
+}
+
+/* header */
+header{
+    border-bottom: 1px solid #C9ADA7;
+    padding: 20px;
+    text-decoration: none;
+}
+
+header a {
+    text-decoration: none;
+    color: #22223B;
+}
+
+.login {
+    width: 9.375rem;
+    height: 3.5625rem;
+    flex-shrink: 0;
+    border-radius: 1.25rem;
+    border: 2px solid #C9ADA7;
+    background: #C9ADA7;
+    color: #22223B;
+    text-align: center;
+    font-family: "Hanken Grotesk";
+    font-size: 2rem;
+    font-style: normal;
+    font-weight: 200;
+    line-height: normal;
+    text-transform: lowercase;
+    transition: all 0.25s ease;
+}
+
+.login:hover {
+    background:#b9a09a;
+    border: 2px solid #b9a09a;
+    transition: all 0.25s ease;
+}
+
+.register {
+    width: 11.1875rem;
+    height: 3.5625rem;
+    flex-shrink: 0;
+    border-radius: 1.25rem;
+    background: transparent ; 
+    border: 2px solid #C9ADA7;
+    color: #22223B;
+    text-align: center;
+    font-family: "Hanken Grotesk";
+    font-size: 2rem;
+    font-style: normal;
+    font-weight: 200;
+    line-height: normal;
+    text-transform: lowercase;
+    transition: background 0.25s ease;
+}
+
+.register:hover {
+    background:#C9ADA7;
+    transition: background 0.25s ease;
+}
+
+
+
+/* navigation */
+
+nav {
+    border-bottom: 1px solid #C9ADA7;
+}
+
+nav li a {
+    color: #22223B;;
+    text-decoration: none;
+}
+
+nav li:hover a {
+    color: #9A8C98;
+}
+
+body > header > form {
+    height: 3.5625rem;
+    border: 1px solid #9A8C98;
+    border-radius: 3rem;
+}
+
+body > header > form > input[type=text] {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 3rem;
+    padding: 0 1rem;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 200;
+    line-height: normal;
+    text-transform: lowercase;
+    text-align: center;
+    background-color: transparent;
+}
+
+body > header > form > i {
+    color: #9A8C98;
+    font-size: 1.5rem;
+    padding: 0 1rem;
+}
+
+/* main */
+
+
+#random_items article {
+    width: 15%;
+    margin: 0;
+    padding: 0;
+    border-radius: 30px;
+    background: #C9ADA7;
+    box-shadow: 2px 2px 10px #9A8C98;
+}
+
+#random_items > article > a {
+    display: inline-block; 
+    width: fit-content;
+    height: fit-content; 
+    margin: 10px;
+    padding: 0;
+}
+
+#random_items > article > a > img {
+    display: block; 
+    width: 100%; 
+    height: auto; 
+    border-radius: 25px;
+}
+
+
+#random_items > article > p {
+    text-align: center;
+}
+
+/* footer */
+
+footer {
+    background-color: #9A8C98;
+    padding: 20px;
+    text-align: center;
+    border-top: 2px solid #C9ADA7;
+    box-shadow: 0 2px 4px #9A8C98;
+}
+
+/* fonts */
+
+@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    font-family: 'Hanken Grotesk', sans-serif;
+    text-transform: lowercase;
+}
+
+.prod_price {
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 100;
+    line-height: normal;
+    text-transform: lowercase;
+}
+p {
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 200;
+    line-height: normal;
+    text-transform: lowercase;
+}
+
+header h1 {
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+    text-transform: lowercase;
+}
+
+nav {
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 200;
+    line-height: normal;
+    text-transform: lowercase;
+}

@@ -163,7 +163,6 @@ footer {
     font-style: normal;
     font-weight: 100;
     line-height: normal;
-    text-transform: lowercase;
 }
 p {
     font-size: 24px;
@@ -177,7 +176,6 @@ header h1 {
     font-style: normal;
     font-weight: 900;
     line-height: normal;
-    text-transform: lowercase;
 }
 
 nav {
@@ -185,5 +183,4 @@ nav {
     font-style: normal;
     font-weight: 200;
     line-height: normal;
-    text-transform: lowercase;
 }

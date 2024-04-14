@@ -22,8 +22,10 @@
             <i class="fa-solid fa-magnifying-glass"></i>
             <input action = "search.php" type="text" name="search" placeholder="search">
         </form>
-        <a href="register.html"><button type="button" class="register">Register</button></a>
-        <a href="login.html"><button type="button" class="login">Login</button></a>
+        <div class="logreg">
+            <a href="register.html"><button type="button" class="register">Register</button></a>
+            <a href="login.html"><button type="button" class="login">Login</button></a>
+        </div>
     </header>
     <nav>
         <ul>

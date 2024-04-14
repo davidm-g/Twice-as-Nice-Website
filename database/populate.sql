@@ -52,11 +52,11 @@ INSERT OR IGNORE INTO item_categories (item_id, category_id) VALUES
 
 -- Inserting data into transactions
 INSERT OR IGNORE INTO transactions (id, item_id, seller, buyer, status, price, transaction_date) VALUES 
-(1, 1, 'jdoe', NULL, 'for sale', 699.99, 1711371741),
+(1, 1, 'jdoe', NULL, 'for sale', 799.99, 1711371741),
 (2, 2, 'asmith', NULL, 'for sale', 799.99, 1711371741),
-(3, 3, 'bturner', NULL, 'for sale', 499.99, 1708866141),
-(4, 4, 'cjohnson', NULL, 'for sale', 99.99, 1706187741),
-(5, 5, 'ewhite', NULL, 'for sale', 29.99, 1705150941 );
+(3, 3, 'bturner', NULL, 'for sale', 549.99, 1708866141),
+(4, 4, 'cjohnson', NULL, 'for sale', 2749.99, 1706187741),
+(5, 5, 'ewhite', NULL, 'for sale', 14.99, 1705150941 );
 
 INSERT OR IGNORE INTO images (id, item_id, image_url) VALUES
 (1, 1, 'database/images/IPHONE_12.jpg'),

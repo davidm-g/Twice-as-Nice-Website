@@ -61,7 +61,7 @@ CREATE TABLE transactions (
   id INTEGER PRIMARY KEY,
   item_id INTEGER NOT NULL REFERENCES items,
   seller VARCHAR NOT NULL REFERENCES users,
-  buyer VARCHAR NOT NULL REFERENCES users,
+  buyer VARCHAR REFERENCES users,
   status VARCHAR NOT NULL,  -- 'for sale', 'sold'
   price FLOAT CHECK (price >= 0),
   transaction_date INTEGER NOT NULL

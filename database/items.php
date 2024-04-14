@@ -79,7 +79,7 @@
         <p>Size: <?=$size?></p>
         <p>Condition: <?= $condition?></p>
         <p>Brand: <?=$brand?></p> -->
-        <p id="prod_price"><?= $price?></p>
+        <p id="prod_price"><?= $price?> €</p>
         <!-- <p>Description: <?= $item['description']?></p> -->
     </article>
 <?php } ?>

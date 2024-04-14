@@ -36,8 +36,8 @@ header a {
 }
 
 .login:hover {
-    background:#b9a09a;
-    border: 2px solid #b9a09a;
+    background:#ceb5b0;
+    border: 2px solid #ceb5b0;
     transition: all 0.25s ease;
 }
 
@@ -156,7 +156,6 @@ footer {
 
 * {
     font-family: 'Hanken Grotesk', sans-serif;
-    text-transform: lowercase;
 }
 
 .prod_price {
@@ -171,7 +170,6 @@ p {
     font-style: normal;
     font-weight: 200;
     line-height: normal;
-    text-transform: lowercase;
 }
 
 header h1 {

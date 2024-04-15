@@ -7,7 +7,7 @@ document.getElementById('category').addEventListener('change', function() {
             const subcategorySelect = document.getElementById('subcategory');
             subcategorySelect.innerHTML = '';
             data.forEach(function(subcategory) {
-                var option = document.createElement('option');
+                const option = document.createElement('option');
                 option.value = subcategory.id;
                 option.text = subcategory.name;
                 subcategorySelect.appendChild(option);

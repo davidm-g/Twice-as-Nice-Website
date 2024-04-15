@@ -23,14 +23,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     $images = $_FILES['images'];
     $imageUrls = [];
+    $validImages = true;
     for ($i = 0; $i < count($images['name']); $i++) {
         $targetDir = "database/images/";
         $targetFile = $targetDir . basename($images["name"][$i]);
+        $imageFileType = strtolower(pathinfo($targetFile,PATHINFO_EXTENSION));
+        if ($images["size"][$i] > 1500000) { // 1.5MB in bytes
+            echo "Sorry, your file is too large.";
+            $validImages = false;
+            continue;
+        }
+        if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg") {
+            echo "Sorry, only JPG, JPEG, PNG files are allowed.";
+            $validImages = false;
+            continue;
+        }
         if (move_uploaded_file($images["tmp_name"][$i], $targetFile)) {
             $imageUrls[] = $targetFile;
         }
     }
-
+    if ($validImages) {
     try {
         // Start transaction
         $db->beginTransaction();
@@ -67,6 +79,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Rollback transaction if something goes wrong
         $db->rollback();
         echo "Error: " . $e->getMessage();
+    }
+    }
+    else {
+        echo "Error: Invalid images";
     }
 }
 ?>

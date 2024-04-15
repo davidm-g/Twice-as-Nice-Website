@@ -69,6 +69,15 @@
         $cat_id = ($stmt->fetch());
         return $cat_id['category_id'];
     }
+
+    function getCategoryName($db, $cat_id) {
+        $stmt = $db->prepare(
+            "SELECT name from categories
+            WHERE id = :cat_id");
+        $stmt->execute([':cat_id' => $cat_id]);
+        $cat_nm = ($stmt->fetch());
+        return $cat_nm['name'];
+    }
     
     function getBrand($db, $bd) {
         $stmt = $db->prepare(

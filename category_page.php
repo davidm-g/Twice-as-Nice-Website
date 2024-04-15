@@ -6,7 +6,7 @@
     require_once('templates/categories.php');
     $db = getDatabaseConnection();
     $cat_id = $_GET['id'];
-    $cat_name = $_GET['name'];
+    $cat_name = getCategoryName($db, $cat_id);
     $items = getItems($db);
     $cats = getCategories($db);
     output_header();

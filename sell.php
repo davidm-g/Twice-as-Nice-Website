@@ -1,8 +1,10 @@
 <?php
-
     session_start();
-    require_once('database/connection.php');
-    require_once('database/items.php');
+    require_once ('database/connection.php');
+    require_once ('database/items.php');
+    require_once('templates/common.php');   
+    require_once('templates/items.php'); 
+    require_once('database/users.php');
     $db = getDatabaseConnection();
 // Fetch sizes, conditions, brands, categories, and subcategories from the database
     $sizes = getSizes($db);
@@ -10,28 +12,8 @@
     $brands = getBrands($db);
     $categories = getCategories($db);
     
+    output_header();
 ?>
-<!DOCTYPE html>
-<html lang="en-US">
-<head>
-<script src="https://kit.fontawesome.com/6e1a58f88e.js" crossorigin="anonymous"></script>
-    <title>Second-Hand Website</title>
-    <meta charset="UTF-8">
-</head>
-<body>
-    <header>
-        <a href="index.php">Second-Hand Website</a>
-        <form action="search.php" method="get">
-            <input type="text" name="search" placeholder="Search for items...">
-            <input type="submit" value="Search">
-        </form>
-        <a href="wishlist.html"><i class="fa-regular fa-heart"></i></i></a>
-         <a href="messages.html"> <i class="fa-regular fa-message"></i></a>
-         <a href="profile.html">Profile</a>
-        <a href="register.html">Register</a>
-        <a href="login.php">Login</a>
-    </header>
-    <main>
         <h1>Sell an Item</h1>
                 <form action="action_post_item.php" method="post" enctype="multipart/form-data">
             <label for="name">Name:</label><br>
@@ -75,11 +57,7 @@
             <textarea id="description" name="description" required></textarea><br>
             <input type="submit" value="Post Item">
         </form>
-    </main>
-    <footer>
-        <p>&copy; 2024 Second-Hand Website. All rights reserved.</p>
-    </footer>
-    <script src="/scripts/select_subdirectories.js"></script>
-</body>
-</html>
+<?php 
+    output_footer();
+?>
 

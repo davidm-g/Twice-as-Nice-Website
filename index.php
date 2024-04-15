@@ -28,6 +28,9 @@
                 <a href="wishlist.html"><div class="wishlist">
                     <i class="fa-regular fa-heart" onmouseover="this.className='fa-solid fa-heart';" onmouseout="this.className='fa-regular fa-heart';"></i>
                 </div></a>
+                <a href="chat.html"><div class="chat">
+                    <i class="fa-regular fa-message" onmouseover="this.className='fa-solid fa-message';" onmouseout="this.className='fa-regular fa-message';"></i>
+                </div></a>
                 <a href="profile.php"><button type="button" class="profile"><i class="fa-solid fa-user"></i></button></a>
                 <a href="action_logout.php"><button type="button" class="logout">Logout</button></a>
             <?php } else { ?>

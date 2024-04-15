@@ -35,8 +35,9 @@ header a {
     transition: all 0.25s ease;
 }
 
-.wishlist {
+.wishlist, .chat {
     font-size: 2rem;
+    padding: 0.5em;
 }
 
 .login:hover, .profile:hover {

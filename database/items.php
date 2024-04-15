@@ -78,7 +78,7 @@
 ?>
 <?php 
 function outputItem($db, $item) {
-    $img_url=getImage($db,$item['id']); 
+        $img_url=getImage($db,$item['id']); 
         $seller=getSeller($db,$item['seller']);
         $size=getSize($db,$item['size']);
         $condition=getCondition($db,$item['condition']);

@@ -1,0 +1,59 @@
+/* main layout */
+
+/* header layout */
+
+header {
+    height: 130px;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-rows: 130px 0;
+    align-items: center;
+}
+
+.logreg {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    grid-column: 3/3;
+
+}
+
+body > header > form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+body > header > h1 > a {
+    display: flex;
+    text-align: center;
+    justify-content: space-around;
+    align-items: center;
+}
+
+/* navigation layout */
+
+nav ul {
+    margin: 0 auto;
+    padding: 0;
+    display: flex;
+    width: 85%;
+    height: 70px;
+    justify-content: space-around;
+}
+
+nav li {
+    text-align: center;
+    list-style-type: none;
+    margin: 0 20px 0 20px;
+    padding: 10px;
+}
+
+/* main layout */
+
+#random_items {
+    padding: 20px;
+    display: flex;
+    justify-content: space-around;
+}

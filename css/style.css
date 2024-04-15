@@ -17,7 +17,7 @@ header a {
     color: #22223B;
 }
 
-.login {
+.login, .profile {
     width: 9.375rem;
     height: 3.5625rem;
     flex-shrink: 0;
@@ -35,13 +35,13 @@ header a {
     transition: all 0.25s ease;
 }
 
-.login:hover {
+.login:hover, .profile:hover {
     background:#ceb5b0;
     border: 2px solid #ceb5b0;
     transition: all 0.25s ease;
 }
 
-.register {
+.register, .logout {
     width: 11.1875rem;
     height: 3.5625rem;
     flex-shrink: 0;
@@ -59,7 +59,7 @@ header a {
     transition: background 0.25s ease;
 }
 
-.register:hover {
+.register:hover, .logout:hover {
     background:#C9ADA7;
     transition: background 0.25s ease;
 }

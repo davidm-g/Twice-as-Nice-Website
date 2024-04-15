@@ -3,10 +3,12 @@
     require_once ('database/connection.php');
     require_once ('database/items.php');
     require_once('templates/common.php');   
-    require_once('templates/items.php'); 
     require_once('database/users.php');
+    require_once('templates/categories.php');
     $db = getDatabaseConnection();
+    $cats = getCategories($db);
     output_header();
+    output_categories($db, $cats);
 ?>
         <h1>John Doe's profile</h1>
         <form action="action_profile.php" method="post">

@@ -60,6 +60,15 @@
         $cat = $stmt2->fetch();
         return $cat['name'];
     }
+
+    function getCategoryId($db, $id) {
+        $stmt = $db->prepare(
+            "SELECT category_id from item_categories
+            WHERE item_id = :id");
+        $stmt->execute([':id' => $id]);
+        $cat_id = ($stmt->fetch());
+        return $cat_id['category_id'];
+    }
     
     function getBrand($db, $bd) {
         $stmt = $db->prepare(
@@ -137,24 +146,14 @@
 <?php 
 function outputItem($db, $item) {
         $img_url=getImage($db,$item['id']); 
-        $seller=getSeller($db,$item['seller']);
-        $size=getSize($db,$item['size']);
-        $condition=getCondition($db,$item['condition']);
-        $brand=getBrand($db,$item['brand']);
         $price=getPrice($db,$item['id']);  ?>
-    <article>
-        <!-- <h3><?= $item['name'] ?></h3> -->
+    <div id='card'>
         <a href="item_page.php?id=<?=$item['id']?>">
-        <img src=<?=$img_url?> alt=<?=$item['description']?>>
+            <img src=<?=$img_url?> alt=<?=$item['description']?>>
         </a>
         <p><?= $item['name']?></p>
-        <!-- <p>Seller: <?=$seller?></p>
-        <p>Size: <?=$size?></p>
-        <p>Condition: <?= $condition?></p>
-        <p>Brand: <?=$brand?></p> -->
-        <p id="prod_price"><?= $price?> €</p>
-        <!-- <p>Description: <?= $item['description']?></p> -->
-    </article>
+        <p><?= $price?> €</p>
+    </div>
 <?php }
 
 function outputItems($db, $items) { ?>

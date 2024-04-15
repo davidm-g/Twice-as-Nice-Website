@@ -2,11 +2,13 @@
     session_start();
     require_once ('database/connection.php');
     require_once ('database/items.php');
-    require_once('templates/common.php');   
-    require_once('templates/items.php'); 
+    require_once('templates/common.php');  
+    require_once('templates/categories.php'); 
     $db = getDatabaseConnection();
-    output_header();
     $id = $_GET['id'];
+    $cats = getCategories($db);
+    output_header();
+    output_categories($db, $cats);
 ?>
     <div id="item-details">
         <h2><?=getTitle($db, $id)?></h2>

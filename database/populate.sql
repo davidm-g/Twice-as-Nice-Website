@@ -69,6 +69,6 @@ INSERT OR IGNORE INTO subcategories (name, category_id) VALUES
 INSERT OR IGNORE INTO item_categories (item_id, category_id, subcategory_id) VALUES
 (1, 1, (SELECT id FROM subcategories WHERE name = 'Smartphones')), -- iPhone 12 belongs to Smartphones
 (2, 1, (SELECT id FROM subcategories WHERE name = 'Smartphones')), -- Samsung Galaxy S21 belongs to Smartphones
-(3, 2, (SELECT id FROM subcategories WHERE name = 'Gaming Consoles')), -- Sony PlayStation 5 belongs to Gaming Consoles
+(3, 1, (SELECT id FROM subcategories WHERE name = 'Gaming Consoles')), -- Sony PlayStation 5 belongs to Gaming Consoles
 (4, 3, (SELECT id FROM subcategories WHERE name = 'Shoes')), -- Nike Shoes belongs to Shoes
 (5, 3, (SELECT id FROM subcategories WHERE name = 'T-Shirts')); -- Adidas Sports T-Shirt belongs to T-Shirts

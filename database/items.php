@@ -15,12 +15,17 @@
         return $img['image_url'];
     }
 
-    function getSeller($db, $uname) {
+    function getSeller($db, $id) {
         $stmt = $db->prepare(
+            "SELECT seller from items
+            WHERE id = :id");
+        $stmt->execute([':id' => $id]);
+        $uname = ($stmt->fetch())['seller'];
+        $stmt2 = $db->prepare(
             "SELECT name from users
             WHERE username = :uname");
-        $stmt->execute([':uname' => $uname]);
-        $nm = $stmt->fetch();
+        $stmt2->execute([':uname' => $uname]);
+        $nm = $stmt2->fetch();
         return $nm['name'];
     }
 
@@ -41,6 +46,29 @@
         $cond = $stmt->fetch();
         return $cond['name'];
     }
+
+    function getCategory($db, $id) {
+        $stmt = $db->prepare(
+            "SELECT category_id from item_categories
+            WHERE item_id = :id");
+        $stmt->execute([':id' => $id]);
+        $cat_id = ($stmt->fetch())['category_id'];
+        $stmt2 = $db->prepare(
+            "SELECT name from categories
+            WHERE id = :cat_id");
+        $stmt2->execute([':cat_id' => $cat_id]);
+        $cat = $stmt2->fetch();
+        return $cat['name'];
+    }
+
+    function getCategoryId($db, $id) {
+        $stmt = $db->prepare(
+            "SELECT category_id from item_categories
+            WHERE item_id = :id");
+        $stmt->execute([':id' => $id]);
+        $cat_id = ($stmt->fetch());
+        return $cat_id['category_id'];
+    }
     
     function getBrand($db, $bd) {
         $stmt = $db->prepare(
@@ -49,6 +77,33 @@
         $stmt->execute([':bd' => $bd]);
         $brd = $stmt->fetch();
         return $brd['name'];
+    }
+
+    function getTitle($db, $id) {
+        $stmt = $db->prepare(
+            "SELECT name from items
+            WHERE id = :id");
+        $stmt->execute([':id' => $id]);
+        $tt = $stmt->fetch();
+        return $tt['name'];
+    }
+
+    function getPrice($db, $it_id) {
+        $stmt = $db->prepare(
+            "SELECT price from transactions
+            WHERE item_id = :it_id");
+        $stmt->execute([':it_id' => $it_id]);
+        $prc = $stmt->fetch();
+        return $prc['price'];
+    }
+
+    function getDescription($db, $it_id) {
+        $stmt = $db->prepare(
+            "SELECT description from items
+            WHERE id = :it_id");
+        $stmt->execute([':it_id' => $it_id]);
+        $dsc = $stmt->fetch();
+        return $dsc['description'];
     }
     
     function getSizes($db) {
@@ -87,36 +142,18 @@
         return $subcategories;
     }
 
-    function getPrice($db, $it_id) {
-        $stmt = $db->prepare(
-            "SELECT price from transactions
-            WHERE item_id = :it_id");
-        $stmt->execute([':it_id' => $it_id]);
-        $prc = $stmt->fetch();
-        return $prc['price'];
-    }
 ?>
 <?php 
 function outputItem($db, $item) {
         $img_url=getImage($db,$item['id']); 
-        $seller=getSeller($db,$item['seller']);
-        $size=getSize($db,$item['size']);
-        $condition=getCondition($db,$item['condition']);
-        $brand=getBrand($db,$item['brand']);
         $price=getPrice($db,$item['id']);  ?>
-    <article>
-        <!-- <h3><?= $item['name'] ?></h3> -->
-        <a href="item_page.php">
-        <img src=<?=$img_url?> alt=<?=$item['description']?>>
+    <div id='card'>
+        <a href="item_page.php?id=<?=$item['id']?>">
+            <img src=<?=$img_url?> alt=<?=$item['description']?>>
         </a>
         <p><?= $item['name']?></p>
-        <!-- <p>Seller: <?=$seller?></p>
-        <p>Size: <?=$size?></p>
-        <p>Condition: <?= $condition?></p>
-        <p>Brand: <?=$brand?></p> -->
-        <p id="prod_price"><?= $price?> €</p>
-        <!-- <p>Description: <?= $item['description']?></p> -->
-    </article>
+        <p><?= $price?> €</p>
+    </div>
 <?php }
 
 function outputItems($db, $items) { ?>

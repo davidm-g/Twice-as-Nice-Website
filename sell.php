@@ -3,16 +3,17 @@
     require_once ('database/connection.php');
     require_once ('database/items.php');
     require_once('templates/common.php');   
-    require_once('templates/items.php'); 
     require_once('database/users.php');
+    require_once('templates/categories.php');
     $db = getDatabaseConnection();
 // Fetch sizes, conditions, brands, categories, and subcategories from the database
     $sizes = getSizes($db);
     $conditions = getConditions($db);
     $brands = getBrands($db);
     $categories = getCategories($db);
-    
     output_header();
+    output_categories($db, $$categories);
+    
 ?>
         <h1>Sell an Item</h1>
                 <form action="action_post_item.php" method="post" enctype="multipart/form-data">
@@ -57,7 +58,7 @@
             <textarea id="description" name="description" required></textarea><br>
             <input type="submit" value="Post Item">
         </form>
-        <script src="/scripts/select_subdirectories.js"></script>
+    <script src="/scripts/select_subdirectories.js"></script>
 <?php 
     output_footer();
 ?>

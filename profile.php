@@ -17,7 +17,7 @@
             <input type="text" name="search" placeholder="Search for items...">
             <input type="submit" value="Search">
         </form>
-        <a href="wishlist.html"><i class="fa-regular fa-heart"></i></i></a>
+        <a href="wishlist.html"><i class="fa-regular fa-heart"></i></a>
          <a href="messages.html"> <i class="fa-regular fa-message"></i></a>
          <a href="profile.html">Profile</a>
         <a href="register.html">Register</a>

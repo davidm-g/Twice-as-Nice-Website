@@ -35,6 +35,10 @@ header a {
     transition: all 0.25s ease;
 }
 
+.wishlist {
+    font-size: 2rem;
+}
+
 .login:hover, .profile:hover {
     background:#ceb5b0;
     border: 2px solid #ceb5b0;

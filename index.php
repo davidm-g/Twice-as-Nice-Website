@@ -25,6 +25,9 @@
         </form>
         <div class="logreg">
             <?php if (isset($_SESSION['username'])) { ?>
+                <a href="wishlist.html"><div class="wishlist">
+                    <i class="fa-regular fa-heart" onmouseover="this.className='fa-solid fa-heart';" onmouseout="this.className='fa-regular fa-heart';"></i>
+                </div></a>
                 <a href="profile.php"><button type="button" class="profile"><i class="fa-solid fa-user"></i></button></a>
                 <a href="action_logout.php"><button type="button" class="logout">Logout</button></a>
             <?php } else { ?>

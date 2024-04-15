@@ -43,10 +43,10 @@ CREATE TABLE items (
   id INTEGER PRIMARY KEY,
   name VARCHAR NOT NULL,
   seller VARCHAR NOT NULL REFERENCES users,
-  size INTEGER REFERENCES sizes,
+  size INTEGER  REFERENCES sizes,
   condition INTEGER NOT NULL REFERENCES conditions,
   description VARCHAR NOT NULL,
-  brand INTEGER NOT NULL REFERENCES brands
+  brand INTEGER REFERENCES brands
 );
 
 DROP TABLE IF EXISTS item_categories;

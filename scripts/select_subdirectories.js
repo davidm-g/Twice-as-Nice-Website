@@ -1,10 +1,10 @@
 
 document.getElementById('category').addEventListener('change', function() {
-    var categoryId = this.value;
-    fetch('/get_subcategories.php?category_id=' + categoryId)
+    const categoryId = this.value;
+    fetch('/api_subcategories.php?category_id=' + categoryId)
         .then(response => response.json())
         .then(data => {
-            var subcategorySelect = document.getElementById('subcategory');
+            const subcategorySelect = document.getElementById('subcategory');
             subcategorySelect.innerHTML = '';
             data.forEach(function(subcategory) {
                 var option = document.createElement('option');

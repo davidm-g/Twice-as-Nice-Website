@@ -1,6 +1,7 @@
 <?php 
     session_start();
     require_once ('database/connection.php');
+    require_once ('database/users.php');
     $db = getDatabaseConnection();
 ?>
 <!DOCTYPE html>
@@ -45,6 +46,51 @@
             <input type="password" id="password" name="password" value="password"><br>
             <button type="submit"> Update Password </button>
         </form>
+        
+
+<?php if (isAdmin($_SESSION['username'],$db)) { ?>
+    <form action="action_profile.php" method="post">
+        <label for="username">Username:</label><br>
+        <input type="text" id="username" name="username" required><br>
+        <button type="submit" name="elevate"> Elevate to Admin </button>
+    </form>
+    <form action="action_profile.php" method="post">
+        <label for="category">New Category:</label><br>
+        <input type="text" id="category" name="category" required><br>
+        <button type="submit" name="add_category"> Add Category </button>
+    </form>
+    <form action="action_profile.php" method="post">
+    <label for="category">Select a category to add a subcategory to:</label><br>
+    <select id="category" name="category_id" required>
+        <?php
+        $stmt = $db->prepare("SELECT id, name FROM categories");
+        $stmt->execute();
+        $categories = $stmt->fetchAll();
+        foreach ($categories as $category) {
+            echo '<option value="' . htmlspecialchars($category['id']) . '">' . htmlspecialchars($category['name']) . '</option>';
+        }
+        ?>
+    </select><br>
+    <label for="subcategory">New Subcategory:</label><br>
+    <input type="text" id="subcategory" name="subcategory" required><br>
+    <button type="submit" name="add_subcategory"> Add Subcategory </button>
+    </form>
+    <form action="action_profile.php" method="post">
+        <label for="size">New Size:</label><br>
+        <input type="text" id="size" name="size" required><br>
+        <button type="submit" name="add_size"> Add Size </button>
+    </form>
+    <form action="action_profile.php" method="post">
+        <label for="brand">New Brand:</label><br>
+        <input type="text" id="brand" name="brand" required><br>
+        <button type="submit" name="add_brand"> Add Brand </button>
+    </form>
+    <form action="action_profile.php" method="post">
+        <label for="condition">New Condition:</label><br>
+        <input type="text" id="condition" name="condition" required><br>
+        <button type="submit" name="add_condition"> Add Condition </button>
+    </form>
+<?php } ?>
         <section id="wardrobe">
         <h2>Wardrobe</h2>
         <article>

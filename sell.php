@@ -29,7 +29,7 @@
          <a href="messages.html"> <i class="fa-regular fa-message"></i></a>
          <a href="profile.html">Profile</a>
         <a href="register.html">Register</a>
-        <a href="login.html">Login</a>
+        <a href="login.php">Login</a>
     </header>
     <main>
         <h1>Sell an Item</h1>
@@ -38,24 +38,26 @@
             <input type="text" id="name" name="name"><br>
             <label for="size">Size:</label><br>
             <select id="size" name="size">
+                <option selected disabled>Select a size if applicable</option>
                 <?php foreach ($sizes as $size) { ?>
                     <option value="<?php echo $size['id']; ?>"><?php echo $size['name']; ?></option>
                 <?php } ?>
             </select><br>
             <label for="condition">Condition:</label><br>
-            <select id="condition" name="condition">
+            <select id="condition" name="condition" required>
                 <?php foreach ($conditions as $condition) { ?>
                     <option value="<?php echo $condition['id']; ?>"><?php echo $condition['name']; ?></option>
                 <?php } ?>
             </select><br>
             <label for="brand">Brand:</label><br>
             <select id="brand" name="brand">
+                <option selected disabled>Select a brand if applicable</option>
                 <?php foreach ($brands as $brand) { ?>
                     <option value="<?php echo $brand['id']; ?>"><?php echo $brand['name']; ?></option>
                 <?php } ?>
             </select><br>
             <label for="category">Category:</label><br>
-            <select id="category" name="category">
+            <select id="category" name="category" required>
             <option selected disabled>Select a category</option>
                 <?php foreach ($categories as $category) { ?>
                     <option value="<?php echo $category['id']; ?>"><?php echo $category['name']; ?></option>
@@ -66,11 +68,11 @@
                 <!-- Subcategories will be populated based on the selected category using JavaScript -->
             </select><br>
             <label for="price">Price:</label><br>
-            <input type="number" id="price" name="price" step="5"><br>
+            <input type="number" id="price" name="price" step="5" required><br>
             <label for="images">Images:</label><br>
-            <input type="file" id="images" name="images[]" multiple><br>
+            <input type="file" id="images" name="images[]" multiple required><br>
             <label for="description">Description:</label><br>
-            <textarea id="description" name="description"></textarea><br>
+            <textarea id="description" name="description" required></textarea><br>
             <input type="submit" value="Post Item">
         </form>
     </main>

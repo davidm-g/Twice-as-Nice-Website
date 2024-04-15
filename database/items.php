@@ -106,7 +106,7 @@ function outputItem($db, $item) {
         $price=getPrice($db,$item['id']);  ?>
     <article>
         <!-- <h3><?= $item['name'] ?></h3> -->
-        <a href="item_page.html">
+        <a href="item_page.php">
         <img src=<?=$img_url?> alt=<?=$item['description']?>>
         </a>
         <p><?= $item['name']?></p>
@@ -117,7 +117,17 @@ function outputItem($db, $item) {
         <p id="prod_price"><?= $price?> €</p>
         <!-- <p>Description: <?= $item['description']?></p> -->
     </article>
-<?php } ?>
+<?php }
+
+function outputItems($db, $items) { ?>
+    <h1>Item Feed</h1>
+        <aside id="random_items">
+            <?php foreach ($items as $item) { 
+                outputItem($db,$item);
+            } ?>    
+        </aside>
+<?php } 
+
 
 
 

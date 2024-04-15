@@ -1,23 +1,12 @@
-<!DOCTYPE html>
-<html lang="en-US">
-<head>
-<script src="https://kit.fontawesome.com/6e1a58f88e.js" crossorigin="anonymous"></script>
-    <title>Second-Hand Website</title>
-    <meta charset="UTF-8">
-</head>
-<body>
-    <header>
-        <a href="index.php">Second-Hand Website</a>
-        <form action="search.php" method="get">
-            <input type="text" name="search" placeholder="Search for items...">
-            <input type="submit" value="Search">
-        </form>
-        <a href="wishlist.html"><i class="fa-regular fa-heart"></i></i></a>
-         <a href="messages.html"> <i class="fa-regular fa-message"></i></a>
-         <a href="profile.html">Profile</a>
-        <a href="register.html">Register</a>
-        <a href="login.html">Login</a>
-    </header>
+<?php
+    session_start();
+    require_once ('database/connection.php');
+    require_once ('database/items.php');
+    require_once('templates/common.php');   
+    require_once('templates/items.php'); 
+    $db = getDatabaseConnection();
+    output_header();
+?>
     <div id="item-details">
         <h2 id="item-description">Example Item</h2>
         <img id="item-image" src="example.jpg" alt="Example Item image">
@@ -31,11 +20,6 @@
     <button id="wishlist-button" onclick="addToWishlist()">Add to Wishlist</button>
     <button id="negotiate-button" onclick="window.location.href='negotiate_price_page.html'">Negotiate Price</button>
     <button id="cart-button" onclick="addToCart()">Add to Cart</button>
-
-    <footer>
-        <p>&copy; 2024 Second-Hand Website. All rights reserved.</p>
-    </footer>
-
     <script>
         function addToWishlist() {
             // Add code here to send a request to your server to add the item to the user's wishlist
@@ -45,5 +29,6 @@
             // Add code here to send a request to your server to add the item to the user's shopping cart
         }
     </script>
-</body>
-</html>
+<?php 
+    output_footer();
+?>

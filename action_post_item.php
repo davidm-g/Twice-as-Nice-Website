@@ -2,7 +2,7 @@
 // Start the session
 session_start();
 
-// Include your database configuration file
+
 require_once('database/connection.php'); 
 $db = getDatabaseConnection();
 

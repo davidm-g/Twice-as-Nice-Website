@@ -77,7 +77,7 @@
     }
 ?>
 <?php 
-function outputItem($db, $item_id) {
+function outputItem($db, $item) {
     $img_url=getImage($db,$item['id']); 
         $seller=getSeller($db,$item['seller']);
         $size=getSize($db,$item['size']);

@@ -6,15 +6,17 @@
     require_once('templates/items.php'); 
     $db = getDatabaseConnection();
     output_header();
+    $id = $_GET['id'];
 ?>
     <div id="item-details">
-        <h2 id="item-description">Example Item</h2>
-        <img id="item-image" src="example.jpg" alt="Example Item image">
-        <p>Seller: <span id="item-seller">Example Seller</span></p>
-        <p>Size: <span id="item-size">Medium</span></p>
-        <p>Condition: <span id="item-condition">New</span></p>
-        <p>Brand: <span id="item-brand">Example Brand</span></p>
-        <p>Category: <span id="item-category">Example Category</span></p>
+        <h2><?=getTitle($db, $id)?></h2>
+        <img id="item-image" src=<?=getImage($db, $id)?> alt="Example Item image">
+        <p>Description: <span id="item-description"><?=getDescription($db, $id)?></span></p>
+        <p>Seller: <span id="item-seller"><?=getSeller($db, $id)?></span></p>
+        <p>Size: <span id="item-size"><?=getSize($db, $id)?></span></p>
+        <p>Condition: <span id="item-condition"><?=getCondition($db, $id)?></span></p>
+        <p>Brand: <span id="item-brand"><?=getBrand($db, $id)?></span></p>
+        <p>Category: <span id="item-category"><?=getCategory($db, $id)?></span></p>
     </div>
 
     <button id="wishlist-button" onclick="addToWishlist()">Add to Wishlist</button>

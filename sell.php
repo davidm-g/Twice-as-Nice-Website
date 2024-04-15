@@ -57,6 +57,7 @@
             <textarea id="description" name="description" required></textarea><br>
             <input type="submit" value="Post Item">
         </form>
+        <script src="/scripts/select_subdirectories.js"></script>
 <?php 
     output_footer();
 ?>

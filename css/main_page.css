@@ -30,7 +30,7 @@ header h1 {
     text-transform: lowercase;
 }
 
-.login, .logout, .profile {
+#logbtn, .logout, .profile {
     width: 9.375rem;
     height: 3.5625rem;
     flex-shrink: 0;

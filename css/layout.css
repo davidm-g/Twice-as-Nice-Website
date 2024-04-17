@@ -6,7 +6,7 @@ header {
     height: 130px;
     padding: 0;
     display: grid;
-    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-columns: 1fr 1.5fr 1fr;
     grid-template-rows: 130px 0;
     align-items: center;
 }

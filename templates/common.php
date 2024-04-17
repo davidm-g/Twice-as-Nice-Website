@@ -7,6 +7,7 @@
     <meta charset="UTF-8">
     <link href="css/style.css" rel="stylesheet">
     <link href="css/layout.css" rel="stylesheet">
+    <script src="scripts/modal.js" defer></script>
 </head>
 <body>
     <header>
@@ -26,8 +27,8 @@
                 <a href="profile.php"><button type="button" class="profile"><i class="fa-solid fa-user"></i></button></a>
                 <a href="action_logout.php"><button type="button" class="logout">Logout</button></a>
             <?php } else { ?>
-                <a href="login.php"><button type="button" class="login">Login</button></a>
                 <a href="register.php"><button type="button" class="register">Register</button></a>
+                <button type="button" id="logbtn">Login</button>
             <?php } ?>
         </div>
     </header>
@@ -40,6 +41,23 @@
           <li><a href="category_page.php">Sports & Outdoors</a></li>
         </ul>
     </nav>
+
+    <div id="fade" class="hide"></div>
+    <div id="loginmodal" class="hide">
+    <h2 class="modalheader">Login</h2>
+    <button id="closebtn">X</button>
+        <form idaction="action_login.php" method="post">
+            <label> Username <input type="text" name="username" ></label>
+            <label> Password <input type="password" name="password" ></label>
+            <button type="submit"> Login </button>
+          </form>
+    </div>
+
+        
+
+
+
+
     <main>
  <?php } ?>
 

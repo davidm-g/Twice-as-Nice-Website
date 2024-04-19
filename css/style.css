@@ -87,14 +87,14 @@ nav li:hover a {
     color: #9A8C98;
 }
 
-body > header > form {
+body > header > #searchbar {
     color: #555;
     padding: 0;
     border: none;
-    border-radius: 5px;
+    border-radius: 2em;
 }
 
-body > header > form > input[type=search] {
+body > header > #searchbar > input[type=search] {
     width: 100%;
     border: 1px solid #555;
     display: block;
@@ -243,4 +243,25 @@ nav {
 
 #loginmodal.hide, #registermodal.hide {
     top: 0;
+}
+
+#loginfields *, #registerfields * {
+    border-radius: 1rem;
+    border-width: thin;
+    padding: 10px 25px 10px 25px;
+    font-size: 25px;
+    width: 60%;
+}
+
+#loginfields button, #registerfields button {
+    width: 30%;
+}
+
+#closebtnL, #closebtnR {
+    border: none;
+    background-color: transparent;
+    font-size: 50px;
+    position: absolute;
+    top: 3%;
+    right: 3%;
 }

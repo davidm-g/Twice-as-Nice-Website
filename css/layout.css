@@ -19,7 +19,7 @@ header {
 
 }
 
-body > header > form {
+body > header > #searchbar {
     display: flex;
     margin: auto;
     width: 100%;
@@ -57,3 +57,17 @@ nav li {
     display: flex;
     justify-content: space-around;
 }
+
+/* modal boxes */
+
+#loginfields, #registerfields {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 5px;
+    justify-content: space-between;
+    margin: auto;
+    gap: 10px;
+    justify-content: space-around;
+}
+

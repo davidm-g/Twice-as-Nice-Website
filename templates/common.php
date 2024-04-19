@@ -13,7 +13,7 @@
 <body>
     <header>
         <h1><a href="index.php">Second-Hand Website</a></h1>
-        <form>
+        <form id="searchbar">
             <input type="search" placeholder="Search...">
         </form>
         <div class="logreg">
@@ -36,24 +36,24 @@
     <div id="fadeLogin" class="hide"></div>
     <div id="loginmodal" class="hide">
         <h2 class="modalheader">Login</h2>
-        <button id="closebtnL">X</button>
-        <form action="action_login.php" method="post">
-            <label> Username <input type="text" name="username" ></label>
-            <label> Password <input type="password" name="password" ></label>
-            <button type="submit"> Login </button>
+        <button id="closebtnL">x</button>
+        <form action="action_login.php" method="post" id="loginfields">
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="password" name="password" placeholder="Password"required>
+            <button type="submit">Login</button>
         </form>
     </div>
     
     <div id="fadeRegister" class="hide"></div>
     <div id="registermodal" class="hide">
         <h2 class="modalheader">Register</h2>
-        <button id="closebtnR">X</button>
-        <form action="action_register.php" method="post">
-            <label>Username:<input type="text" name="username" required></label>
-            <label>First and Last names:<input type="text" name="name" required></label>
-            <label>Email:<input type="email" name="email" required></label>
-            <label>Password:<input type="password" name="password" required></label>
-            <button type="submit"> Register </button>
+        <button id="closebtnR">x</button>
+        <form action="action_register.php" method="post" id="registerfields">
+            <input type="text" name="name" placeholder="Name" required>
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="email" name="email" placeholder="name@example.com" required>
+            <input type="password" name="password" placeholder="Password"required>
+            <button type="submit">Register</button>
         </form>
     </div>
  <?php } ?>

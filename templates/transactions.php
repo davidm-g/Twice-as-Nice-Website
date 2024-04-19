@@ -16,7 +16,7 @@ function get_transactions($username, $db) {
         <form id="manage-item-<?php echo htmlspecialchars($transaction['item_id']); ?>">
             <input type="hidden" name="item_id" value="<?php echo htmlspecialchars($transaction['item_id']); ?>">
             <div id="new-price-<?php echo htmlspecialchars($transaction['item_id']); ?>" style="display: none;">
-                <input type="number" name="new_price" min="0" step="5" placeholder="New price">
+                <input type="number" name="new_price" min="0" step="5" placeholder="New price" required>
                 <input type="button" onclick="changePrice('<?php echo htmlspecialchars($transaction['item_id']); ?>')" value="Submit New Price">
             </div>
             <button type="button" onclick="showNewPrice('<?php echo htmlspecialchars($transaction['item_id']); ?>')">Change Price</button>

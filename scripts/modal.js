@@ -4,9 +4,9 @@ const modal = document.querySelector('#loginmodal');
 const fade = document.querySelector('#fade');
 
 const ToggleModal = () => { 
-    [modal,fade].forEach((el) => el.classList.toggle('hide'));
+     [modal,fade].forEach((el) => el.classList.toggle('hide'));
 };
 
 [openModalButton, closeModalButton, fade].forEach((el) => {
-    el.addEventListener('click', () => ToggleModal());
+    if (el) el.addEventListener('click', () => ToggleModal());
 });

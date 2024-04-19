@@ -22,8 +22,14 @@
 
     }
     elseif (isset($_POST['elevate'])) {
-        $username = $_POST['username'];
-        elevateToAdmin($username, $db);
+        $username = $_POST['elevate_username'];
+        try {
+            elevateToAdmin($username, $db);
+        } catch (Exception $e) {
+            $_SESSION['elevate_message'] = $e->getMessage();
+        }
+        
+        
     }
     elseif (isset($_POST['add_category'])) {
         $category = $_POST['category'];
@@ -42,4 +48,7 @@
         $condition = $_POST['condition'];
         addCondition($condition, $db);
     }
-    header('Location: ' . $_SERVER['HTTP_REFERER']);         // redirects to the previous page
+    header('Location: ' . $_SERVER['HTTP_REFERER']);
+    exit;
+    
+           

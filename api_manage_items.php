@@ -10,6 +10,10 @@
     
         if ($action == 'change_price') {
             $new_price = $_POST['new_price'];
+            if (empty($new_price)) {
+            echo json_encode(['status' => 'error', 'message' => 'New price is required']);
+            exit;
+        }
             $stmt = $db->prepare("UPDATE transactions SET price = :new_price WHERE item_id = :item_id");
             $stmt->execute(['new_price' => $new_price, 'item_id' => $item_id]);
             // Return a JSON response

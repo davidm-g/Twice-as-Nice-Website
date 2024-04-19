@@ -29,6 +29,11 @@ function showNewPrice(itemId) {
 }
 function changePrice(itemId) {
     const form = document.getElementById('manage-item-' + itemId);
+    const newPrice = form.new_price.value;
+    if (!newPrice) {
+        alert('Please enter a new price.');
+        return;
+    }
     const formData = new FormData(form);
     formData.append('action', 'change_price');
 

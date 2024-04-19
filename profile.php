@@ -1,5 +1,9 @@
 <?php
     session_start();
+    if (isset($_SESSION['elevate_message'])) {
+        echo "<script>window.onload = function() { alert('" . $_SESSION['elevate_message'] . "'); }</script>";
+        unset($_SESSION['elevate_message']);
+    }
     require_once ('database/connection.php');
     require_once ('database/items.php');
     require_once('templates/common.php');   
@@ -19,8 +23,8 @@
             <button type="submit"> Update Name </button>
         </form>
         <form action="action_profile.php" method="post">
-            <label for="username">Username:</label><br>
-            <input type="text" id="username" name="username" value="jdoe"><br>
+            <label for="update_username">Username:</label><br>
+            <input type="text" id="update_username" name="username" value="jdoe"><br>
             <button type="submit"> Update Username </button>
         </form>
         <form action="action_profile.php" method="post">
@@ -37,13 +41,13 @@
 
 <?php if (isAdmin($_SESSION['username'],$db)) { ?>
     <form action="action_profile.php" method="post">
-        <label for="username">Username:</label><br>
-        <input type="text" id="username" name="username" required><br>
+        <label for="elevate_username">User to elevate to admin:</label><br>
+        <input type="text" id="elevate_username" name="elevate_username" required><br>
         <button type="submit" name="elevate"> Elevate to Admin </button>
     </form>
     <form action="action_profile.php" method="post">
-        <label for="category">New Category:</label><br>
-        <input type="text" id="category" name="category" required><br>
+        <label for="new_category">New Category:</label><br>
+        <input type="text" id="new_category" name="category" required><br>
         <button type="submit" name="add_category"> Add Category </button>
     </form>
     <form action="action_profile.php" method="post">

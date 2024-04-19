@@ -47,7 +47,7 @@ header a {
     transition: all 0.25s ease;
 }
 
-.register, .logout {
+#register, .logout {
     width: 10rem;
     height: 3rem;
     flex-shrink: 2;
@@ -65,7 +65,7 @@ header a {
     transition: background 0.25s ease;
 }
 
-.register:hover, .logout:hover {
+#register:hover, .logout:hover {
     background:#C9ADA7;
     transition: background 0.25s ease;
 }
@@ -195,18 +195,17 @@ nav {
     font-style: normal;
     font-weight: 800;
     line-height: normal;
-    text-transform: lowercase;
 }
 
 /* modal */
 
-#fade, #loginmodal {
+#fadeLogin, #fadeRegister, #loginmodal, #registermodal {
     transition: 0.25s;
     opacity: 1;
     pointer-events: all;
 }
 
-#fade {
+#fadeLogin, #fadeRegister{
     position: fixed;
     top: 0;
     left: 0;
@@ -216,7 +215,7 @@ nav {
     backdrop-filter: blur(12.5px);
 }
 
-#loginmodal {
+#loginmodal, #registermodal {
     background: #D9D9D9;
     position: fixed;
     left: 50%;
@@ -237,11 +236,11 @@ nav {
     padding: 1rem;
 }
 
-#loginmodal.hide, #fade.hide {
+#loginmodal.hide, #registermodal.hide, #fadeLogin.hide, #fadeRegister.hide {
     opacity: 0;
     pointer-events: none;
 }
 
-#loginmodal.hide {
+#loginmodal.hide, #registermodal.hide {
     top: 0;
 }

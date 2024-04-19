@@ -7,7 +7,8 @@
     <meta charset="UTF-8">
     <link href="css/style.css" rel="stylesheet">
     <link href="css/layout.css" rel="stylesheet">
-    <script src="scripts/modal.js" defer></script>
+    <script src="scripts/modal_login.js" defer></script>
+    <script src="scripts/modal_register.js" defer></script>
 </head>
 <body>
     <header>
@@ -26,20 +27,34 @@
                 <a href="profile.php"><button type="button" class="profile"><i class="fa-solid fa-user"></i></button></a>
                 <a href="action_logout.php"><button type="button" class="logout">Logout</button></a>
             <?php } else { ?>
-                <a href="register.php"><button type="button" class="register">Register</button></a>
+                <button type="button" id="register">Register</button>
                 <button type="button" id="login">Login</button>
             <?php } ?>
         </div>
     </header>
-    <div id="fade" class="hide"></div>
+    
+    <div id="fadeLogin" class="hide"></div>
     <div id="loginmodal" class="hide">
-    <h2 class="modalheader">Login</h2>
-    <button id="closebtn">X</button>
+        <h2 class="modalheader">Login</h2>
+        <button id="closebtn">X</button>
         <form action="action_login.php" method="post">
             <label> Username <input type="text" name="username" ></label>
             <label> Password <input type="password" name="password" ></label>
             <button type="submit"> Login </button>
-          </form>
+        </form>
+    </div>
+    
+    <div id="fadeRegister" class="hide"></div>
+    <div id="registermodal" class="hide">
+        <h2 class="modalheader">Register</h2>
+        <button id="closebtn">X</button>
+        <form action="action_register.php" method="post">
+            <label>Username:<input type="text" name="username" required></label>
+            <label>First and Last names:<input type="text" name="name" required></label>
+            <label>Email:<input type="email" name="email" required></label>
+            <label>Password:<input type="password" name="password" required></label>
+            <button type="submit"> Register </button>
+        </form>
     </div>
  <?php } ?>
 

@@ -31,16 +31,6 @@
             <?php } ?>
         </div>
     </header>
-    <nav>
-        <ul>
-          <li><a href="category_page.php">Electronics</a></li>
-          <li><a href="category_page.php">Books</a></li>
-          <li><a href="category_page.php">Clothing</a></li>
-          <li><a href="category_page.php">Home & Kitchen</a></li>
-          <li><a href="category_page.php">Sports & Outdoors</a></li>
-        </ul>
-    </nav>
-
     <div id="fade" class="hide"></div>
     <div id="loginmodal" class="hide">
     <h2 class="modalheader">Login</h2>
@@ -51,13 +41,6 @@
             <button type="submit"> Login </button>
           </form>
     </div>
-
-        
-
-
-
-
-    <main>
  <?php } ?>
 
  <?php function output_footer(){ ?>

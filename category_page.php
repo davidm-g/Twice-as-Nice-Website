@@ -3,38 +3,22 @@
     require_once ('database/connection.php');
     require_once ('database/items.php');
     require_once('templates/common.php');   
-    require_once('templates/items.php'); 
+    require_once('templates/categories.php');
     $db = getDatabaseConnection();
+    $cat_id = $_GET['id'];
+    $cat_name = getCategoryName($db, $cat_id);
+    $items = getItems($db);
+    $cats = getCategories($db);
     output_header();
+    output_categories($db, $cats);
 ?>
-        <h1>Electronics</h1>
-        <article>
-            <h2>iPhone 12</h2>
-            <img src="database/images/IPHONE_12.jpg" alt="iPhone 12">
-            <p>Seller: jdoe</p>
-            <p>Size: Small</p>
-            <p>Condition: New</p>
-            <p>Brand: Apple</p>
-            <p>Price: $699.99</p>
-        </article>
-        <article>
-            <h2>Samsung Galaxy S21</h2>
-            <img src="database/images/SAMSUNG_S21.jpg" alt="Samsung Galaxy S21">
-            <p>Seller: asmith</p>
-            <p>Size: Medium</p>
-            <p>Condition: Used</p>
-            <p>Brand: Samsung</p>
-            <p>Price: $499.99</p>
-        </article>
-        <article>
-            <h2>MacBook Pro</h2>
-            <img src="database/images/MACBOOK_PRO.jpg" alt="MacBook Pro">
-            <p>Seller: bjohnson</p>
-            <p>Size: Large</p>
-            <p>Condition: New</p>
-            <p>Brand: Apple</p>
-            <p>Price: $1299.99</p>
-        </article>
+    <h1><?=$cat_name?></h1>
+    <aside id="random_items">
+        <?php foreach ($items as $item) { 
+            if(getCategoryId($db,$item['id']) == $cat_id)
+                outputItem($db,$item);
+        } ?>    
+    </aside>
 <?php 
     output_footer();
 ?>

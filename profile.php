@@ -3,12 +3,16 @@
     require_once ('database/connection.php');
     require_once ('database/items.php');
     require_once('templates/common.php');   
-    require_once('templates/items.php'); 
     require_once('database/users.php');
+    require_once('templates/categories.php');
+    require_once('templates/transactions.php');
     $db = getDatabaseConnection();
+    $username = $_SESSION['username'];
+    $cats = getCategories($db);
     output_header();
+    output_categories($db, $cats);
 ?>
-        <h1>John Doe's profile</h1>
+        <h1><?=$username?>'s profile</h1>
         <form action="action_profile.php" method="post">
             <label for="name">Name:</label><br>
             <input type="text" id="name" name="name" value="John Doe"><br>
@@ -74,21 +78,12 @@
         <button type="submit" name="add_condition"> Add Condition </button>
     </form>
 <?php } ?>
-        <section id="wardrobe">
-        <h2>Wardrobe</h2>
-        <article>
-            <h4>Item: iPhone 12</h4>
-            <p>Status: For Sale</p>
-            <p>Price: $699.99</p>
-        </article>
-        <article>
-            <h4>Item: Nike Shoes</h4>
-            <p>Status: Sold</p>
-            <p>Price: $99.99</p>
-        </article>
-        <a href="sell.php">Sell More Items!!!</a>
-        </section>
-        
+<section id="wardrobe">
+    <h2>Wardrobe</h2>
+    <?php output_wardrobe($username, $db); ?>
+</section>
+<a href="sell.php">Sell More Items!!!</a>
+<script src="/scripts/manage_items.js" defer></script>   
 <?php 
     output_footer();
 ?>

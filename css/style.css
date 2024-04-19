@@ -18,7 +18,7 @@ header a {
     color: #22223B;
 }
 
-#logbtn, .profile {
+#login, .profile {
     width: 10rem;
     height: 3rem;
     flex-shrink: 2;
@@ -41,7 +41,7 @@ header a {
     padding: 0.5em;
 }
 
-#logbtn:hover, .profile:hover {
+#login:hover, .profile:hover {
     background:#ceb5b0;
     border: 2px solid #ceb5b0;
     transition: all 0.25s ease;

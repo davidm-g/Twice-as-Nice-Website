@@ -28,7 +28,7 @@
                 <a href="action_logout.php"><button type="button" class="logout">Logout</button></a>
             <?php } else { ?>
                 <a href="register.php"><button type="button" class="register">Register</button></a>
-                <button type="button" id="logbtn">Login</button>
+                <button type="button" id="login">Login</button>
             <?php } ?>
         </div>
     </header>

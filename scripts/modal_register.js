@@ -1,5 +1,5 @@
 const openRegister = document.querySelector('#register');
-const closeRegister = document.querySelector('#closebtn');
+const closeRegister = document.querySelector('#closebtnR');
 const registerModal = document.querySelector('#registermodal');
 const fadeRegister = document.querySelector('#fadeRegister');
 

@@ -36,7 +36,7 @@
     <div id="fadeLogin" class="hide"></div>
     <div id="loginmodal" class="hide">
         <h2 class="modalheader">Login</h2>
-        <button id="closebtn">X</button>
+        <button id="closebtnL">X</button>
         <form action="action_login.php" method="post">
             <label> Username <input type="text" name="username" ></label>
             <label> Password <input type="password" name="password" ></label>
@@ -47,7 +47,7 @@
     <div id="fadeRegister" class="hide"></div>
     <div id="registermodal" class="hide">
         <h2 class="modalheader">Register</h2>
-        <button id="closebtn">X</button>
+        <button id="closebtnR">X</button>
         <form action="action_register.php" method="post">
             <label>Username:<input type="text" name="username" required></label>
             <label>First and Last names:<input type="text" name="name" required></label>

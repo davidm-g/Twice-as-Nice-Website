@@ -1,5 +1,5 @@
 const openLogin = document.querySelector('#login');
-const closeLogin = document.querySelector('#closebtn');
+const closeLogin = document.querySelector('#closebtnL');
 const loginModal = document.querySelector('#loginmodal');
 const fadeLogin = document.querySelector('#fadeLogin');
 

@@ -46,7 +46,7 @@
     <div id="loginmodal" class="hide">
     <h2 class="modalheader">Login</h2>
     <button id="closebtn">X</button>
-        <form idaction="action_login.php" method="post">
+        <form action="action_login.php" method="post">
             <label> Username <input type="text" name="username" ></label>
             <label> Password <input type="password" name="password" ></label>
             <button type="submit"> Login </button>

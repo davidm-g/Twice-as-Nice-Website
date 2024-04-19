@@ -21,8 +21,8 @@ header {
 
 body > header > form {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    margin: auto;
+    width: 100%;
 }
 
 body > header > h1 > a {

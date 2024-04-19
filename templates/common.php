@@ -12,9 +12,8 @@
 <body>
     <header>
         <h1><a href="index.php">Second-Hand Website</a></h1>
-        <form action="search.php" method="get">
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <input action = "search.php" type="text" name="search" placeholder="search">
+        <form>
+            <input type="search" placeholder="Search...">
         </form>
         <div class="logreg">
             <?php if (isset($_SESSION['username'])) { ?>

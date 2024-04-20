@@ -36,7 +36,7 @@ header a {
     transition: all 0.25s ease;
 }
 
-.wishlist, .chat {
+.wishlist, .chat, #wish{
     font-size: 2rem;
     padding: 0.5em;
 }

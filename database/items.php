@@ -162,6 +162,10 @@ function outputItem($db, $item) {
         </a>
         <p><?= $item['name']?></p>
         <p><?= $price?> €</p>
+        <?php if(isset($_SESSION['username'])) { ?>
+            <i id="wish" class="fa-regular fa-heart" onmousedown="if (this.className === 'fa-regular fa-heart') 
+                { this.className = 'fa-solid fa-heart'; } else { this.className = 'fa-regular fa-heart'; }"></i>
+        <?php } ?>
     </div>
 <?php }
 

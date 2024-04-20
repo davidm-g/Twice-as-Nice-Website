@@ -257,6 +257,11 @@ nav {
     width: 30%;
 }
 
+#loginfields button:hover, #registerfields button:hover {
+    background:#C9ADA7;
+    transition: background 0.25s ease;
+}
+
 #closebtnL, #closebtnR {
     border: none;
     background-color: transparent;

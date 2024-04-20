@@ -6,7 +6,8 @@
 
     $db = getDatabaseConnection();                           // connecting to the database
 
-    addUser($db, $_POST['username'], $_POST['name'], $_POST['email'], $_POST['password']);
+    addUser($db, $_POST['username'], $_POST['name'], $_POST['email'], $_POST['password']); // add user to the database
     
-    header('Location: login.php');         // redirect to the page we came from
+    $_SESSION['login'] = true;                   // set session login to true
+    header('Location: index.php');                  // redirect to index.php
 ?>

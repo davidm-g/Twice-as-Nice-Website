@@ -10,3 +10,4 @@ const ToggleLogin = () => {
 [openLogin, closeLogin, fadeLogin].forEach((el) => {
     if (el) el.addEventListener('click', () => ToggleLogin());
 });
+

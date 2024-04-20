@@ -8,7 +8,16 @@
     <link href="css/style.css" rel="stylesheet">
     <link href="css/layout.css" rel="stylesheet">
     <script src="scripts/modal_login.js" defer></script>
+    <?php if(isset($_SESSION['login'])): ?>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            ToggleLogin();
+        });
+    </script>
+    <?php unset($_SESSION['login']);
+    endif; ?>
     <script src="scripts/modal_register.js" defer></script>
+    <script src="scripts/verify_password.js" defer></script>
 </head>
 <body>
     <header>
@@ -48,11 +57,12 @@
     <div id="registermodal" class="hide">
         <h2 class="modalheader">Register</h2>
         <button id="closebtnR">x</button>
-        <form action="action_register.php" method="post" id="registerfields">
+        <form action="action_register.php" method="post" id="registerfields" onsubmit="return verifyPassword()">
             <input type="text" name="name" placeholder="Name" required>
             <input type="text" name="username" placeholder="Username" required>
             <input type="email" name="email" placeholder="name@example.com" required>
-            <input type="password" name="password" placeholder="Password"required>
+            <input type="password" name="password" id="password" placeholder="Password"required>
+            <input type="password" name="confirm" id="confirm" placeholder="Confirm Password"required>
             <button type="submit">Register</button>
         </form>
     </div>

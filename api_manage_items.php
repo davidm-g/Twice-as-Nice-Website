@@ -20,6 +20,20 @@
             echo json_encode(['status' => 'success', 'message' => 'Price updated successfully']);
     exit;
         } elseif ($action == 'delete') {
+            $stmt = $db->prepare("SELECT image_url FROM images WHERE item_id = :item_id");
+            $stmt->execute(['item_id' => $item_id]);
+            $images = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            // Delete the image files from the server
+            foreach ($images as $image) {
+                if (file_exists($image['image_url'])) {
+                    unlink($image['image_url']);
+                }
+            }
+            // Delete the images associated with the item from the database
+            $stmt = $db->prepare("DELETE FROM images WHERE item_id = :item_id");
+            $stmt->execute(['item_id' => $item_id]);
+            
             // Delete the item from the database
             $stmt = $db->prepare("DELETE FROM items WHERE id = :item_id");
             $stmt->execute(['item_id' => $item_id]);

@@ -1,9 +1,5 @@
 <?php
     session_start();
-    if (isset($_SESSION['elevate_message'])) {
-        echo "<script>window.onload = function() { alert('" . $_SESSION['elevate_message'] . "'); }</script>";
-        unset($_SESSION['elevate_message']);
-    }
     require_once ('database/connection.php');
     require_once ('database/items.php');
     require_once('templates/common.php');   
@@ -40,11 +36,11 @@
         
 
 <?php if (isAdmin($_SESSION['username'],$db)) { ?>
-    <form action="action_profile.php" method="post">
-        <label for="elevate_username">User to elevate to admin:</label><br>
-        <input type="text" id="elevate_username" name="elevate_username" required><br>
-        <button type="submit" name="elevate"> Elevate to Admin </button>
-    </form>
+    <form action="action_profile.php" method="post" onsubmit="return validateForm(event)">
+    <label for="elevate_username">User to elevate to admin:</label><br>
+    <input type="text" id="elevate_username" name="elevate_username" required><br>
+    <input type="submit" name="elevate" value="Elevate to Admin">
+</form>
     <form action="action_profile.php" method="post">
         <label for="new_category">New Category:</label><br>
         <input type="text" id="new_category" name="category" required><br>
@@ -87,7 +83,8 @@
     <?php output_wardrobe($username, $db); ?>
 </section>
 <a href="sell.php">Sell More Items!!!</a>
-<script src="/scripts/manage_items.js" defer></script>   
+<script src="/scripts/manage_items.js" defer></script>
+<script src="/scripts/verify_user.js" defer></script>     
 <?php 
     output_footer();
 ?>

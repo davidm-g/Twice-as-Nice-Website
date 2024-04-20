@@ -41,7 +41,7 @@
             </select><br>
             <label for="category">Category:</label><br>
             <select id="category" name="category" required>
-            <option selected disabled>Select a category</option>
+            <option selected disabled value="">Select a category</option>
                 <?php foreach ($categories as $category) { ?>
                     <option value="<?php echo $category['id']; ?>"><?php echo $category['name']; ?></option>
                 <?php } ?>

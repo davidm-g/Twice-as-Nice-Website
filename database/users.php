@@ -26,15 +26,6 @@
     return $user && $user['role'] === 'admin';
     }
     function elevateToAdmin($username, $db) {
-        
-        
-        $stmt = $db->prepare("SELECT username FROM users WHERE username = :username");
-        $stmt->execute(['username' => $username]);
-        $user = $stmt->fetch();
-        if (!$user) {
-            throw new Exception('User does not exist.');
-        }
-        
         $stmt = $db->prepare("UPDATE users SET role = 'admin' WHERE username = :username");
         $stmt->execute(['username' => $username]);
     }

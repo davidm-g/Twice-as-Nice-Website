@@ -151,32 +151,63 @@
         return $subcategories;
     }
 
-?>
-<?php 
-function outputItem($db, $item) {
-        $img_url=getImage($db,$item['id']); 
-        $price=getPrice($db,$item['id']);  ?>
-    <div id='card'>
-        <a href="item_page.php?id=<?=$item['id']?>">
-            <img src=<?=$img_url?> alt=<?=$item['description']?>>
-        </a>
-        <p><?= $item['name']?></p>
-        <p><?= $price?> €</p>
-        <?php if(isset($_SESSION['username'])) { ?>
-            <i id="wish" class="fa-regular fa-heart" onmousedown="if (this.className === 'fa-regular fa-heart') 
-                { this.className = 'fa-solid fa-heart'; } else { this.className = 'fa-regular fa-heart'; }"></i>
-        <?php } ?>
-    </div>
-<?php }
+    function addToWishlist($db, $item_id, $username) {
+        $stmt = $db->prepare(
+            "INSERT INTO wishlist (item_id, username) VALUES (:item_id, :username)"
+        );
+        $stmt->execute(['item_id' => $item_id, 'username' => $username]);
+    }
 
-function outputItems($db, $items) { ?>
-    <h1>Item Feed</h1>
-        <aside id="random_items">
-            <?php foreach ($items as $item) { 
-                outputItem($db,$item);
-            } ?>    
-        </aside>
-<?php } 
+    function removeFromWishlist($db, $item_id, $username) {
+        $stmt = $db->prepare(
+            "DELETE FROM wishlist WHERE item_id = :item_id AND username = :username"
+        );
+        $stmt->execute(['item_id' => $item_id, 'username' => $username]);
+    }
+
+    function isOnWishlist($db, $item_id, $username) {
+        $stmt = $db->prepare(
+            "SELECT * FROM wishlist WHERE item_id = :item_id AND username = :username"
+        );
+        $stmt->execute(['item_id' => $item_id, 'username' => $username]);
+        $item = $stmt->fetch();
+        return $item !== false;
+    }
+
+    function toggleWishlist($db, $item_id, $username) {
+        if (isOnWishlist($db, $item_id, $username)) {
+            removeFromWishlist($db, $item_id, $username);
+        } else {
+            addToWishlist($db, $item_id, $username);
+        }
+    }
+
+    function outputItem($db, $item) {
+            $img_url=getImage($db,$item['id']); 
+            $price=getPrice($db,$item['id']);  ?>
+        <div class='card' id='<?=$item['id']?>'>
+            <a href="item_page.php?id=<?=$item['id']?>">
+                <img src=<?=$img_url?> alt=<?=$item['description']?>>
+            </a>
+            <p><?= $item['name']?></p>
+            <p><?= $price?> €</p>
+            <?php if(isset($_SESSION['username'])) { ?>
+                <i id="wish<?=$item['id']?>"
+                    class="<?=(isOnWishlist($db, $item['id'], $_SESSION['username'])) ? 'fa-solid fa-heart' : 'fa-regular fa-heart'?>"
+                >
+                </i>
+            <?php } ?>
+        </div>
+    <?php }
+
+    function outputItems($db, $items) { ?>
+        <h1>Item Feed</h1>
+            <aside id="random_items">
+                <?php foreach ($items as $item) { 
+                    outputItem($db,$item);
+                } ?>    
+            </aside>
+    <?php } 
 
 
 

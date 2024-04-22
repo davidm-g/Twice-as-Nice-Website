@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $targetFile = $targetDir . basename($images["name"][$i]);
         $imageFileType = strtolower(pathinfo($targetFile,PATHINFO_EXTENSION));
         if ($images["size"][$i] > 1500000) { // 1.5MB in bytes
-            echo "Sorry, your file is too large.";
+            echo "<script>alert('Sorry, your file is too large.');</script>";
             $validImages = false;
             continue;
         }

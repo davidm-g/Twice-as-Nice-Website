@@ -18,6 +18,7 @@
     endif; ?>
     <script src="scripts/modal_register.js" defer></script>
     <script src="scripts/verify_password.js" defer></script>
+    <script src="scripts/toggle_wishlist.js" defer></script>
 </head>
 <body>
     <header>
@@ -27,7 +28,7 @@
         </form>
         <div class="logreg">
             <?php if (isset($_SESSION['username'])) { ?>
-                <a href="wishlist.html"><div class="wishlist">
+                <a href="wishlist.php"><div class="wishlist">
                     <i class="fa-regular fa-heart" onmouseover="this.className='fa-solid fa-heart';" onmouseout="this.className='fa-regular fa-heart';"></i>
                 </div></a>
                 <a href="chat.html"><div class="chat">

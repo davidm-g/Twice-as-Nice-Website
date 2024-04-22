@@ -36,7 +36,7 @@ header a {
     transition: all 0.25s ease;
 }
 
-.wishlist, .chat, #wish{
+.wishlist, .chat, [id^="wish"]{
     font-size: 2rem;
     padding: 0.5em;
 }
@@ -113,7 +113,7 @@ input[type="search"]::placeholder {
 /* main */
 
 
-#random_items #card {
+#random_items .card {
     width: 15%;
     margin: 2.5%;
     padding: 0;
@@ -143,7 +143,7 @@ input[type="search"]::placeholder {
     }
 }
 
-#random_items > #card > a {
+#random_items > .card > a {
     display: inline-block; 
     width: fit-content;
     height: fit-content; 
@@ -151,7 +151,7 @@ input[type="search"]::placeholder {
     padding: 0;
 }
 
-#random_items > #card > a > img {
+#random_items > .card > a > img {
     display: block; 
     width: 100%; 
     height: auto; 
@@ -159,7 +159,7 @@ input[type="search"]::placeholder {
 }
 
 
-#random_items > #card > p {
+#random_items > .card > p {
     text-align: center;
 }
 

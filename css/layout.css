@@ -52,6 +52,10 @@ nav li {
 
 /* main layout */
 
+main h1 {
+    padding-left: 2.5%;
+}
+
 #random_items {
     padding: 20px;
     display: flex;

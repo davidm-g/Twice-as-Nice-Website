@@ -87,9 +87,9 @@ CREATE TABLE messages (
 
 DROP TABLE IF EXISTS wishlist;
 CREATE TABLE wishlist (
-  user_id VARCHAR NOT NULL REFERENCES users,
+  username VARCHAR NOT NULL REFERENCES users,
   item_id INTEGER NOT NULL REFERENCES items,
-  PRIMARY KEY (user_id, item_id)
+  PRIMARY KEY (username, item_id)
 );
 
 

@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&display=swap');
+
 body{
     background-color: #F2E9E4;
     padding: 0;
@@ -123,22 +124,22 @@ input[type="search"]::placeholder {
 }
 
 @media screen and (max-width: 1500px) { /* 4 cards */
-    #random_items #card {
+    #random_items .card {
         width: 20%;
     }
 }
 @media screen and (max-width: 1200px) { /* 3 cards */
-    #random_items #card {
+    #random_items .card {
         width: 25%;
     }
 }
 @media screen and (max-width: 900px) {
-    #random_items #card {
+    #random_items .card {
         width: 35%;
     }
 }
 @media screen and (max-width: 600px) {
-    #random_items #card {
+    #random_items .card {
         width: 45%;
     }
 }
@@ -216,6 +217,27 @@ nav {
     font-style: normal;
     font-weight: 800;
     line-height: normal;
+    text-transform: lowercase;
+}
+
+#loginfields input[type=text]::placeholder, #registerfields input[type=text]::placeholder, #registerfields input[type=email]::placeholder, #registerfields input[type=password]::placeholder, #loginfields input[type=password]::placeholder {
+    color: #4A4E69;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 100;
+    line-height: normal;
+    text-transform: lowercase;;
+}
+
+#loginfields button, #registerfields button {
+    color: #F2E9E4;
+    text-align: center;
+    font-family: "Hanken Grotesk";
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    text-transform: lowercase;
 }
 
 /* modal */
@@ -266,27 +288,44 @@ nav {
     top: 0;
 }
 
-#loginfields *, #registerfields * {
-    border-radius: 1rem;
+/*#loginfields *, #registerfields * {
+    border-radius: 0rem;
     border-width: thin;
     padding: 10px 25px 10px 25px;
     font-size: 25px;
     width: 60%;
+}*/
+
+#loginfields input[type=text], #registerfields input[type=text], #registerfields input[type=email], #registerfields input[type=password], #loginfields input[type=password] {
+    border: none;
+    background: none;
+    border-bottom: 1px solid #4A4E69;
+    width: 75%;
+    margin: 20px;
+    padding: 5px;
 }
 
 #loginfields button, #registerfields button {
+    border-radius: 15px;
+    border: none;
+    background: #4A4E69;
+    box-shadow: 0px 0px 30px 5px rgba(0, 0, 0, 0.25);
     width: 30%;
+    height: 75px;
+    transition: background 0.25s ease;
 }
 
+
 #loginfields button:hover, #registerfields button:hover {
-    background:#C9ADA7;
-    transition: background 0.25s ease;
+    background:#3c4152;
+    transition: background 0.5s ease;
 }
 
 #closebtnL, #closebtnR {
     border: none;
-    background-color: transparent;
-    font-size: 50px;
+    background: none;
+    color: #9A8C98;
+    font-size: 30px;
     position: absolute;
     top: 3%;
     right: 3%;

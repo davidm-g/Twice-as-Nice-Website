@@ -65,7 +65,7 @@ main h1 {
 
 /* modal boxes */
 
-#loginfields, #registerfields {
+#registerfields {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -74,5 +74,22 @@ main h1 {
     margin: auto;
     gap: 10px;
     justify-content: space-around;
+}
+
+#loginfields {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 5px;
+    padding-top: 80px;
+    justify-content: space-between;
+    margin: auto;
+    gap: 80px;
+    justify-content: space-around;
+}
+
+#loginfields button, #registerfields button {
+    position: absolute;
+    bottom: 10%;
 }
 

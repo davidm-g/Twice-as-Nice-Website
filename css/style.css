@@ -123,22 +123,22 @@ input[type="search"]::placeholder {
 }
 
 @media screen and (max-width: 1500px) { /* 4 cards */
-    #random_items #card {
+    #random_items .card {
         width: 20%;
     }
 }
 @media screen and (max-width: 1200px) { /* 3 cards */
-    #random_items #card {
+    #random_items .card {
         width: 25%;
     }
 }
 @media screen and (max-width: 900px) {
-    #random_items #card {
+    #random_items .card {
         width: 35%;
     }
 }
 @media screen and (max-width: 600px) {
-    #random_items #card {
+    #random_items .card {
         width: 45%;
     }
 }

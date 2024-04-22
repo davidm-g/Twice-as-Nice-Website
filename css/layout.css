@@ -2,6 +2,15 @@
 
 /* header layout */
 
+html, body {
+    min-height: 100vh;
+}
+
+body {
+    display: grid;
+    grid-template-rows: auto auto 1fr auto;
+}
+
 header {
     height: 130px;
     padding: 0;
@@ -9,6 +18,10 @@ header {
     grid-template-columns: 1fr 1.5fr 1fr;
     grid-template-rows: 130px 0;
     align-items: center;
+}
+
+* {
+    box-sizing: border-box;
 }
 
 .logreg {
@@ -52,15 +65,23 @@ nav li {
 
 /* main layout */
 
+
 main h1 {
     padding-left: 2.5%;
 }
 
+main {
+    display: flex;
+    flex-direction: column;
+}
+
 #random_items {
+    flex-grow: 2;
     padding: 20px;
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
+    align-items: center;
 }
 
 /* modal boxes */

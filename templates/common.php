@@ -19,6 +19,7 @@
     <script src="scripts/modal_register.js" defer></script>
     <script src="scripts/verify_password.js" defer></script>
     <script src="scripts/toggle_wishlist.js" defer></script>
+    <script src="scripts/check_empty_page.js" defer></script>
 </head>
 <body>
     <header>

@@ -29,22 +29,32 @@
         return $nm['name'];
     }
 
-    function getSize($db, $sz) {
+    function getSize($db, $id) {
         $stmt = $db->prepare(
+            "SELECT size from items
+            WHERE id = :id");
+        $stmt->execute([':id' => $id]);
+        $size_id = ($stmt->fetch())['size'];
+        $stmt2 = $db->prepare(
             "SELECT name from sizes
-            WHERE id = :sz");
-        $stmt->execute([':sz' => $sz]);
-        $size = $stmt->fetch();
-        return $size['name'];
+            WHERE id = :size_id");
+        $stmt2->execute([':size_id' => $size_id]);
+        $size_name = $stmt2->fetch();
+        return $size_name['name'];
     }
     
-    function getCondition($db, $cd) {
+    function getCondition($db, $id) {
         $stmt = $db->prepare(
+            "SELECT condition from items
+            WHERE id = :id");
+        $stmt->execute([':id' => $id]);
+        $cond_id = ($stmt->fetch())['condition'];
+        $stmt2 = $db->prepare(
             "SELECT name from conditions
-            WHERE id = :cd");
-        $stmt->execute([':cd' => $cd]);
-        $cond = $stmt->fetch();
-        return $cond['name'];
+            WHERE id = :cond_id");
+        $stmt2->execute([':cond_id' => $cond_id]);
+        $cond_name = $stmt2->fetch();
+        return $cond_name['name'];
     }
 
     function getCategory($db, $id) {
@@ -79,13 +89,18 @@
         return $cat_nm['name'];
     }
     
-    function getBrand($db, $bd) {
+    function getBrand($db, $id) {
         $stmt = $db->prepare(
+            "SELECT brand from items
+            WHERE id = :id");
+        $stmt->execute([':id' => $id]);
+        $brand_id = ($stmt->fetch())['brand'];
+        $stmt2 = $db->prepare(
             "SELECT name from brands
-            WHERE id = :bd");
-        $stmt->execute([':bd' => $bd]);
-        $brd = $stmt->fetch();
-        return $brd['name'];
+            WHERE id = :brand_id");
+        $stmt2->execute([':brand_id' => $brand_id]);
+        $brand_name = $stmt2->fetch();
+        return $brand_name['name'];
     }
 
     function getTitle($db, $id) {

@@ -112,7 +112,6 @@ input[type="search"]::placeholder {
 
 /* main */
 
-
 #random_items .card {
     width: 15%;
     margin: 2.5%;
@@ -167,10 +166,8 @@ input[type="search"]::placeholder {
 
 footer {
     background-color: #9A8C98;
-    padding: 20px;
     text-align: center;
-    border-top: 2px solid #C9ADA7;
-    box-shadow: 0 2px 4px #9A8C98;
+    padding: 20px;
 }
 
 /* fonts */

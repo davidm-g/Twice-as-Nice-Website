@@ -54,3 +54,31 @@
         $stmt = $db->prepare("INSERT INTO conditions (name) VALUES (:name)");
         $stmt->execute(['name' => $condition]);
     }
+
+    function updateName($name, $username, $db) {
+        $stmt = $db->prepare("UPDATE users SET name = :name WHERE username = :username");
+        $stmt->execute(['name' => $name, 'username' => $username]);
+    }
+
+    function updateUsername($newUsername, $username, $db) {
+        $stmt = $db->prepare("UPDATE users SET username = :newUsername WHERE username = :username");
+        $stmt->execute(['newUsername' => $newUsername, 'username' => $username]);
+    }
+
+    function updateEmail($email, $username, $db) {
+        $stmt = $db->prepare("UPDATE users SET email = :email WHERE username = :username");
+        $stmt->execute(['email' => $email, 'username' => $username]);
+    }
+
+    function updatePassword($password, $username, $db) {
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+        $stmt = $db->prepare("UPDATE users SET password = :password WHERE username = :username");
+        $stmt->execute(['password' => $hashedPassword, 'username' => $username]);
+    }
+    
+    function getUserByUsername($db, $username) {
+        $stmt = $db->prepare('SELECT * FROM users WHERE username = ?');
+        $stmt->execute(array($username));
+        $user = $stmt->fetch();
+        return $user;
+    }

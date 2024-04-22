@@ -95,7 +95,7 @@ body > header > #searchbar {
     border-radius: 2em;
 }
 
-body > header > #searchbar > input[type=search] {
+body > header > #searchbar > input[type=text] {
     width: 100%;
     border: 1px solid #555;
     display: block;
@@ -329,4 +329,24 @@ nav {
     position: absolute;
     top: 3%;
     right: 3%;
+}
+#itemList {
+    display: none;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    background-color: #fff;
+    border: 1px solid #ccc;
+}
+
+#itemList li a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #000;
+}
+
+#itemList li a:hover {
+    background-color: #f0f0f0;
 }

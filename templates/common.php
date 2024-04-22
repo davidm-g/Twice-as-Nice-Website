@@ -19,12 +19,14 @@
     <script src="scripts/modal_register.js" defer></script>
     <script src="scripts/verify_password.js" defer></script>
     <script src="scripts/toggle_wishlist.js" defer></script>
+    <script src="scripts/search.js" defer></script>
 </head>
 <body>
     <header>
         <h1><a href="index.php">Second-Hand Website</a></h1>
         <form id="searchbar">
-            <input type="search" placeholder="Search...">
+            <input type="text" placeholder="Search...">
+            <ul id="itemList"></ul>
         </form>
         <div class="logreg">
             <?php if (isset($_SESSION['username'])) { ?>

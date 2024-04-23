@@ -217,13 +217,13 @@ nav {
     text-transform: lowercase;
 }
 
-#loginfields input[type=text]::placeholder, #registerfields input[type=text]::placeholder, #registerfields input[type=email]::placeholder, #registerfields input[type=password]::placeholder, #loginfields input[type=password]::placeholder {
+#loginfields input::placeholder, #registerfields input::placeholder {
     color: #4A4E69;
     font-size: 24px;
     font-style: normal;
     font-weight: 100;
     line-height: normal;
-    text-transform: lowercase;;
+    text-transform: lowercase;
 }
 
 #loginfields button, #registerfields button {
@@ -285,15 +285,12 @@ nav {
     top: 0;
 }
 
-/*#loginfields *, #registerfields * {
-    border-radius: 0rem;
-    border-width: thin;
-    padding: 10px 25px 10px 25px;
-    font-size: 25px;
-    width: 60%;
-}*/
+#loginfields input:focus, #registerfields input:focus {
+    outline: none;
+}
 
-#loginfields input[type=text], #registerfields input[type=text], #registerfields input[type=email], #registerfields input[type=password], #loginfields input[type=password] {
+
+#loginfields input, #registerfields input{
     border: none;
     background: none;
     border-bottom: 1px solid #4A4E69;
@@ -346,4 +343,35 @@ nav {
 
 #itemList li a:hover {
     background-color: #f0f0f0;
+}
+
+/* Profile Picture */
+
+#photoContainer {
+    position: absolute;
+    top: 5%;
+    left: 10%;
+}
+
+#webcamStream {
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+#photoPreview {
+    border-style: solid;
+    border-color: #4A4E69;
+    border-radius: 50%;
+    object-fit: cover;
+    width: 125px;
+    height: 125px;
+}
+
+header #userpic {
+    border-style: solid;
+    border-color: #4A4E69;
+    border-radius: 50%;
+    object-fit: cover;
+    height: 3rem;
+    width: 3rem;
 }

@@ -4,7 +4,8 @@ CREATE TABLE users (
   name VARCHAR NOT NULL,
   password VARCHAR NOT NULL,  -- password in SHA-1 format
   email VARCHAR NOT NULL UNIQUE,
-  role VARCHAR NOT NULL  -- 'user',  'admin'
+  role VARCHAR NOT NULL,  -- 'user',  'admin'
+  profile_pic VARCHAR NOT NULL
 );
 
 DROP TABLE IF EXISTS categories;

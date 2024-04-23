@@ -2,8 +2,9 @@
     session_start();
     require_once ('database/connection.php');
     require_once ('database/items.php');
-    require_once('templates/common.php');   
-    require_once('templates/categories.php');
+    require_once ('templates/common.php');   
+    require_once ('templates/categories.php');
+    require_once ('database/users.php');
     $db = getDatabaseConnection();
     $items = getItems($db);
     $cats = getCategories($db);

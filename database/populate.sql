@@ -1,16 +1,16 @@
 PRAGMA foreign_keys = ON;
 
-INSERT OR IGNORE INTO users (username, name, password, email, role) VALUES
-    ('jdoe', 'John Doe', '$2y$10$UUFh9FCRBXEs7w4Kx27Ma.X7UOCXEzMPbk6w7zd5EH6.QFcirwseK', 'jdoe@example.com', 'user'),
-    ('asmith', 'Alice Smith', '$2y$10$UUFh9FCRBXEs7w4Kx27Ma.X7UOCXEzMPbk6w7zd5EH6.QFcirwseK', 'asmith@example.com', 'user'),
-    ('bturner', 'Bob Turner', '$2y$10$UUFh9FCRBXEs7w4Kx27Ma.X7UOCXEzMPbk6w7zd5EH6.QFcirwseK', 'bturner@example.com', 'admin'),
-    ('cjohnson', 'Charlie Johnson', '$2y$10$UUFh9FCRBXEs7w4Kx27Ma.X7UOCXEzMPbk6w7zd5EH6.QFcirwseK', 'cjohnson@example.com', 'admin'),
-    ('ewhite', 'Emily White',  '$2y$10$UUFh9FCRBXEs7w4Kx27Ma.X7UOCXEzMPbk6w7zd5EH6.QFcirwseK', 'ewhite@example.com', 'user'),
-    ('fthompson', 'Frank Thompson', '$2y$10$UUFh9FCRBXEs7w4Kx27Ma.X7UOCXEzMPbk6w7zd5EH6.QFcirwseK', 'fthompson@example.com', 'user'),
-    ('ganderson', 'Grace Anderson', '$2y$10$UUFh9FCRBXEs7w4Kx27Ma.X7UOCXEzMPbk6w7zd5EH6.QFcirwseK', 'ganderson@example.com', 'admin'),
-    ('hmartin', 'Harry Martin', '$2y$10$UUFh9FCRBXEs7w4Kx27Ma.X7UOCXEzMPbk6w7zd5EH6.QFcirwseK', 'hmartin@example.com', 'user'),
-    ('ijackson', 'Ivy Jackson', '$2y$10$UUFh9FCRBXEs7w4Kx27Ma.X7UOCXEzMPbk6w7zd5EH6.QFcirwseK', 'ijackson@example.com', 'admin'),
-    ('jthomas', 'Jack Thomas', '$2y$10$UUFh9FCRBXEs7w4Kx27Ma.X7UOCXEzMPbk6w7zd5EH6.QFcirwseK', 'jthomas@example.com', 'user');
+INSERT OR IGNORE INTO users (username, name, password, email, role, profile_pic) VALUES
+    ('jdoe', 'John Doe', '$2y$10$UUFh9FCRBXEs7w4Kx27Ma.X7UOCXEzMPbk6w7zd5EH6.QFcirwseK', 'jdoe@example.com', 'user', 'database/images/PROFILE_PIC.jpg'),
+    ('asmith', 'Alice Smith', '$2y$10$UUFh9FCRBXEs7w4Kx27Ma.X7UOCXEzMPbk6w7zd5EH6.QFcirwseK', 'asmith@example.com', 'user', 'database/images/PROFILE_PIC.jpg'),
+    ('bturner', 'Bob Turner', '$2y$10$UUFh9FCRBXEs7w4Kx27Ma.X7UOCXEzMPbk6w7zd5EH6.QFcirwseK', 'bturner@example.com', 'admin', 'database/images/PROFILE_PIC.jpg'),
+    ('cjohnson', 'Charlie Johnson', '$2y$10$UUFh9FCRBXEs7w4Kx27Ma.X7UOCXEzMPbk6w7zd5EH6.QFcirwseK', 'cjohnson@example.com', 'admin', 'database/images/PROFILE_PIC.jpg'),
+    ('ewhite', 'Emily White',  '$2y$10$UUFh9FCRBXEs7w4Kx27Ma.X7UOCXEzMPbk6w7zd5EH6.QFcirwseK', 'ewhite@example.com', 'user', 'database/images/PROFILE_PIC.jpg'),
+    ('fthompson', 'Frank Thompson', '$2y$10$UUFh9FCRBXEs7w4Kx27Ma.X7UOCXEzMPbk6w7zd5EH6.QFcirwseK', 'fthompson@example.com', 'user', 'database/images/PROFILE_PIC.jpg'),
+    ('ganderson', 'Grace Anderson', '$2y$10$UUFh9FCRBXEs7w4Kx27Ma.X7UOCXEzMPbk6w7zd5EH6.QFcirwseK', 'ganderson@example.com', 'admin', 'database/images/PROFILE_PIC.jpg'),
+    ('hmartin', 'Harry Martin', '$2y$10$UUFh9FCRBXEs7w4Kx27Ma.X7UOCXEzMPbk6w7zd5EH6.QFcirwseK', 'hmartin@example.com', 'user', 'database/images/PROFILE_PIC.jpg'),
+    ('ijackson', 'Ivy Jackson', '$2y$10$UUFh9FCRBXEs7w4Kx27Ma.X7UOCXEzMPbk6w7zd5EH6.QFcirwseK', 'ijackson@example.com', 'admin', 'database/images/PROFILE_PIC.jpg'),
+    ('jthomas', 'Jack Thomas', '$2y$10$UUFh9FCRBXEs7w4Kx27Ma.X7UOCXEzMPbk6w7zd5EH6.QFcirwseK', 'jthomas@example.com', 'user', 'database/images/PROFILE_PIC.jpg');
     
 
 INSERT OR IGNORE INTO categories (id, name) VALUES

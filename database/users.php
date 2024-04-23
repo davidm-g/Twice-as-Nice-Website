@@ -10,11 +10,14 @@
             return false;
         }
     }    
-    function addUser($db, $un, $nm, $em, $pw) {
+    function addUser($db, $pic, $un, $nm, $em, $pw) {
+        if(empty($pic)) {
+            $pic = 'database/images/PROFILE_PIC.jpg';
+        }
         $hash = password_hash($pw, PASSWORD_DEFAULT);
         $stmt = $db->prepare(
-            "INSERT OR IGNORE INTO users (username, name, password, email, role) VALUES
-            ('$un', '$nm', '$hash', '$em', 'user')"
+            "INSERT OR IGNORE INTO users (username, name, password, email, role, profile_pic) VALUES
+            ('$un', '$nm', '$hash', '$em', 'user', '$pic')"
         );
         $stmt->execute();
     }
@@ -81,4 +84,11 @@
         $stmt->execute(array($username));
         $user = $stmt->fetch();
         return $user;
+    }
+
+    function getProfilePic($db, $username) {
+        $stmt = $db->prepare("SELECT profile_pic FROM users WHERE username = :uname");
+        $stmt->execute([':uname' => $username]);
+        $pic = $stmt->fetch();
+        return $pic['profile_pic'];
     }

@@ -7,7 +7,8 @@
     $db = getDatabaseConnection();                           // connecting to the database
 
     if (userExists($db, $_POST['username'], $_POST['password'])) {  // test if user exists
-        $_SESSION['username'] = $_POST['username'];     
+        $_SESSION['username'] = $_POST['username'];  
+        $_SESSION['picture'] = getProfilePic($db, $_POST['username']);  // set session variables
     }
 
     header('Location: index.php');         // redirect to the page we came from

@@ -21,6 +21,7 @@
     <script src="scripts/toggle_wishlist.js" defer></script>
     <script src="scripts/search.js" defer></script>
     <script src="scripts/check_empty_page.js" defer></script>
+    <script src="scripts/picture_handler.js" defer></script>
 </head>
 <body>
     <header>
@@ -37,7 +38,7 @@
                 <a href="chat.html"><div class="chat">
                     <i class="fa-regular fa-message" onmouseover="this.className='fa-solid fa-message';" onmouseout="this.className='fa-regular fa-message';"></i>
                 </div></a>
-                <a href="profile.php"><button type="button" class="profile"><i class="fa-solid fa-user"></i></button></a>
+                <a href="profile.php"><img id='userpic' src="<?=$_SESSION['picture']?>"/></a>
                 <a href="action_logout.php"><button type="button" class="logout">Logout</button></a>
             <?php } else { ?>
                 <button type="button" id="register">Register</button>
@@ -56,12 +57,20 @@
             <button type="submit">Login</button>
         </form>
     </div>
-    
+                
     <div id="fadeRegister" class="hide"></div>
     <div id="registermodal" class="hide">
         <h2 class="modalheader">Register</h2>
+        <div id="photoContainer">
+            <img id="photoPreview" src="database/images/PROFILE_PIC.jpg" alt="Add photo" />
+            <input type="file" id="photoInput" accept="image/*" style="display: none;">
+            <video id="webcamStream" width="125" height="125" autoplay style="display: none;"></video>
+            <i id="capturePhoto" class="fa-solid fa-camera" style="display: none;"></i>
+            <i id="removePhoto" class="fa-solid fa-trash" style="display: none;"></i>
+        </div>
         <button id="closebtnR"><i class="fa-regular fa-circle-xmark"></i></button>
         <form action="action_register.php" method="post" id="registerfields" onsubmit="return verifyPassword()">
+            <input type="hidden" id="picture" name="picture" value="">
             <input type="text" name="name" placeholder="Name" required>
             <input type="text" name="username" placeholder="Username" required>
             <input type="email" name="email" placeholder="email" required>

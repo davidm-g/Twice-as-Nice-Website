@@ -1,10 +1,13 @@
-window.addEventListener('DOMContentLoaded', (event) => {
+const search = document.querySelector('#searchbar')
+
+if (search) {
     const input = document.querySelector('#searchbar input[type="text"]');
     const ul = document.getElementById('itemList');
 
     input.addEventListener('input', async () => {
         if (input.value.trim() === '') {
             ul.style.display = 'none';
+            ul.innerHTML = '';
         } else {
             const response = await fetch('api_search.php?query=' + encodeURIComponent(input.value));
             const items = await response.json();
@@ -25,4 +28,4 @@ window.addEventListener('DOMContentLoaded', (event) => {
             ul.style.display = 'block';
         }
     });
-});
+};

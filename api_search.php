@@ -3,7 +3,7 @@
     require_once('database/connection.php'); 
     require_once('database/users.php');  
     $db = getDatabaseConnection();
-
+    header('Content-Type: application/json');
     $query = $_GET['query'];
 
     if (!empty($query)) {

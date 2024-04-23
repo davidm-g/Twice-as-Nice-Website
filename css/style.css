@@ -347,7 +347,7 @@ nav {
 
 /* Profile Picture */
 
-#photoContainer {
+#registermodal #photoContainer {
     position: absolute;
     top: 5%;
     left: 10%;

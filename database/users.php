@@ -78,6 +78,12 @@
         $stmt = $db->prepare("UPDATE users SET password = :password WHERE username = :username");
         $stmt->execute(['password' => $hashedPassword, 'username' => $username]);
     }
+
+    function updatePicture($picture, $username, $db) {
+        $stmt = $db->prepare("UPDATE users SET profile_pic = :picture WHERE username = :username");
+        $stmt->execute(['picture' => $picture, 'username' => $username]);
+        $_SESSION['picture'] = $picture;
+    }
     
     function getUserByUsername($db, $username) {
         $stmt = $db->prepare('SELECT * FROM users WHERE username = ?');

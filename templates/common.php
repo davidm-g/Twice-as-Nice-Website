@@ -46,39 +46,40 @@
             <?php } ?>
         </div>
     </header>
-    
-    <div id="fadeLogin" class="hide"></div>
-    <div id="loginmodal" class="hide">
-        <h2 class="modalheader">Login</h2>
-        <button id="closebtnL"><i class="fa-regular fa-circle-xmark"></i></button>
-        <form action="action_login.php" method="post" id="loginfields">
-            <input type="text" name="username" placeholder="Username" required>
-            <input type="password" name="password" placeholder="Password"required>
-            <button type="submit">Login</button>
-        </form>
-    </div>
-                
-    <div id="fadeRegister" class="hide"></div>
-    <div id="registermodal" class="hide">
-        <h2 class="modalheader">Register</h2>
-        <div id="photoContainer">
-            <img id="photoPreview" src="database/images/PROFILE_PIC.jpg" alt="Add photo" />
-            <input type="file" id="photoInput" accept="image/*" style="display: none;">
-            <video id="webcamStream" width="125" height="125" autoplay style="display: none;"></video>
-            <i id="capturePhoto" class="fa-solid fa-camera" style="display: none;"></i>
-            <i id="removePhoto" class="fa-solid fa-trash" style="display: none;"></i>
+    <?php if (!isset($_SESSION['username'])) { ?>
+        <div id="fadeLogin" class="hide"></div>
+        <div id="loginmodal" class="hide">
+            <h2 class="modalheader">Login</h2>
+            <button id="closebtnL"><i class="fa-regular fa-circle-xmark"></i></button>
+            <form action="action_login.php" method="post" id="loginfields">
+                <input type="text" name="username" placeholder="Username" required>
+                <input type="password" name="password" placeholder="Password"required>
+                <button type="submit">Login</button>
+            </form>
         </div>
-        <button id="closebtnR"><i class="fa-regular fa-circle-xmark"></i></button>
-        <form action="action_register.php" method="post" id="registerfields" onsubmit="return verifyPassword()">
-            <input type="hidden" id="picture" name="picture" value="">
-            <input type="text" name="name" placeholder="Name" required>
-            <input type="text" name="username" placeholder="Username" required>
-            <input type="email" name="email" placeholder="email" required>
-            <input type="password" name="password" id="password" placeholder="Password"required>
-            <input type="password" name="confirm" id="confirm" placeholder="Confirm Password"required>
-            <button type="submit">Register</button>
-        </form>
-    </div>
+                    
+        <div id="fadeRegister" class="hide"></div>
+        <div id="registermodal" class="hide">
+            <h2 class="modalheader">Register</h2>
+            <div id="photoContainer">
+                <img id="photoPreview" src="database/images/PROFILE_PIC.jpg" alt="Add photo" />
+                <input type="file" id="photoInput" accept="image/*" style="display: none;">
+                <video id="webcamStream" width="125" height="125" autoplay style="display: none;"></video>
+                <i id="capturePhoto" class="fa-solid fa-camera" style="display: none;"></i>
+                <i id="removePhoto" class="fa-solid fa-trash" style="display: none;"></i>
+            </div>
+            <button id="closebtnR"><i class="fa-regular fa-circle-xmark"></i></button>
+            <form action="action_register.php" method="post" id="registerfields" onsubmit="return verifyPassword()">
+                <input type="hidden" id="picture" name="picture" value="">
+                <input type="text" name="name" placeholder="Name" required>
+                <input type="text" name="username" placeholder="Username" required>
+                <input type="email" name="email" placeholder="email" required>
+                <input type="password" name="password" id="password" placeholder="Password"required>
+                <input type="password" name="confirm" id="confirm" placeholder="Confirm Password"required>
+                <button type="submit">Register</button>
+            </form>
+        </div>
+    <?php } ?>
  <?php } ?>
 
  <?php function output_footer(){ ?>

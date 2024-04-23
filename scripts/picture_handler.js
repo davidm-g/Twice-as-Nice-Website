@@ -23,6 +23,7 @@ document.getElementById('photoInput').addEventListener('change', function(e) {
     const reader = new FileReader();
     reader.onload = function(e) {
         document.getElementById('photoPreview').src = e.target.result;
+        document.getElementById('picture').value = document.getElementById('photoPreview').src;
     }
     reader.readAsDataURL(e.target.files[0]); 
 });

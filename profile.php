@@ -14,7 +14,18 @@
     output_categories($db, $cats);
 ?>
         <h1><?=$username?>'s profile</h1>
-            <form action="action_profile.php" method="post">
+        <div id="photoContainer">
+            <img id="photoPreview" src="<?=$_SESSION['picture']?>" alt="Add photo" />
+            <input type="file" id="photoInput" accept="image/*" style="display: none;">
+            <video id="webcamStream" width="125" height="125" autoplay style="display: none;"></video>
+            <i id="capturePhoto" class="fa-solid fa-camera" style="display: none;"></i>
+            <i id="removePhoto" class="fa-solid fa-trash" style="display: none;"></i>
+        </div>
+        <form action="action_profile.php" method="post">
+            <input type="hidden" id="picture" name="picture" value="">
+            <button type="submit" name="update_picture"> Update Picture </button>
+        </form>
+        <form action="action_profile.php" method="post">
             <label for="name">Name:</label><br>
             <input type="text" id="name" name="name" value="<?=$user['name']?>"><br>
             <button type="submit" name="update_name"> Update Name </button>

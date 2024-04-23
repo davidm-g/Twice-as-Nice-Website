@@ -13,19 +13,22 @@ if (search) {
             const items = await response.json();
 
             ul.innerHTML = '';
-
-            for (const item of items) {
-                const li = document.createElement('li');
-
-                const a = document.createElement('a');
-                a.href = 'item_page.php?id=' + item.id;
-                a.textContent = item.name;
-
-                li.appendChild(a);
-                ul.appendChild(li);
+            if (items.length > 0) { // Check if items array is not empty
+                for (const item of items) {
+                    const li = document.createElement('li');
+    
+                    const a = document.createElement('a');
+                    a.href = 'item_page.php?id=' + item.id;
+                    a.textContent = item.name;
+    
+                    li.appendChild(a);
+                    ul.appendChild(li);
+                }
+    
+                ul.style.display = 'block';
+            } else {
+                ul.style.display = 'none';
             }
-
-            ul.style.display = 'block';
         }
     });
 };

@@ -7,12 +7,10 @@ $db = getDatabaseConnection();
 
 $username = $_SESSION['username'];
 $user = getUserByUsername($db, $username);
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $password = $_POST['password'];
+$password = $_POST['password'];
     if (password_verify($password, $user['password'])) {
-        echo 'true';
+        echo json_encode(true);
     } else {
-        echo 'false';
+        echo json_encode(false);
     }
-}
+

@@ -18,6 +18,7 @@
         elseif (isset($_POST['update_password'])) {
             $password = $_POST['new_password'];
             updatePassword($password, $username, $db);
+            
         }
         elseif (isset($_POST['elevate'])) {
             $username = preg_replace("/[^a-zA-Z0-9_\-]/", "", $_POST['elevate_username']);

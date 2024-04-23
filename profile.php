@@ -24,14 +24,15 @@
             <input type="email" id="email" name="email" value="<?=$user['email']?>"><br>
             <button type="submit" name="update_email"> Update Email </button>
         </form>
-        <form action="action_profile.php" method="post">
+        <form action="action_profile.php" method="post" id="password_update_form">
             <label for="current_password">Current Password:</label><br>
             <input type="password" id="current_password" name="current_password" required><br>
             <label for="new_password">New Password:</label><br>
             <input type="password" id="new_password" name="new_password" required><br>
             <label for="confirm_password">Confirm New Password:</label><br>
             <input type="password" id="confirm_password" name="confirm_password" required><br>
-            <button type="submit" name="update_password"> Update Password </button>
+            <input type="hidden" name="update_password" value="1">
+            <button type="submit"> Update Password </button>
         </form>
         
 
@@ -85,7 +86,7 @@
 <a href="sell.php">Sell More Items!!!</a>
 <script src="/scripts/manage_items.js" defer></script>
 <script src="/scripts/verify_user.js" defer></script>    
-<script src="/scripts/verify_password.js" defer></script>  
+<script src="/scripts/update_password.js" defer></script>  
 <?php 
     output_footer();
 ?>

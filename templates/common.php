@@ -19,13 +19,15 @@
     <script src="scripts/modal_register.js" defer></script>
     <script src="scripts/verify_password.js" defer></script>
     <script src="scripts/toggle_wishlist.js" defer></script>
+    <script src="scripts/search.js" defer></script>
     <script src="scripts/check_empty_page.js" defer></script>
 </head>
 <body>
     <header>
         <h1><a href="index.php">Second-Hand Website</a></h1>
         <form id="searchbar">
-            <input type="search" placeholder="Search...">
+            <input type="text" placeholder="Search...">
+            <ul id="itemList"></ul>
         </form>
         <div class="logreg">
             <?php if (isset($_SESSION['username'])) { ?>
@@ -47,7 +49,7 @@
     <div id="fadeLogin" class="hide"></div>
     <div id="loginmodal" class="hide">
         <h2 class="modalheader">Login</h2>
-        <button id="closebtnL">x</button>
+        <button id="closebtnL"><i class="fa-regular fa-circle-xmark"></i></button>
         <form action="action_login.php" method="post" id="loginfields">
             <input type="text" name="username" placeholder="Username" required>
             <input type="password" name="password" placeholder="Password"required>
@@ -58,11 +60,11 @@
     <div id="fadeRegister" class="hide"></div>
     <div id="registermodal" class="hide">
         <h2 class="modalheader">Register</h2>
-        <button id="closebtnR">x</button>
+        <button id="closebtnR"><i class="fa-regular fa-circle-xmark"></i></button>
         <form action="action_register.php" method="post" id="registerfields" onsubmit="return verifyPassword()">
             <input type="text" name="name" placeholder="Name" required>
             <input type="text" name="username" placeholder="Username" required>
-            <input type="email" name="email" placeholder="name@example.com" required>
+            <input type="email" name="email" placeholder="email" required>
             <input type="password" name="password" id="password" placeholder="Password"required>
             <input type="password" name="confirm" id="confirm" placeholder="Confirm Password"required>
             <button type="submit">Register</button>

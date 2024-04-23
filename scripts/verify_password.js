@@ -1,3 +1,5 @@
+
+
 function verifyPassword() {  
 
     const pw = document.getElementById('password').value;

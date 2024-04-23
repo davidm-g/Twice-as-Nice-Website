@@ -8,29 +8,30 @@
     require_once('templates/transactions.php');
     $db = getDatabaseConnection();
     $username = $_SESSION['username'];
+    $user= getUserByUsername($db, $username);
     $cats = getCategories($db);
     output_header();
     output_categories($db, $cats);
 ?>
         <h1><?=$username?>'s profile</h1>
-        <form action="action_profile.php" method="post">
+            <form action="action_profile.php" method="post">
             <label for="name">Name:</label><br>
-            <input type="text" id="name" name="name" value="John Doe"><br>
-            <button type="submit"> Update Name </button>
-        </form>
-        <form action="action_profile.php" method="post">
-            <label for="update_username">Username:</label><br>
-            <input type="text" id="update_username" name="username" value="jdoe"><br>
-            <button type="submit"> Update Username </button>
+            <input type="text" id="name" name="name" value="<?=$user['name']?>"><br>
+            <button type="submit" name="update_name"> Update Name </button>
         </form>
         <form action="action_profile.php" method="post">
             <label for="email">Email:</label><br>
-            <input type="email" id="email" name="email" value="jdoe@example.com"><br>
-            <button type="submit"> Update Email </button>
+            <input type="email" id="email" name="email" value="<?=$user['email']?>"><br>
+            <button type="submit" name="update_email"> Update Email </button>
         </form>
-        <form action="action_profile.php" method="post">
-            <label for="password">Password:</label><br>
-            <input type="password" id="password" name="password" value="password"><br>
+        <form action="action_profile.php" method="post" id="password_update_form">
+            <label for="current_password">Current Password:</label><br>
+            <input type="password" id="current_password" name="current_password" required><br>
+            <label for="new_password">New Password:</label><br>
+            <input type="password" id="new_password" name="new_password" required><br>
+            <label for="confirm_password">Confirm New Password:</label><br>
+            <input type="password" id="confirm_password" name="confirm_password" required><br>
+            <input type="hidden" name="update_password" value="1">
             <button type="submit"> Update Password </button>
         </form>
         
@@ -84,7 +85,8 @@
 </section>
 <a href="sell.php">Sell More Items!!!</a>
 <script src="/scripts/manage_items.js" defer></script>
-<script src="/scripts/verify_user.js" defer></script>     
+<script src="/scripts/verify_user.js" defer></script>    
+<script src="/scripts/update_password.js" defer></script>  
 <?php 
     output_footer();
 ?>

@@ -6,24 +6,18 @@
 
     $db = getDatabaseConnection();                           // connecting to the database
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        
-        if (isset($_POST['name'])) {
+        $username = $_SESSION['username'];
+        if (isset($_POST['update_name'])) {
             $name = preg_replace("/[^a-zA-Z0-9\s]/", "", $_POST['name']);
-            
+            updateName($name, $username, $db);
         }
-
-        elseif (isset($_POST['username'])) {
-            $username = preg_replace("/[^a-zA-Z0-9_\-]/", "", $_POST['username']);
-            
+        elseif (isset($_POST['update_email'])) {
+            $email = $_POST['email'];
+            updateEmail($email, $username, $db);
         }
-
-        elseif (isset($_POST['email'])) {
-            $email = preg_replace("/[^a-zA-Z0-9@.]/", "", $_POST['email']);
-            
-        }
-
-        elseif (isset($_POST['password'])) {
-            $password = $_POST['password'];
+        elseif (isset($_POST['update_password'])) {
+            $password = $_POST['new_password'];
+            updatePassword($password, $username, $db);
             
         }
         elseif (isset($_POST['elevate'])) {

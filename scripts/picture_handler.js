@@ -11,7 +11,6 @@ document.getElementById('photoPreview').addEventListener('click', function() {
                 video.style.display = 'block'; // Show the webcam stream
                 photoPreview.style.display = 'none'; // Hide the photo preview
                 document.getElementById('capturePhoto').style.display = 'block';
-                video.play();
             });
         }
     } else {

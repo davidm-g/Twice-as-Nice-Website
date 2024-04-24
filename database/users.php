@@ -80,6 +80,9 @@
     }
 
     function updatePicture($picture, $username, $db) {
+        if (empty($picture)) {
+            return;
+        }
         $stmt = $db->prepare("UPDATE users SET profile_pic = :picture WHERE username = :username");
         $stmt->execute(['picture' => $picture, 'username' => $username]);
         $_SESSION['picture'] = $picture;

@@ -35,7 +35,7 @@
                 <a href="wishlist.php"><div class="wishlist">
                     <i class="fa-regular fa-heart" onmouseover="this.className='fa-solid fa-heart';" onmouseout="this.className='fa-regular fa-heart';"></i>
                 </div></a>
-                <a href="chat.html"><div class="chat">
+                <a href="conversations.php"><div class="chat">
                     <i class="fa-regular fa-message" onmouseover="this.className='fa-solid fa-message';" onmouseout="this.className='fa-regular fa-message';"></i>
                 </div></a>
                 <a href="profile.php"><img id='userpic' src="<?=$_SESSION['picture']?>"/></a>

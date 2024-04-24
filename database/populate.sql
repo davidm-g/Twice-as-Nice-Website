@@ -54,6 +54,18 @@ INSERT OR IGNORE INTO items (id, name, seller, size, condition, description, bra
     (9, 'Nike Alphafly 3', 'cjohnson', 2, 1, 'The fastest sneakers', 4),
     (10, 'Ikea Desk', 'ganderson', 2, 1, 'Furniture', 6);
 
+INSERT OR IGNORE INTO messages (id, sender, receiver, item_id, message_text, price, timestamp) VALUES
+(1, 'asmith', 'jdoe', 1, 'Hello, is the item still available?', 0, strftime('%s','now')),
+(2, 'jdoe', 'asmith', 1, 'Yes, it is still available.', 0, strftime('%s','now')),
+(3, 'asmith', 'jdoe', 1, 'Great, I would like to buy it.', 0, strftime('%s','now')),
+(4, 'jdoe', 'asmith', 1, 'Sure, I will prepare it for you.', 0, strftime('%s','now')),
+(5, 'bturner', 'asmith', 2, 'Is this the latest model?', 0, strftime('%s','now')),
+(6, 'asmith', 'bturner', 2, 'Yes, it is the latest model.', 0, strftime('%s','now')),
+(7, 'jdoe', 'asmith', 2, 'Hello, is the item still available?', 0, strftime('%s','now')),
+(8, 'asmith', 'jdoe', 2, 'Yes, it is still available.', 0, strftime('%s','now')),
+(9, 'jdoe', 'asmith', 2, 'Great, I would like to buy it.', 0, strftime('%s','now')),
+(10, 'asmith', 'jdoe', 2, 'Sure, I will prepare it for you.', 0, strftime('%s','now'));
+
 -- Inserting data into transactions
 INSERT OR IGNORE INTO transactions (id, item_id, seller, buyer, status, price, transaction_date) VALUES 
     (1, 1, 'jdoe', NULL, 'for sale', 799.99, 1711371741),

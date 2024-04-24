@@ -54,6 +54,7 @@ nav ul {
     width: 85%;
     height: 70px;
     justify-content: space-around;
+    align-items: center;
 }
 
 nav li {
@@ -93,7 +94,6 @@ main {
     border-radius: 5px;
     justify-content: space-between;
     margin: auto;
-    gap: 10px;
     justify-content: space-around;
 }
 
@@ -113,4 +113,3 @@ main {
     position: absolute;
     bottom: 10%;
 }
-

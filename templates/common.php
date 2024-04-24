@@ -27,7 +27,7 @@
     <header>
         <h1><a href="index.php">Second-Hand Website</a></h1>
         <form id="searchbar">
-            <input type="text" placeholder="Search...">
+            <input type="text" placeholder="Search">
             <ul id="itemList"></ul>
         </form>
         <div class="logreg">

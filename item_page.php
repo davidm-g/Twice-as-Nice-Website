@@ -11,19 +11,21 @@
     output_categories($db, $cats);
 ?>
     <div id="item-details">
-        <h2><?=getTitle($db, $id)?></h2>
         <img id="item-image" src=<?=getImage($db, $id)?> alt="Example Item image">
+        <div id="item-info">
+        <h2><?=getTitle($db, $id)?></h2>
         <p>Description: <span id="item-description"><?=getDescription($db, $id)?></span></p>
         <p>Seller: <span id="item-seller"><?=getSeller($db, $id)?></span></p>
         <p>Size: <span id="item-size"><?=getSize($db, $id)?></span></p>
         <p>Condition: <span id="item-condition"><?=getCondition($db, $id)?></span></p>
         <p>Brand: <span id="item-brand"><?=getBrand($db, $id)?></span></p>
         <p>Category: <span id="item-category"><?=getCategory($db, $id)?></span></p>
-    </div>
+        </div>
+        </div>
+        <button id="wishlist-button" onclick="addToWishlist()">Add to Wishlist</button>
+        <button id="negotiate-button" onclick="window.location.href='negotiate_price_page.html'">Negotiate Price</button>
+        <button id="cart-button" onclick="addToCart()">Add to Cart</button>
 
-    <button id="wishlist-button" onclick="addToWishlist()">Add to Wishlist</button>
-    <button id="negotiate-button" onclick="window.location.href='negotiate_price_page.html'">Negotiate Price</button>
-    <button id="cart-button" onclick="addToCart()">Add to Cart</button>
     <script>
         function addToWishlist() {
             // Add code here to send a request to your server to add the item to the user's wishlist

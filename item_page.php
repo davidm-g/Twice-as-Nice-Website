@@ -19,9 +19,11 @@
         <p>Condition: <span id="item-condition"><?=getCondition($db, $id)?></span></p>
         <p>Brand: <span id="item-brand"><?=getBrand($db, $id)?></span></p>
         <p>Category: <span id="item-category"><?=getCategory($db, $id)?></span></p>
-        <button id="wishlist-button" onclick="addToWishlist()">Add to Wishlist</button>
-        <button id="negotiate-button" onclick="window.location.href='negotiate_price_page.html'">Negotiate Price</button>
-        <button id="cart-button" onclick="addToCart()">Add to Cart</button>
+        <div id="buttons">
+            <button id="cart-button" onclick="addToCart()"><i class="fa-solid fa-cart-plus"></i>Add to Cart</button>
+            <button id="negotiate-button" onclick="window.location.href='negotiate_price_page.html'"><i class="fa-solid fa-tag"></i>Negotiate Price</button>
+            <button id="wishlist-button" onclick="addToWishlist()"><i class="fa-regular fa-heart"></i>Add to Wishlist</button>
+        </div>
         </div>
         <div id="descriptioncont">
             <p>Description: <span id="item-description"><?=getDescription($db, $id)?></span></p>
@@ -37,10 +39,7 @@
             // Add code here to send a request to your server to add the item to the user's shopping cart
         }
 
-        window.onload = function() {
-            var imageHeight = document.getElementById('item-image').clientHeight;
-            document.getElementById('item-info').style.maxHeight = imageHeight + 'px';
-        };
+        
     </script>
 <?php 
     output_footer();

@@ -197,6 +197,21 @@
         }
     }
 
+    function getSearchItems($db, $query) {
+        $items = [];
+        if (!empty($query)) {
+        
+            $stmt = $db->prepare("SELECT * FROM items WHERE name LIKE :query");
+    
+            $stmt->bindValue(':query', '%' . $query . '%');
+    
+            $stmt->execute();
+    
+            $items = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
+        return $items;
+    }
+
     function outputItem($db, $item) {
             $img_url=getImage($db,$item['id']); 
             $price=getPrice($db,$item['id']);  ?>

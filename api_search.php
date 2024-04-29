@@ -19,6 +19,6 @@
         
         $items = [];
     }
-
+    
     echo json_encode($items);
 ?>

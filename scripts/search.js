@@ -31,4 +31,9 @@ if (search) {
             }
         }
     });
+
+    search.addEventListener('submit', (event) => {
+        event.preventDefault();
+        window.location.href = "search.php?query=" + input.value;
+    });
 };

@@ -7,6 +7,7 @@
     <meta charset="UTF-8">
     <link href="css/style.css" rel="stylesheet">
     <link href="css/layout.css" rel="stylesheet">
+    <link href="css/item_page.css" rel="stylesheet">
     <script src="scripts/modal_login.js" defer></script>
     <?php if(isset($_SESSION['login'])): ?>
     <script>

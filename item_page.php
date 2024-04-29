@@ -11,19 +11,32 @@
     output_categories($db, $cats);
 ?>
     <div id="item-details">
-        <h2><?=getTitle($db, $id)?></h2>
         <img id="item-image" src=<?=getImage($db, $id)?> alt="Example Item image">
-        <p>Description: <span id="item-description"><?=getDescription($db, $id)?></span></p>
-        <p>Seller: <span id="item-seller"><?=getSeller($db, $id)?></span></p>
-        <p>Size: <span id="item-size"><?=getSize($db, $id)?></span></p>
-        <p>Condition: <span id="item-condition"><?=getCondition($db, $id)?></span></p>
+        <div id="item-info">
+        <h2><?=getTitle($db, $id)?></h2>
+        <h2>$<span id="item-price"><?=getPrice($db, $id)?></span></h2>
         <p>Brand: <span id="item-brand"><?=getBrand($db, $id)?></span></p>
         <p>Category: <span id="item-category"><?=getCategory($db, $id)?></span></p>
+        <p>Condition: <span id="item-condition"><?=getCondition($db, $id)?></span></p>
+        <p>Size: <span id="item-size"><?=getSize($db, $id)?></span></p>
+
+        <div id="seller-info">
+            <img id="profile-pic" src=<?=getImage($db, $id)?> alt="Seller Profile Pic">
+            <p><span id="item-seller"><?=getSeller($db, $id)?></span></p>
+            <button id="msg-button" onclick="messageSeller()"><i class="fa-solid fa-envelope"></i>message</button>
+        </div>
+
+        <div id="buttons">
+            <button id="cart-button" onclick="addToCart()"><i class="fa-solid fa-cart-plus"></i>Add to Cart</button>
+            <button id="negotiate-button" onclick="window.location.href='negotiate_price_page.html'"><i class="fa-solid fa-tag"></i>Negotiate Price</button>
+            <button id="wishlist-button" onclick="addToWishlist()"><i class="fa-regular fa-heart"></i>Add to Wishlist</button>
+        </div>
+        </div>
+        <div id="descriptioncont">
+            <p>Description: <span id="item-description"><?=getDescription($db, $id)?></span></p>
+        </div>    
     </div>
 
-    <button id="wishlist-button" onclick="addToWishlist()">Add to Wishlist</button>
-    <button id="negotiate-button" onclick="window.location.href='negotiate_price_page.html'">Negotiate Price</button>
-    <button id="cart-button" onclick="addToCart()">Add to Cart</button>
     <script>
         function addToWishlist() {
             // Add code here to send a request to your server to add the item to the user's wishlist
@@ -32,6 +45,12 @@
         function addToCart() {
             // Add code here to send a request to your server to add the item to the user's shopping cart
         }
+
+        function messageSeller() {
+            // Add code here to send a request to your server to message the seller
+        }
+
+        
     </script>
 <?php 
     output_footer();

@@ -81,7 +81,7 @@ CREATE TABLE messages (
   sender VARCHAR NOT NULL REFERENCES users,
   receiver VARCHAR NOT NULL REFERENCES users,
   item_id INTEGER NOT NULL REFERENCES items,
-  message_text VARCHAR NOT NULL,
+  message_text VARCHAR,
   price FLOAT CHECK (price >= 0),  
   timestamp INTEGER NOT NULL
 );

@@ -222,7 +222,13 @@
                     outputItem($db,$item);
                 } ?>    
             </aside>
-    <?php } 
+    <?php }
+    function getSellerUsername($db, $itemId) {
+        $stmt = $db->prepare("SELECT seller FROM items WHERE id = :item_id");
+        $stmt->execute([':item_id' => $itemId]);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result['seller'];
+    }
 
 
 

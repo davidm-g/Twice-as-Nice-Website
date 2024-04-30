@@ -9,7 +9,7 @@ $username = $_SESSION['username'];
 // Get the receiver, item_id, and message_text from the POST data
 $receiver = $_POST['receiver'];
 $itemId = $_POST['item_id'];
-$messageText = $_POST['message_text'];
+$messageText = isset($_POST['message_text']) ? $_POST['message_text'] : null;
 $price = isset($_POST['new_price']) ? $_POST['new_price'] : null;
 
 

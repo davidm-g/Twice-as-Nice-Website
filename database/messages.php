@@ -34,7 +34,7 @@
     }
 
     function remove_proposals($db, $sender, $receiver, $itemId) {
-        $query = $db->prepare("UPDATE messages SET price = NULL, message_text = 'Cancelled' WHERE sender = :sender AND receiver = :receiver AND item_id = :item_id AND price IS NOT NULL");
+        $query = $db->prepare("UPDATE messages SET price = NULL, message_text = 'Cancelled offer' WHERE sender = :sender AND receiver = :receiver AND item_id = :item_id AND price IS NOT NULL");
         $query->execute([':sender' => $sender, ':receiver' => $receiver, ':item_id' => $itemId]);
     }
 

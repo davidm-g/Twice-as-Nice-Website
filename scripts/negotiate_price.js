@@ -2,7 +2,7 @@ function showCounterOfferForm(itemId) {
     // Select the div for the counter offer form
     const counterOfferDiv = document.getElementById('counter-offer-' + itemId);
     // Display the div
-    counterOfferDiv.style.display = 'block';
+    counterOfferDiv.style.display = counterOfferDiv.style.display === 'block' ? 'none' : 'block';
 }
 
 function sendCounterOffer(itemId,receiver) {

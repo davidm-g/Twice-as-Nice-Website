@@ -57,6 +57,13 @@
     border-radius: 100%;
     margin: 10px;
     border: 2px solid #4A4E69;
+    transition: all 0.25s ease;
+}
+
+#profile-pic:hover {
+    border: 2px solid #9A8C98;
+    filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.25));
+    transition: all 0.25s ease;
 }
 
 /* buttons */

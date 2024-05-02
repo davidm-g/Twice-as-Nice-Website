@@ -21,19 +21,18 @@
         <p>Size: <span id="item-size"><?=getSize($db, $id)?></span></p>
 
         <div id="seller-info">
-            <img id="profile-pic" src=<?=getImage($db, $id)?> alt="Seller Profile Pic">
-            <p><span id="item-seller"><?=getSeller($db, $id)?></span></p>
-            <button id="msg-button" onclick="messageSeller()"><i class="fa-solid fa-envelope"></i>message</button>
+            <a href="seller.php"><img id="profile-pic" src=<?=getImage($db, $id)?> alt="Seller Profile Pic"></a>
+            <button id="msg-button" onclick="messageSeller()"><i class="fa-solid fa-square-envelope"></i></i></i></button>
         </div>
 
-        <div id="buttons">
+        <div id="action-buttons">
             <button id="cart-button" onclick="addToCart()"><i class="fa-solid fa-cart-plus"></i>Add to Cart</button>
             <button id="negotiate-button" onclick="window.location.href='negotiate_price_page.html'"><i class="fa-solid fa-tag"></i>Negotiate Price</button>
             <button id="wishlist-button" onclick="addToWishlist()"><i class="fa-regular fa-heart"></i>Add to Wishlist</button>
         </div>
         </div>
         <div id="descriptioncont">
-            <p>Description: <span id="item-description"><?=getDescription($db, $id)?></span></p>
+            <p><span id="item-description"><?=getDescription($db, $id)?></span></p>
         </div>    
     </div>
 

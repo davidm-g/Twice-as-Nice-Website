@@ -21,7 +21,7 @@
         <p>Size: <span id="item-size"><?=getSize($db, $id)?></span></p>
 
         <div id="seller-info">
-            <img id="profile-pic" src=<?=getImage($db, $id)?> alt="Seller Profile Pic">
+            <a href="seller.php"><img id="profile-pic" src=<?=getImage($db, $id)?> alt="Seller Profile Pic"></a>
             <button id="msg-button" onclick="messageSeller()"><i class="fa-solid fa-square-envelope"></i></i></i></button>
         </div>
 
@@ -32,7 +32,7 @@
         </div>
         </div>
         <div id="descriptioncont">
-            <p>Description: <span id="item-description"><?=getDescription($db, $id)?></span></p>
+            <p><span id="item-description"><?=getDescription($db, $id)?></span></p>
         </div>    
     </div>
 

@@ -5,28 +5,20 @@
     require_once('database/items.php');
     $db = getDatabaseConnection();
     $cats = getCategories($db);
-
-    // Start the session
     session_start();
-
-    // Get the username from the session
     $username = $_SESSION['username'];
-
-    // Get the item id and the price from the URL parameters
     $itemId = $_GET['item_id'];
     $price = $_GET['price'];
-
-    // Fetch the item details from the database
     $stmt = $db->prepare("SELECT * FROM items WHERE id = :item_id");
     $stmt->execute([':item_id' => $itemId]);
     $item = $stmt->fetch(PDO::FETCH_ASSOC);
-
     output_header();
     output_categories($db, $cats);
 ?>
 
 <h1>Checkout for <?= $item['name'] ?></h1>
 <p>Seller: <?= $item['seller'] ?></p>
+<p>Price: <?= $price ?> €</p>
 
 <form action="checkout.php" method="post">
     <input type="hidden" name="item_id" value="<?= $itemId ?>">

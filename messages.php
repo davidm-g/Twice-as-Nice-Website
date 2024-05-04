@@ -37,7 +37,7 @@
         <strong><?= $message['sender'] ?>:</strong>
         <?php if ($message['offer_accepted']) { ?>
         <?php if ($username !== $seller) { // If the user is the buyer ?>
-            Offer accepted. <a href='checkout.php?item_id=<?= $itemId ?>&price=<?= $message['price'] ?>'>Proceed to checkout</a>
+            <a href='checkout.php?item_id=<?= $itemId ?>&price=<?= $message['price'] ?>'>Proceed to checkout</a>
         <?php } else { // If the user is the seller ?>
             You accepted the offer of <?= $message['price'] ?> €.
         <?php } ?>

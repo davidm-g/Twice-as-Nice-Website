@@ -83,7 +83,8 @@ CREATE TABLE messages (
   item_id INTEGER NOT NULL REFERENCES items,
   message_text VARCHAR,
   price FLOAT CHECK (price >= 0),  
-  timestamp INTEGER NOT NULL
+  timestamp INTEGER NOT NULL,
+  offer_accepted BOOLEAN DEFAULT 0
 );
 
 DROP TABLE IF EXISTS wishlist;

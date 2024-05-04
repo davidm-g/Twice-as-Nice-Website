@@ -33,8 +33,15 @@
     $class = $message['sender'] === $username ? 'user' : 'other_user';
     $date = date('F j, Y, g:i a', $message['timestamp']); 
 ?>
-    <p class="<?= $class ?>">
+    <p id="message-<?= $message['id'] ?>" class="<?= $class ?>">
         <strong><?= $message['sender'] ?>:</strong>
+        <?php if ($message['offer_accepted']) { ?>
+        <?php if ($username !== $seller) { // If the user is the buyer ?>
+            Offer accepted. <a href='checkout.php?item_id=<?= $itemId ?>&price=<?= $message['price'] ?>'>Proceed to checkout</a>
+        <?php } else { // If the user is the seller ?>
+            You accepted the offer of <?= $message['price'] ?> €.
+        <?php } ?>
+        <?php } else { ?>
         <?php if ($message['price'] !== null) { ?>
             <?php if ($message['sender'] === $username) { //if the sender is the user?>
                 You sent a proposal for <?= $message['price'] ?> €
@@ -45,7 +52,7 @@
                     Seller's proposal: <?= $message['price'] ?> €
                 <?php } ?>
             <br> 
-            <a href='accept_offer.php?price=<?= $message['price'] ?>'>Accept Offer</a>
+            <a href='api_accept_offer.php?price=<?= $message['price'] ?>&item_id=<?= $itemId ?>&message_id=<?= $message['id'] ?>&user=<?= $otherUser ?>'>Accept Offer</a>
             <button onclick="showCounterOfferForm(<?= $itemId ?>)">Counter Offer</button>
             <div id="counter-offer-<?= $itemId ?>" style="display: none;">
                 <form id="counter-offer-form-<?= $itemId ?>" onsubmit="event.preventDefault(); sendCounterOffer(<?= $itemId ?>, '<?= $otherUser ?>');">
@@ -56,6 +63,7 @@
         <?php } ?>
     <?php } else { ?>
         <?= $message['message_text'] ?>
+    <?php } ?>
     <?php } ?>
     <br><small>Sent on <?= $date ?></small>
 </p>

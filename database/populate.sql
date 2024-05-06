@@ -107,7 +107,7 @@ INSERT OR IGNORE INTO item_categories (item_id, category_id, subcategory_id) VAL
     (4, 3, (SELECT id FROM subcategories WHERE name = 'Shoes')), -- Nike Shoes belongs to Shoes
     (5, 3, (SELECT id FROM subcategories WHERE name = 'T-Shirts')), -- Adidas Sports T-Shirt belongs to T-Shirts
     (6, 1, (SELECT id FROM subcategories WHERE name = 'Smartphones')), -- Apple Watch Series 6 belongs to Smartphones
-    (7, 1, (SELECT id FROM subcategories WHERE name = 'Other')), -- Samsung Galaxy Buds Pro belongs to Other
-    (8, 1, (SELECT id FROM subcategories WHERE name = 'Other')), -- Sony WH-1000XM5 Headphones belongs to Other
+    (7, 1, (SELECT id FROM subcategories WHERE name = 'Other' AND category_id = 1)), -- Samsung Galaxy Buds Pro belongs to Other
+    (8, 1, (SELECT id FROM subcategories WHERE name = 'Other' AND category_id = 1)), -- Sony WH-1000XM5 Headphones belongs to Other
     (9, 3, (SELECT id FROM subcategories WHERE name = 'Shoes')), -- Nike AlphaFly 3 belongs to Shoes
-    (10, 4, (SELECT id FROM subcategories WHERE name = 'Other')); -- Ikea Desk belongs to Home & Kitchen
+    (10, 4, (SELECT id FROM subcategories WHERE name = 'Other' AND category_id = 4)); -- Ikea Desk belongs to Home & Kitchen

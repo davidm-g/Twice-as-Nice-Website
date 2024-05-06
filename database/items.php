@@ -71,6 +71,20 @@
         return $cat['name'];
     }
 
+    function getCategorySub($db, $subcat_id) {
+        $stmt = $db->prepare(
+            "SELECT category_id from subcategories
+            WHERE id = :subcat_id");
+        $stmt->execute([':subcat_id' => $subcat_id]);
+        $cat_id = ($stmt->fetch())['category_id'];
+        $stmt2 = $db->prepare(
+            "SELECT * from categories
+            WHERE id = :cat_id");
+        $stmt2->execute([':cat_id' => $cat_id]);
+        $cat = $stmt2->fetch();
+        return $cat;
+    }
+
     function getCategoryId($db, $id) {
         $stmt = $db->prepare(
             "SELECT category_id from item_categories
@@ -87,6 +101,24 @@
         $stmt->execute([':cat_id' => $cat_id]);
         $cat_nm = ($stmt->fetch());
         return $cat_nm['name'];
+    }
+
+    function getSubcategoryId($db, $id) {
+        $stmt = $db->prepare(
+            "SELECT subcategory_id from item_categories
+            WHERE item_id = :id");
+        $stmt->execute([':id' => $id]);
+        $subcat_id = ($stmt->fetch());
+        return $subcat_id['subcategory_id'];
+    }
+
+    function getSubcategoryName($db, $subcat_id) {
+        $stmt = $db->prepare(
+            "SELECT name from subcategories
+            WHERE id = :subcat_id");
+        $stmt->execute([':subcat_id' => $subcat_id]);
+        $subcat_nm = ($stmt->fetch());
+        return $subcat_nm['name'];
     }
     
     function getBrand($db, $id) {
@@ -195,6 +227,21 @@
         } else {
             addToWishlist($db, $item_id, $username);
         }
+    }
+
+    function getSearchItems($db, $query) {
+        $items = [];
+        if (!empty($query)) {
+        
+            $stmt = $db->prepare("SELECT * FROM items WHERE name LIKE :query");
+    
+            $stmt->bindValue(':query', '%' . $query . '%');
+    
+            $stmt->execute();
+    
+            $items = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
+        return $items;
     }
 
     function outputItem($db, $item) {

@@ -266,7 +266,9 @@
         <h1>Item Feed</h1>
             <aside id="random_items">
                 <?php foreach ($items as $item) { 
-                    outputItem($db,$item);
+                    if (isItemForSale($db, $item['id'])) {
+                        outputItem($db, $item);
+                    }
                 } ?>    
             </aside>
     <?php }
@@ -277,6 +279,46 @@
         return $result['seller'];
     }
 
+    function getItem($db, $itemId) {
+        $stmt = $db->prepare("SELECT * FROM items WHERE id = :item_id");
+        $stmt->execute([':item_id' => $itemId]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    function getItemName($db, $itemId) {
+        $stmt = $db->prepare("SELECT name FROM items WHERE id = :item_id");
+        $stmt->execute([':item_id' => $itemId]);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result['name'];
+    }
+
+    function getTransaction($db, $itemId) {
+        $stmt = $db->prepare("SELECT * FROM transactions WHERE item_id = :item_id");
+        $stmt->execute([':item_id' => $itemId]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    function updateTransactionStatus($db, $buyer, $itemId) {
+        $stmt = $db->prepare("UPDATE transactions SET status = 'sold', buyer = :buyer WHERE item_id = :item_id AND status = 'for sale'");
+        $stmt->execute([':buyer' => $buyer, ':item_id' => $itemId]);
+    }
+
+    function deleteItem($db, $itemId) {
+        $stmt = $db->prepare("DELETE FROM items WHERE id = :item_id");
+        $stmt->execute([':item_id' => $itemId]);
+    }
+
+    function isItemForSale($db, $itemId) {
+        $stmt = $db->prepare("SELECT status FROM transactions WHERE item_id = :item_id");
+        $stmt->execute([':item_id' => $itemId]);
+        $transaction = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+        if ($transaction && $transaction['status'] == 'for sale') {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
 
 

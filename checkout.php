@@ -9,9 +9,8 @@
     $username = $_SESSION['username'];
     $itemId = $_GET['item_id'];
     $price = $_GET['price'];
-    $stmt = $db->prepare("SELECT * FROM items WHERE id = :item_id");
-    $stmt->execute([':item_id' => $itemId]);
-    $item = $stmt->fetch(PDO::FETCH_ASSOC);
+    $otherUser = $_GET['user'];
+    $item = getItem($db, $itemId);
     output_header();
     output_categories($db, $cats);
 ?>
@@ -20,16 +19,19 @@
 <p>Seller: <?= $item['seller'] ?></p>
 <p>Price: <?= $price ?> €</p>
 
-<form action="checkout.php" method="post">
+<form action="api_process_payment.php" method="post">
     <input type="hidden" name="item_id" value="<?= $itemId ?>">
     <input type="hidden" name="price" value="<?= $price ?>">
+    <input type="hidden" name="other_user" value="<?= $otherUser ?>">
     <label for="address">Address:</label><br>
-    <input type="text" id="address" name="address" required><br>
+    <textarea id="address" name="address" required></textarea><br>
     <label for="payment_method">Payment Method:</label><br>
     <select id="payment_method" name="payment_method" required>
         <option value="">Select a payment method</option>
         <option value="credit_card">Credit Card</option>
+        <option value="debit_card">Debit Card</option>
         <option value="paypal">PayPal</option>
+        <option value="bank_transfer">Bank Transfer</option>
     </select><br>
     <input type="submit" value="Confirm Payment">
 </form>

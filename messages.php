@@ -12,13 +12,20 @@
     $username = $_SESSION['username'];
     $otherUser = $_GET['user'];
     $itemId = $_GET['item'];
+    $transaction = getTransaction($db, $itemId);
+    $itemName = getItemName($db, $itemId);
     $seller = getSellerUsername($db, $itemId);
     date_default_timezone_set('Europe/Lisbon');
     // Get the messages
     $messages = getMessages($db, $username, $otherUser, $itemId);
     output_header();
     output_categories($db, $cats);
-    if ($username != $seller) { ?>
+    if (isset($_SESSION['payment_success'])) {
+        echo "<p class='success'>" . $_SESSION['payment_success'] . "</p>";
+        unset($_SESSION['payment_success']);
+    }
+    
+    if ($username != $seller && $transaction['status'] != 'sold') { ?>
     <form action="send_message.php" method="post" id="negotiateFields">
         <input type="hidden" name="receiver" value="<?= $otherUser ?>">
         <input type="hidden" name="item_id" value="<?= $itemId ?>">
@@ -28,21 +35,25 @@
     <?php } ?>
  
 <div class='messages'>
-    <h2>Messages with <?= $otherUser ?> about item <?= $itemId ?></h2>
+    <h2>Messages with <?= $otherUser ?> about <?= $itemName ?></h2>
     <?php foreach($messages as $message){ 
     $class = $message['sender'] === $username ? 'user' : 'other_user';
     $date = date('F j, Y, g:i a', $message['timestamp']); 
 ?>
     <p id="message-<?= $message['id'] ?>" class="<?= $class ?>">
+        <?php if($message['price'] === null) { ?>
         <strong><?= $message['sender'] ?>:</strong>
-        <?php if ($message['offer_accepted']) { ?>
+        <?php } ?>
+        <?php if ($message['offer_accepted'] && $transaction['status'] != 'sold') { ?>
         <?php if ($username !== $seller) { // If the user is the buyer ?>
-            <a href='checkout.php?item_id=<?= $itemId ?>&price=<?= $message['price'] ?>'>Proceed to checkout</a>
+            <a href='checkout.php?price=<?= $message['price'] ?>&item_id=<?= $itemId ?>&user=<?= $otherUser ?>'>Proceed to checkout</a>
         <?php } else { // If the user is the seller ?>
             You accepted the offer of <?= $message['price'] ?> €.
         <?php } ?>
         <?php } else { ?>
-        <?php if ($message['price'] !== null) { ?>
+            <?php if ($message['price'] !== null && $transaction['status'] == 'sold') { ?>
+            Item Sold!
+        <?php }  else if ($message['price'] !== null) { ?>
             <?php if ($message['sender'] === $username) { //if the sender is the user?>
                 You sent a proposal for <?= $message['price'] ?> €
             <?php } else { //if the sender is not the user?>
@@ -52,6 +63,7 @@
                     Seller's proposal: <?= $message['price'] ?> €
                 <?php } ?>
             <br> 
+            <?php if($transaction['status'] != 'sold'){ ?>
             <a href='api_accept_offer.php?price=<?= $message['price'] ?>&item_id=<?= $itemId ?>&message_id=<?= $message['id'] ?>&user=<?= $otherUser ?>'>Accept Offer</a>
             <button onclick="showCounterOfferForm(<?= $itemId ?>)">Counter Offer</button>
             <div id="counter-offer-<?= $itemId ?>" style="display: none;">
@@ -60,6 +72,7 @@
                     <button type="submit">Submit New Price</button>
                 </form>
             </div>
+            <?php } ?>
         <?php } ?>
     <?php } else { ?>
         <?= $message['message_text'] ?>

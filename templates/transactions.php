@@ -8,10 +8,11 @@ function get_transactions($username, $db) {
 <?php function output_transaction($transaction) { ?>
     <article>
         <h4>Item: <?php echo htmlspecialchars($transaction['item_name']); ?></h4>
-        <?php if (!empty($transaction['image_url'])): ?>
+        <?php if (!empty($transaction['image_url'])){ ?>
             <img src="<?php echo htmlspecialchars($transaction['image_url']); ?>" alt="<?php echo htmlspecialchars($transaction['item_name']); ?>">
-        <?php endif; ?>
+        <?php } ?>
         <p>Status: <?php echo htmlspecialchars($transaction['status']); ?></p>
+        <?php if ($transaction['status'] !== 'sold'){ ?>
         <p class="item-price">Price: <?php echo htmlspecialchars($transaction['price']); ?> €</p>
         <form id="manage-item-<?php echo htmlspecialchars($transaction['item_id']); ?>">
             <input type="hidden" name="item_id" value="<?php echo htmlspecialchars($transaction['item_id']); ?>">
@@ -22,6 +23,7 @@ function get_transactions($username, $db) {
             <button type="button" onclick="showNewPrice('<?php echo htmlspecialchars($transaction['item_id']); ?>')">Change Price</button>
             <input type="button" onclick="deleteItem('<?php echo htmlspecialchars($transaction['item_id']); ?>')" value="Delete Item">
         </form>
+        <?php } ?>
     </article>
 <?php } ?>
 

@@ -13,8 +13,11 @@
     <h1><?=$_SESSION['username']?>'s Wishlist <i class="fa-solid fa-heart" style="color: #f07070;"></i></h1>
     <aside id="random_items">
         <?php foreach ($items as $item) { 
-            if(isOnWishlist($db,$item['id'],$_SESSION['username']))
-                outputItem($db,$item);
+            if(isOnWishlist($db,$item['id'],$_SESSION['username'])){
+                if (isItemForSale($db, $item['id'])) {
+                    outputItem($db, $item);
+                }
+            }
         } ?>    
     </aside>
 <?php 

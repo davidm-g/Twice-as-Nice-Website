@@ -8,7 +8,9 @@
 
     if (!empty($query)) {
         
-        $stmt = $db->prepare("SELECT * FROM items WHERE name LIKE :query");
+        $stmt = $db->prepare("SELECT items.* FROM items 
+                              JOIN transactions ON items.id = transactions.item_id 
+                              WHERE items.name LIKE :query AND transactions.status = 'for sale'");
 
         $stmt->bindValue(':query', '%' . $query . '%');
 

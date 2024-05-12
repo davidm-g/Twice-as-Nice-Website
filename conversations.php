@@ -4,6 +4,7 @@
     require_once('database/connection.php');
     require_once('database/messages.php');
     require_once('templates/categories.php');
+    require_once('database/items.php');
     $db = getDatabaseConnection();
     $username = $_SESSION['username'];
     $conversations = getConversations($db, $username);
@@ -12,10 +13,17 @@
     output_categories($db, $cats);
     foreach ($conversations as $conversation) {
         $otherUser = $conversation['other_user'];
-        $itemId = $conversation['item_id']; ?>
+        $itemId = $conversation['item_id'];
+        $itemName = getItemName($db,$itemId);
+        if (isItemForSale($db, $itemId)) { ?>
         <div class='conversation'>
-        <h2><a href="messages.php?user=<?= $otherUser ?>&item=<?= $itemId ?>">Conversation with <?= $otherUser ?> about item <?= $itemId ?></a></h2>
+            <h2><a href="messages.php?user=<?= $otherUser ?>&item=<?= $itemId ?>">Conversation with <?= $otherUser ?> about <?= $itemName ?></a></h2>
         </div>
-     <?php } 
+    <?php } else { ?>
+        <div class='conversation'>
+            <h2><?= $itemName ?> has been sold</h2>
+        </div>
+    <?php }
+    }
      output_footer();
      ?>

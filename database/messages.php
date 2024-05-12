@@ -38,3 +38,19 @@
         $query->execute([':sender' => $sender, ':receiver' => $receiver, ':item_id' => $itemId]);
     }
 
+    function update_message($db, $messageId) {
+        $stmt = $db->prepare("UPDATE messages SET price=NULL, message_text='Offer accepted.' WHERE id = :message_id");
+        $stmt->execute([':message_id' => $messageId]);
+    }
+    
+    function create_offer_message($db, $username, $otherUser, $itemId, $price) {
+        $stmt = $db->prepare("INSERT INTO messages (sender, receiver, item_id, price, offer_accepted, timestamp) VALUES (:sender, :receiver, :item_id, :price, 1, :timestamp)");
+        $stmt->execute([
+            ':sender' => $username,
+            ':receiver' => $otherUser,
+            ':item_id' => $itemId,
+            ':price' => $price,
+            ':timestamp' => time()
+        ]);
+    }
+

@@ -16,8 +16,11 @@
     <h1><a href="category_page.php?id=<?=$cat['id']?>"><?=$cat['name']?></a> -> <?=$subcat_name?></h1>
     <aside id="random_items">
         <?php foreach ($items as $item) { 
-            if(getSubcategoryId($db,$item['id']) == $subcat_id)
-                outputItem($db,$item);
+            if(getSubcategoryId($db,$item['id']) == $subcat_id){
+                if (isItemForSale($db, $item['id'])) {
+                    outputItem($db, $item);
+                }
+            }
         } ?>    
     </aside>
 <?php 

@@ -1,6 +1,14 @@
 <?php
     function getItems($db) {
-        $stmt = $db->prepare("SELECT * FROM items");
+        if($_SESSION['sortOrder'] == '1') {
+            $stmt = $db->prepare("SELECT * FROM items ORDER BY price ASC");
+        }
+        else if($_SESSION['sortOrder'] == '2') {
+            $stmt = $db->prepare("SELECT * FROM items ORDER BY name ASC");
+        } 
+        else {
+            $stmt = $db->prepare("SELECT * FROM items");
+        }
         $stmt->execute();
         $items = $stmt->fetchAll();
         return $items;
@@ -244,6 +252,13 @@
         return $items;
     }
 
+    function getOrders($db) {
+        $stmt = $db->prepare("SELECT * FROM orders");
+        $stmt->execute();
+        $orders = $stmt->fetchAll();
+        return $orders;
+    }
+
     function outputItem($db, $item) {
             $img_url=getImage($db,$item['id']); 
             $price=getPrice($db,$item['id']);  ?>
@@ -263,14 +278,28 @@
     <?php }
 
     function outputItems($db, $items) { ?>
-        <h1>Item Feed</h1>
-            <aside id="random_items">
-                <?php foreach ($items as $item) { 
+            <h1>Item Feed</h1>
+            <div id="feed_menu">
+                <div id = 'filter_menu'>
+                    <h2>Filter by</h2><i id="filter_btn" class="fa-solid fa-filter"></i>
+                </div>
+                <div id = 'sort_menu'>
+                    <h2>Order by</h2><i id="sort_btn" class="fa-solid fa-sort"></i>
+                    <div id="sort_options" style="display: none;">
+                        <?php foreach (getOrders($db) as $order) { ?>
+                            <div id="order<?=$order['id']?>"><?=$order['order_name']?></div>
+                        <?php } ?> 
+                        <div id="reset_order" style="display: <?=($_SESSION['sortOrder'] == '0') ? 'none' : 'flex'?>">Reset order</div>
+                    </div>
+                </div>
+            </div>
+        <aside id="random_items">
+            <?php foreach ($items as $item) { 
                     if (isItemForSale($db, $item['id'])) {
-                        outputItem($db, $item);
+                    outputItem($db, $item);
                     }
-                } ?>    
-            </aside>
+            } ?>    
+        </aside>
     <?php }
     function getSellerUsername($db, $itemId) {
         $stmt = $db->prepare("SELECT seller FROM items WHERE id = :item_id");

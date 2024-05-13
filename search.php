@@ -7,6 +7,7 @@
     $db = getDatabaseConnection();
     $query = $_GET['query'];
     $items = getSearchItems($db, $query);
+    $cats = getCategories($db);
     output_header();
     output_categories($db, $cats);
 ?>

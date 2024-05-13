@@ -76,9 +76,8 @@ main {
     flex-direction: column;
 }
 
-#random_items {
+#random_items, #cat_items {
     flex-grow: 2;
-    padding: 20px;
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;

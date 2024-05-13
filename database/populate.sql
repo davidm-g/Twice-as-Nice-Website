@@ -111,3 +111,7 @@ INSERT OR IGNORE INTO item_categories (item_id, category_id, subcategory_id) VAL
     (8, 1, (SELECT id FROM subcategories WHERE name = 'Other' AND category_id = 1)), -- Sony WH-1000XM5 Headphones belongs to Other
     (9, 3, (SELECT id FROM subcategories WHERE name = 'Shoes')), -- Nike AlphaFly 3 belongs to Shoes
     (10, 4, (SELECT id FROM subcategories WHERE name = 'Other' AND category_id = 4)); -- Ikea Desk belongs to Home & Kitchen
+
+INSERT OR IGNORE INTO orders (id, order_name) VALUES
+    (1, 'Price'),
+    (2, 'Name');

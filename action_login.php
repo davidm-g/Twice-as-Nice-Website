@@ -9,6 +9,7 @@
     if (userExists($db, $_POST['username'], $_POST['password'])) {  // test if user exists
         $_SESSION['username'] = $_POST['username'];  
         $_SESSION['picture'] = getProfilePic($db, $_POST['username']);  // set session variables
+        $_SESSION['sortOrder'] = '0';                       // set default sort order
     }
 
     header('Location: index.php');         // redirect to the page we came from

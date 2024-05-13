@@ -94,12 +94,16 @@ CREATE TABLE wishlist (
   PRIMARY KEY (username, item_id)
 );
 
-
-
 DROP TABLE IF EXISTS shipping_forms;
 CREATE TABLE shipping_forms (
   id INTEGER PRIMARY KEY,
   transaction_id INTEGER NOT NULL REFERENCES transactions,
   form_data VARCHAR NOT NULL
+);
+
+DROP TABLE IF EXISTS orders;
+CREATE TABLE orders (
+  id INTEGER PRIMARY KEY,
+  order_name VARCHAR NOT NULL UNIQUE
 );
 

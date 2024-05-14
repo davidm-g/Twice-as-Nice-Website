@@ -6,23 +6,27 @@
     $db = getDatabaseConnection();
     $cats = getCategories($db);
     session_start();
-    $username = $_SESSION['username'];
-    $itemId = $_GET['item_id'];
-    $price = $_GET['price'];
-    $otherUser = $_GET['user'];
+    if (!isset($_SESSION['csrf'])) {
+        $_SESSION['csrf'] = generate_random_token();
+    } 
+    $username = htmlspecialchars($_SESSION['username']);
+    $itemId = htmlspecialchars($_GET['item_id']);
+    $price = htmlspecialchars($_GET['price']);
+    $otherUser = htmlspecialchars($_GET['user']);
     $item = getItem($db, $itemId);
     output_header();
     output_categories($db, $cats);
 ?>
 
-<h1>Checkout for <?= $item['name'] ?></h1>
-<p>Seller: <?= $item['seller'] ?></p>
-<p>Price: <?= $price ?> €</p>
+<h1>Checkout for <?= htmlspecialchars($item['name']) ?></h1>
+<p>Seller: <?= htmlspecialchars($item['seller']) ?></p>
+<p>Price: <?= htmlspecialchars($price) ?> €</p>
 
 <form action="api_process_payment.php" method="post">
-    <input type="hidden" name="item_id" value="<?= $itemId ?>">
-    <input type="hidden" name="price" value="<?= $price ?>">
-    <input type="hidden" name="other_user" value="<?= $otherUser ?>">
+    <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
+    <input type="hidden" name="item_id" value="<?= htmlspecialchars($itemId) ?>">
+    <input type="hidden" name="price" value="<?= htmlspecialchars($price) ?>">
+    <input type="hidden" name="other_user" value="<?= htmlspecialchars($otherUser) ?>">
     <label for="address">Address:</label><br>
     <textarea id="address" name="address" required></textarea><br>
     <label for="payment_method">Payment Method:</label><br>

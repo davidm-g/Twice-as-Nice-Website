@@ -5,19 +5,21 @@ session_start();
 
 require_once('database/connection.php'); 
 $db = getDatabaseConnection();
-
+if ($_SESSION['csrf'] !== $_POST['csrf']) {
+    die('Error: Invalid request. Please refresh the page and try again.');
+}
 // Check if form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Get form data
-    $name = $_POST['name'];
-    $size = isset($_POST['size']) ? $_POST['size'] : null;
-    $condition = $_POST['condition'];
-    $brand = isset($_POST['brand']) ? $_POST['brand'] : null;
-    $category = $_POST['category'];
-    $subcategory = $_POST['subcategory'];
-    $price = $_POST['price'];
-    $description = $_POST['description'];
-    $seller = $_SESSION['username']; // Assuming the username is stored in session
+    $name = htmlspecialchars($_POST['name']);
+    $size = isset($_POST['size']) ? htmlspecialchars($_POST['size']) : null;
+    $condition = htmlspecialchars($_POST['condition']);
+    $brand = isset($_POST['brand']) ? htmlspecialchars($_POST['brand']) : null;
+    $category = htmlspecialchars($_POST['category']);
+    $subcategory = htmlspecialchars($_POST['subcategory']);
+    $price = htmlspecialchars($_POST['price']);
+    $description = htmlspecialchars($_POST['description']);
+    $seller = htmlspecialchars($_SESSION['username']); 
 
     // Handle file upload for images
     

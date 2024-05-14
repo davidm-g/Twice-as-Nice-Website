@@ -3,14 +3,16 @@ session_start();
 require_once('database/connection.php');
 require_once('database/items.php');
 $db = getDatabaseConnection();
-$itemId = $_POST['item_id'];
-$otherUser = $_POST['other_user'];
-$buyer = $_SESSION['username']; // Assuming the buyer is the current logged in user
+if ($_SESSION['csrf'] !== $_POST['csrf']) {
+    die('Error: Invalid request. Please refresh the page and try again.');
+}
+$itemId = htmlspecialchars($_POST['item_id']);
+$otherUser = htmlspecialchars($_POST['other_user']);
+$buyer = $_SESSION['username']; 
 
 updateTransactionStatus($db, $buyer, $itemId);
 
-
 $_SESSION['payment_success'] = "Your payment has been successfully processed!";
 
-header('Location: /messages.php?user=' . $otherUser . '&item=' . $itemId); // Redirect back to the messages page
+header('Location: /messages.php?user=' . urlencode($otherUser) . '&item=' . urlencode($itemId)); // Redirect back to the messages page
 ?>

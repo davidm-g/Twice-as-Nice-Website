@@ -5,11 +5,11 @@
     header('Content-Type: application/json');
     $db = getDatabaseConnection();
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $item_id = $_POST['item_id'];
-        $action = $_POST['action'];
+        $item_id = htmlspecialchars($_POST['item_id']);
+        $action = htmlspecialchars($_POST['action']);
     
         if ($action == 'change_price') {
-            $new_price = $_POST['new_price'];
+            $new_price = htmlspecialchars($_POST['new_price']);
             if (empty($new_price)) {
             echo json_encode(['status' => 'error', 'message' => 'New price is required']);
             exit;

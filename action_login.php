@@ -5,13 +5,19 @@
     require_once('database/users.php');                      // user table queries
 
     $db = getDatabaseConnection();                           // connecting to the database
-
-    if (userExists($db, $_POST['username'], $_POST['password'])) {  // test if user exists
-        $_SESSION['username'] = $_POST['username'];  
-        $_SESSION['picture'] = getProfilePic($db, $_POST['username']);  // set session variables
-        $_SESSION['sortOrder'] = '0';                       // set default sort order
+    if ($_SESSION['csrf'] !== $_POST['csrf']) {
+        die('Error: Invalid request. Please refresh the page and try again.');
     }
+    $username = htmlspecialchars($_POST['username']);
+    $password = htmlspecialchars($_POST['password']);
 
+    if (userExists($db, $username, $password)) {  // test if user exists
+        $_SESSION['username'] = $username;  
+        $_SESSION['picture'] = getProfilePic($db, $username);  // set session variables
+        $_SESSION['sortOrder'] = '0';   
+                         
+    }
+    
     header('Location: index.php');         // redirect to the page we came from
     exit;
 ?>

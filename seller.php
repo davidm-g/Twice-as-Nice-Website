@@ -7,7 +7,10 @@
     require_once('templates/categories.php');
     require_once('templates/transactions.php');
     $db = getDatabaseConnection();
-    $username = $_SESSION['username'];
+    if (!isset($_SESSION['csrf'])) {
+        $_SESSION['csrf'] = generate_random_token();
+    }   
+    $username = htmlspecialchars($_SESSION['username']);
     $user= getUserByUsername($db, $username);
     $cats = getCategories($db);
     output_header();

@@ -5,7 +5,7 @@
     require_once('templates/common.php');   
     require_once('templates/categories.php');
     $db = getDatabaseConnection();
-    $subcat_id = $_GET['id'];
+    $subcat_id = htmlspecialchars($_GET['id']);
     $subcat_name = getSubcategoryName($db, $subcat_id);
     $items = getItems($db);
     $cats = getCategories($db);
@@ -13,7 +13,7 @@
     output_header();
     output_categories($db, $cats);
 ?>
-    <h1><a href="category_page.php?id=<?=$cat['id']?>"><?=$cat['name']?></a> -> <?=$subcat_name?></h1>
+    <h1><a href="category_page.php?id=<?=htmlspecialchars($cat['id'])?>"><?=htmlspecialchars($cat['name'])?></a> -> <?=htmlspecialchars($subcat_name)?></h1>
     <aside id="random_items">
         <?php foreach ($items as $item) { 
             if(getSubcategoryId($db,$item['id']) == $subcat_id){

@@ -5,7 +5,7 @@
     header('Content-Type: application/json');
     $db = getDatabaseConnection();
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $sortOrder = $_POST['sortOrder'];
+        $sortOrder = htmlspecialchars($_POST['sortOrder']);
     
         $_SESSION['sortOrder'] = $sortOrder;
 

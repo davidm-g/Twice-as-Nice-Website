@@ -4,7 +4,7 @@
     require_once('database/users.php');  
     $db = getDatabaseConnection();
     header('Content-Type: application/json');
-    $query = $_GET['query'];
+    $query = htmlspecialchars($_GET['query']);
 
     if (!empty($query)) {
         

@@ -54,6 +54,7 @@
             <h2 class="modalheader">Login</h2>
             <button id="closebtnL"><i class="fa-regular fa-circle-xmark"></i></button>
             <form action="action_login.php" method="post" id="loginfields">
+            <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
                 <input type="text" name="username" placeholder="Username" required>
                 <input type="password" name="password" placeholder="Password"required>
                 <button type="submit">Login</button>
@@ -72,6 +73,7 @@
             </div>
             <button id="closebtnR"><i class="fa-regular fa-circle-xmark"></i></button>
             <form action="action_register.php" method="post" id="registerfields" onsubmit="return verifyPassword()">
+            <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
                 <input type="hidden" id="picture" name="picture" value="">
                 <input type="text" name="name" placeholder="Name" required>
                 <input type="text" name="username" placeholder="Username" required>

@@ -4,7 +4,7 @@ require_once('database/users.php');
 
 $db = getDatabaseConnection();
 
-$username = $_GET['username'];
+$username = htmlspecialchars($_GET['username']);
 
 $stmt = $db->prepare("SELECT username FROM users WHERE username = :username");
 $stmt->execute(['username' => $username]);

@@ -6,6 +6,9 @@
     require_once('database/users.php');
     require_once('templates/categories.php');
     $db = getDatabaseConnection();
+    if (!isset($_SESSION['csrf'])) {
+        $_SESSION['csrf'] = generate_random_token();
+      }
 // Fetch sizes, conditions, brands, categories, and subcategories from the database
     $sizes = getSizes($db);
     $conditions = getConditions($db);
@@ -17,6 +20,7 @@
 ?>
         <h1>Sell an Item</h1>
                 <form action="action_post_item.php" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
             <label for="name">Name:</label><br>
             <input type="text" id="name" name="name"><br>
             <label for="size">Size:</label><br>

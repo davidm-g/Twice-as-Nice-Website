@@ -5,8 +5,8 @@ require_once ('database/items.php');
 
 $db = getDatabaseConnection();
 
-$item_id = $_POST['item_id'];
-$username = $_SESSION['username'];
+$item_id = htmlspecialchars($_POST['item_id']);
+$username = htmlspecialchars($_SESSION['username']);
 
 toggleWishlist($db, $item_id, $username);
 

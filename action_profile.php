@@ -4,7 +4,10 @@
     require_once('database/connection.php');                 // database connection
     require_once('database/users.php');                      // user table queries
 
-    $db = getDatabaseConnection();                           // connecting to the database
+    $db = getDatabaseConnection();   
+    if ($_SESSION['csrf'] !== $_POST['csrf']) {
+        die('Error: Invalid request. Please refresh the page and try again.');
+    }                        
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $username = $_SESSION['username'];
         if (isset($_POST['update_name'])) {

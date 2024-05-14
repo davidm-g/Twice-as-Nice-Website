@@ -4,13 +4,13 @@ require_once ('database/messages.php');
 session_start();
 $db = getDatabaseConnection();
 // Get the current user's username
-$username = $_SESSION['username'];
+$username = htmlspecialchars($_SESSION['username']);
 
 // Get the receiver, item_id, and message_text from the POST data
-$receiver = $_POST['receiver'];
-$itemId = $_POST['item_id'];
-$messageText = $_POST['message_text'];
-$price = isset($_POST['price']) ? $_POST['price'] : null;
+$receiver = htmlspecialchars($_POST['receiver']);
+$itemId = htmlspecialchars($_POST['item_id']);
+$messageText = htmlspecialchars($_POST['message_text']);
+$price = isset($_POST['price']) ? htmlspecialchars($_POST['price']) : null;
 
 // If the new message includes a price, it's a new proposal
 if ($price !== null) {
@@ -22,6 +22,6 @@ if ($price !== null) {
 sendMessage($db, $username, $receiver, $itemId, $messageText, $price);
 
 // Redirect back to the conversations page
-header("Location: messages.php?user=$receiver&item=$itemId");
+header("Location: messages.php?user=".urlencode($receiver)."&item=".urlencode($itemId));
 exit;
 

@@ -5,7 +5,10 @@
     require_once('templates/common.php');  
     require_once('templates/categories.php'); 
     $db = getDatabaseConnection();
-    $id = $_GET['id'];
+    if (!isset($_SESSION['csrf'])) {
+        $_SESSION['csrf'] = generate_random_token();
+    } 
+    $id = htmlspecialchars($_GET['id']);
     $cats = getCategories($db);
     output_header();
     output_categories($db, $cats);
@@ -14,7 +17,7 @@
         <img id="item-image" src=<?=getImage($db, $id)?> alt="Example Item image">
         <div id="item-info">
         <h2><?=getTitle($db, $id)?></h2>
-        <h2>$<span id="item-price"><?=getPrice($db, $id)?></span></h2>
+        <h2>€<span id="item-price"><?=getPrice($db, $id)?></span></h2>
         <p>Brand: <span id="item-brand"><?=getBrand($db, $id)?></span></p>
         <p>Category: <span id="item-category"><?=getCategory($db, $id)?></span></p>
         <p>Condition: <span id="item-condition"><?=getCondition($db, $id)?></span></p>

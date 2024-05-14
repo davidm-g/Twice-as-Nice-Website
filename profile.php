@@ -5,10 +5,10 @@
     require_once('templates/common.php');   
     require_once('database/users.php');
     require_once('templates/categories.php');
-    require_once('templates/transactions.php');
     $db = getDatabaseConnection();
     $username = $_SESSION['username'];
     $user= getUserByUsername($db, $username);
+    $items = getItems($db);
     $cats = getCategories($db);
     output_header();
     output_categories($db, $cats);
@@ -90,10 +90,26 @@
         <button type="submit" name="add_condition"> Add Condition </button>
     </form>
 <?php } ?>
-<section id="wardrobe">
-    <h2>Wardrobe</h2>
-    <?php output_wardrobe($username, $db); ?>
-</section>
+<h1>Wardrobe</h1>
+    <aside id="random_items">
+        <?php foreach ($items as $item) { 
+            if(getSeller($db,$item['id']) == $_SESSION['username']){
+                if (isItemForSale($db, $item['id'])) {
+                    outputItem($db, $item);?>
+                    <p class="item-price">Price: <?=getPrice($db, $item['id'])?> €</p>
+                    <form id="manage-item-<?=$item['id']?>">
+                        <input type="hidden" name="item_id" value="<?=$item['id']?>">
+                        <div id="new-price-<?=$item['id']?>" style="display: none;">
+                            <input type="number" name="new_price" min="0" step="5" placeholder="New price" required>
+                            <input type="button" onclick="changePrice('<?=$item['id']?>')" value="Submit New Price">
+                        </div>
+                        <button type="button" onclick="showNewPrice('<?=$item['id']?>')">Change Price</button>
+                        <input type="button" onclick="deleteItem('<?=$item['id']?>')" value="Delete Item">
+                    </form>
+                <?php }
+            }
+        } ?>    
+    </aside>
 <a href="sell.php">Sell More Items!!!</a>
 <script src="/scripts/manage_items.js" defer></script>
 <script src="/scripts/verify_user.js" defer></script>    

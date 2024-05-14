@@ -21,36 +21,22 @@
         <p>Size: <span id="item-size"><?=getSize($db, $id)?></span></p>
 
         <div id="seller-info">
-            <a href="seller.php"><img id="profile-pic" src=<?=getImage($db, $id)?> alt="Seller Profile Pic"></a>
+            <a href="seller.php"><img id="profile-pic" src=<?=getSellerImage($db, $id)?> title="<?=getSellerName($db, $id)?>" alt="Seller Profile Pic"></a>
             <button id="msg-button" onclick="messageSeller()"><i class="fa-solid fa-square-envelope"></i></i></i></button>
         </div>
 
-        <div id="action-buttons">
-            <button id="cart-button" onclick="addToCart()"><i class="fa-solid fa-cart-plus"></i>Add to Cart</button>
-            <button id="negotiate-button" onclick="window.location.href='negotiate_price_page.html'"><i class="fa-solid fa-tag"></i>Negotiate Price</button>
-            <button id="wishlist-button" onclick="addToWishlist()"><i class="fa-regular fa-heart"></i>Add to Wishlist</button>
-        </div>
+        <?php if(isset($_SESSION['username'])) { ?>
+            <div id="action-buttons">
+                <button id="cart-button" onclick="addToCart()"><i class="fa-solid fa-cart-plus"></i>Add to Cart</button>
+                <button id="negotiate-button" onclick="window.location.href='negotiate_price_page.html'"><i class="fa-solid fa-tag"></i>Negotiate Price</button>
+                <button id="wish<?=$id?>" class="<?=(isOnWishlist($db, $id, $_SESSION['username'])) ? 'fa-solid fa-heart' : 'fa-regular fa-heart'?>">Add to Wishlist</button>
+            </div>
+        <?php } ?>
         </div>
         <div id="descriptioncont">
             <p><span id="item-description"><?=getDescription($db, $id)?></span></p>
         </div>    
     </div>
-
-    <script>
-        function addToWishlist() {
-            // Add code here to send a request to your server to add the item to the user's wishlist
-        }
-
-        function addToCart() {
-            // Add code here to send a request to your server to add the item to the user's shopping cart
-        }
-
-        function messageSeller() {
-            // Add code here to send a request to your server to message the seller
-        }
-
-        
-    </script>
 <?php 
     output_footer();
 ?>

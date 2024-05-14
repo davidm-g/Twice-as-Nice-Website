@@ -23,7 +23,30 @@
         return $img['image_url'];
     }
 
-    function getSeller($db, $id) {
+    function getSellerImage($db, $it_id) {
+        $stmt = $db->prepare(
+            "SELECT seller from items
+            WHERE id = :it_id");
+        $stmt->execute([':it_id' => $it_id]);
+        $uname = ($stmt->fetch())['seller'];
+        $stmt2 = $db->prepare(
+            "SELECT profile_pic from users
+            WHERE username = :uname");
+        $stmt2->execute([':uname' => $uname]);
+        $img = $stmt2->fetch();
+        return $img['profile_pic'];
+    }
+
+    function getSeller($db, $it_id) {
+        $stmt = $db->prepare(
+            "SELECT seller from items
+            WHERE id = :it_id");
+        $stmt->execute([':it_id' => $it_id]);
+        $uname = ($stmt->fetch())['seller'];
+        return $uname;
+    }
+
+    function getSellerName($db, $id) {
         $stmt = $db->prepare(
             "SELECT seller from items
             WHERE id = :id");

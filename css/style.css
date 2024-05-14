@@ -481,3 +481,9 @@ header #userpic {
         0% { transform: translateX(0); }
         100% { transform: translateX(100%); }
     }
+
+/* Profile Page */
+
+    main > #photoContainer, main > form {
+        margin: auto;
+    }    

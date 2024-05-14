@@ -24,8 +24,12 @@ function deleteItem(itemId) {
 function showNewPrice(itemId) {
     // Select the div for changing the price
     const newPriceDiv = document.getElementById('new-price-' + itemId);
-    // Display the div
-    newPriceDiv.style.display = 'block';
+    if(newPriceDiv.style.display === 'block') {
+        newPriceDiv.style.display = 'none';
+    }
+    else if(newPriceDiv.style.display === 'none') {
+        newPriceDiv.style.display = 'block';
+    }
 }
 function changePrice(itemId) {
     const form = document.getElementById('manage-item-' + itemId);
@@ -36,11 +40,13 @@ function changePrice(itemId) {
     }
     const formData = new FormData(form);
     formData.append('action', 'change_price');
+    document.getElementById('new-price-' + itemId).style.display = 'none';
 
     fetch('api_manage_items.php', {
         method: 'POST',
         body: formData
     })
+
     .then(response => response.json())
     .then(data => {
         if (data.status === 'success') {

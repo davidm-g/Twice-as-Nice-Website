@@ -15,7 +15,7 @@
         $_SESSION['username'] = $username;  
         $_SESSION['picture'] = getProfilePic($db, $username);  // set session variables
         $_SESSION['sortOrder'] = '0';   
-                         
+        $_SESSION['direction'] = '0';                       // set default sort direction = ASC
     }
     
     header('Location: index.php');         // redirect to the page we came from

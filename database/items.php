@@ -1,13 +1,17 @@
 <?php
     function getItems($db) {
+        $direction = ($_SESSION['direction'] == '1') ? 'DESC' : 'ASC';
         if($_SESSION['sortOrder'] == '1') {
-            $stmt = $db->prepare("SELECT * FROM items ORDER BY price ASC");
+            $stmt = $db->prepare("SELECT * FROM items 
+                JOIN transactions ON transactions.item_id = items.id
+                WHERE transactions.status = 'for sale'
+                ORDER BY price COLLATE NOCASE $direction");
         }
         else if($_SESSION['sortOrder'] == '2') {
-            $stmt = $db->prepare("SELECT * FROM items ORDER BY name ASC");
+            $stmt = $db->prepare("SELECT * FROM items ORDER BY name COLLATE NOCASE $direction");
         } 
         else {
-            $stmt = $db->prepare("SELECT * FROM items");
+            $stmt = $db->prepare("SELECT * FROM items ORDER BY id COLLATE NOCASE $direction");
         }
         $stmt->execute();
         $items = $stmt->fetchAll();
@@ -307,12 +311,12 @@
                     <h2>Filter by</h2><i id="filter_btn" class="fa-solid fa-filter"></i>
                 </div>
                 <div id = 'sort_menu'>
-                    <h2>Order by</h2><i id="sort_btn" class="fa-solid fa-sort"></i>
-                    <div id="sort_options" style="display: none;">
+                    <h2 id='orderBy'>Order by</h2><i id="sort_btn" class="fa-solid fa-sort-up"></i>
+                    <div id="sort_options">
                         <?php foreach (getOrders($db) as $order) { ?>
                             <div id="order<?=$order['id']?>"><?=$order['order_name']?></div>
                         <?php } ?> 
-                        <div id="reset_order" style="display: <?=($_SESSION['sortOrder'] == '0') ? 'none' : 'flex'?>">Reset order</div>
+                        <div id="reset_order" style="display: <?=($_SESSION['sortOrder'] != '0') ? 'flex' : 'none'?>">Reset order</div>
                     </div>
                 </div>
             </div>

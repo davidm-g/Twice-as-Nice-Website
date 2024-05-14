@@ -452,6 +452,7 @@ header #userpic {
     }
 
     #sort_options {
+        display: flex;
         flex-direction: row;
         gap: 1em;
     }

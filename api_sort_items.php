@@ -5,10 +5,10 @@
     header('Content-Type: application/json');
     $db = getDatabaseConnection();
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $sortOrder = htmlspecialchars($_POST['sortOrder']);
+        if(isset($_POST['sortOrder']))$_SESSION['sortOrder'] = $_POST['sortOrder'];
+        
+        if(isset($_POST['direction']))$_SESSION['direction'] = $_POST['direction'];
     
-        $_SESSION['sortOrder'] = $sortOrder;
-
         // Return a JSON response
         echo json_encode(['status' => 'success', 'message' => 'Items order changed']);
         exit;

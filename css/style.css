@@ -451,12 +451,13 @@ header #userpic {
         align-items: center;
     }
 
-    #sort_options {
+    #sort_options, #filter_options {
+        display: flex;
         flex-direction: row;
         gap: 1em;
     }
 
-    #sort_options * {
+    #sort_options *, #filter_options *{
         font-size: 20px;
     }
 

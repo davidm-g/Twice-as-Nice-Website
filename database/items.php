@@ -309,14 +309,19 @@
             <div id="feed_menu">
                 <div id = 'filter_menu'>
                     <h2>Filter by</h2><i id="filter_btn" class="fa-solid fa-filter"></i>
+                    <div id="filter_options">
+                        <?php foreach (getBrands($db) as $brand) { ?>
+                            <div id="brand<?=$brand['id']?>"><?=$brand['name']?></div>
+                        <?php } ?>
+                    </div>
                 </div>
                 <div id = 'sort_menu'>
-                    <h2 id='orderBy'>Order by</h2><i id="sort_btn" class="fa-solid fa-sort-up"></i>
+                    <h2>Order by</h2><i id="sort_btn" class="fa-solid fa-sort-up"></i>
                     <div id="sort_options">
                         <?php foreach (getOrders($db) as $order) { ?>
                             <div id="order<?=$order['id']?>"><?=$order['order_name']?></div>
                         <?php } ?> 
-                        <div id="reset_order" style="display: <?=($_SESSION['sortOrder'] != '0') ? 'flex' : 'none'?>">Reset order</div>
+                        <div id="reset_order" style="display: <?=($_SESSION['sortOrder'] != '1') ? 'none' : 'flex'?>">Reset order</div>
                     </div>
                 </div>
             </div>

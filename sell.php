@@ -15,7 +15,7 @@
     $brands = getBrands($db);
     $categories = getCategories($db);
     output_header();
-    output_categories($db, $$categories);
+    output_categories($db, $categories);
     
 ?>
         <h1>Sell an Item</h1>

@@ -33,6 +33,8 @@
             // Delete the images associated with the item from the database
             $stmt = $db->prepare("DELETE FROM images WHERE item_id = :item_id");
             $stmt->execute(['item_id' => $item_id]);
+            $stmt = $db->prepare("DELETE FROM item_categories WHERE item_id = :item_id");
+            $stmt->execute(['item_id' => $item_id]);
             
             // Delete the item from the database
             $stmt = $db->prepare("DELETE FROM items WHERE id = :item_id");
@@ -44,4 +46,3 @@
             exit;
         }
     }
-?>

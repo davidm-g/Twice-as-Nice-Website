@@ -16,4 +16,3 @@ output_header();
 output_categories($db, $cats);
 outputItems($db, $items);
 output_footer(); 
-?>

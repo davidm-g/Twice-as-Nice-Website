@@ -21,4 +21,3 @@
         $_SESSION['csrf'] = generate_random_token();
     }                   
     header('Location: index.php');                  // redirect to index.php
-?>

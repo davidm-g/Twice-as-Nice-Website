@@ -15,7 +15,7 @@
     $brands = getBrands($db);
     $categories = getCategories($db);
     output_header();
-    output_categories($db, $$categories);
+    output_categories($db, $categories);
     
 ?>
         <h1>Sell an Item</h1>
@@ -55,7 +55,7 @@
                 <!-- Subcategories will be populated based on the selected category using JavaScript -->
             </select><br>
             <label for="price">Price:</label><br>
-            <input type="number" id="price" name="price" step="5" required><br>
+            <input type="number" id="price" name="price"  required><br>
             <label for="images">Images:</label><br>
             <input type="file" id="images" name="images[]" multiple required><br>
             <label for="description">Description:</label><br>

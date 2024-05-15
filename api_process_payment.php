@@ -15,4 +15,3 @@ updateTransactionStatus($db, $buyer, $itemId);
 $_SESSION['payment_success'] = "Your payment has been successfully processed!";
 
 header('Location: /messages.php?user=' . urlencode($otherUser) . '&item=' . urlencode($itemId)); // Redirect back to the messages page
-?>

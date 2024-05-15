@@ -24,7 +24,7 @@
         </div>
     <?php } else { ?>
         <div class='conversation'>
-            <h2><?= $itemName ?> has been sold</h2>
+            <h2>Item not available.</h2>
         </div>
     <?php }
     }

@@ -28,7 +28,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $validImages = true;
     for ($i = 0; $i < count($images['name']); $i++) {
         $targetDir = "database/images/";
-        $targetFile = $targetDir . basename($images["name"][$i]);
+        $imageName = filter_var(str_replace(' ', '_', $images["name"][$i]), FILTER_SANITIZE_STRING);
+        $targetFile = $targetDir . basename($imageName);
         $imageFileType = strtolower(pathinfo($targetFile,PATHINFO_EXTENSION));
         if ($images["size"][$i] > 1500000) { // 1.5MB in bytes
             echo "<script>alert('Sorry, your file is too large.');</script>";
@@ -87,4 +88,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Error: Invalid images";
     }
 }
-?>

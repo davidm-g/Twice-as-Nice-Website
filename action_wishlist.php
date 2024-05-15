@@ -11,4 +11,3 @@ $username = htmlspecialchars($_SESSION['username']);
 toggleWishlist($db, $item_id, $username);
 
 echo isOnWishlist($db, $item_id, $username) ? 'fa-solid fa-heart' : 'fa-regular fa-heart';
-?>

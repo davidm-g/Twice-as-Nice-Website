@@ -13,4 +13,3 @@
         echo json_encode(['status' => 'success', 'message' => 'Items order changed']);
         exit;
     }
-?>

@@ -97,7 +97,7 @@
         <button type="submit" name="add_brand"> Add Brand </button>
     </form>
     <form action="action_profile.php" method="post">
-    <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
+        <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
         <label for="condition">New Condition:</label><br>
         <input type="text" id="condition" name="condition" required><br>
         <button type="submit" name="add_condition"> Add Condition </button>

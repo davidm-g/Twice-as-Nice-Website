@@ -8,4 +8,3 @@
     $subcategories = getSubcategories($db, $cat_id);
 
     echo json_encode($subcategories);
-?>

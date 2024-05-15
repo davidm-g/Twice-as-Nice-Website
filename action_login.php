@@ -20,4 +20,3 @@
     
     header('Location: index.php');         // redirect to the page we came from
     exit;
-?>

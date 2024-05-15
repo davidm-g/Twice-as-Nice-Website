@@ -18,4 +18,3 @@ if($type == '0') {
         'bgcolor' => isOnWishlist($db, $item_id, $username) ? '#4A4E69' : 'transparent',
         'color' => isOnWishlist($db, $item_id, $username) ? '#F2E9E4' : '#4A4E69']);
 }
-?>

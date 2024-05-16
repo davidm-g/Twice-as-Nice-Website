@@ -16,7 +16,7 @@
     output_categories($db, $cats);
 ?>
 
-<div class="conversation-container"> <!-- Container for all conversation containers -->
+<div class="conversation-container"> 
 <?php
 foreach ($conversations as $conversation) {
     $otherUser = htmlspecialchars($conversation['other_user']);
@@ -24,19 +24,19 @@ foreach ($conversations as $conversation) {
     $itemName = htmlspecialchars(getItemName($db,$itemId));
     if (isItemForSale($db, $itemId)) { ?>
         <a href="messages.php?user=<?= $otherUser ?>&item=<?= $itemId ?>" class='conversation-link'>
-            <div class='conversation'> <!-- Removed custom-margin class -->
+            <div class='conversation'> 
                 <h3><?= $itemName ?></h3>
                 <p><?= $otherUser ?></p>
             </div>
         </a>
     <?php } else { ?>
-        <div class='conversation'> <!-- Removed custom-margin class -->
+        <div class='conversation'> 
             <h2>Item not available.</h2>
         </div>
     <?php }
 }
 ?>
-</div> <!-- Close conversation-container -->
+</div> 
 <?php
     output_footer();
 ?>

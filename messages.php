@@ -19,7 +19,6 @@
     $itemName = htmlspecialchars(getItemName($db, $itemId));
     $seller = htmlspecialchars(getSellerUsername($db, $itemId));
     date_default_timezone_set('Europe/Lisbon');
-    // Get the messages
     $messages = getMessages($db, $username, $otherUser, $itemId);
     output_header();
     output_categories($db, $cats);
@@ -38,7 +37,8 @@
         <?php } ?>
      
     <div class='messages'>
-        <h2>Messages with <?= htmlspecialchars($otherUser) ?> about <?= htmlspecialchars($itemName) ?></h2>
+    <div class="msg-container">
+        <h2>Messages with <a href="seller.php"><?= htmlspecialchars($otherUser) ?></a> about <?= htmlspecialchars($itemName) ?></h2>
         <?php foreach($messages as $message){ 
         $class = $message['sender'] === $username ? 'user' : 'other_user';
         $date = date('F j, Y, g:i a', $message['timestamp']); 
@@ -74,6 +74,7 @@
                     <input type="number" name="new_price" placeholder="New Price" required>
                     <button type="submit">Submit New Price</button>
                 </form>
+            </div>
             </div>
             <?php } ?>
         <?php } ?>

@@ -1,0 +1,85 @@
+.messages {
+    padding: 3% 12% 3% 12%;
+}
+
+.msg-container {
+    padding: 3% 2% 3% 2%;
+    border-radius: 15px;
+    background-color: #D8DBE2;
+}
+
+/* Message Headers */
+.messages .msg-container h2 {
+    color: #4A4E69;
+}
+
+/* Individual Messages */
+.messages .msg-container .user,
+.messages .msg-container .other_user {
+    width: 45%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
+/* User's Messages */
+.messages .msg-container .user {
+    background-color: #D0CCD0;
+    color: #22223B;
+    margin-left: auto;
+    text-align: right;
+    padding-right: 2%;
+}
+
+/* Other User's Messages */
+.messages .msg-container .other_user {
+    background-color: #A9BCD0;
+    color: #22223B;
+    margin-right: auto;
+    padding-left: 2%;
+}
+
+/* Message Sender */
+.messages .msg-container .user strong,
+.messages .msg-container .other_user strong {
+    color: #4A4E69;
+}
+
+/* Message Timestamp */
+.messages .msg-container small {
+    color: #4A4E69;
+}
+
+/* Message Input Forms */
+.messages form {
+    margin-top: 20px;
+    display: flex;
+    align-items: flex-start;
+}
+
+.messages form input[type="text"],
+.messages form input[type="number"] {
+    flex: 1;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #4A4E69;
+    border-radius: 5px;
+    background-color: #F2E9E4;
+    color: #22223B;
+}
+
+.messages form input[type="submit"],
+.messages form button[type="submit"] {
+    padding: 10px 20px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4A4E69;
+    color: #F2E9E4;
+    cursor: pointer;
+}
+
+.messages form input[type="submit"]:hover,
+.messages form button[type="submit"]:hover {
+    background-color: #22223B;
+}

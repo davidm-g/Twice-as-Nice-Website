@@ -3,7 +3,7 @@
     require_once ('database/connection.php');
     require_once ('database/items.php');
     $db = getDatabaseConnection();
-    $items = getItems($db);
+    $items = getFilteredItems($db);
 
     $temp_string = '';
     foreach ($items as $item) { 

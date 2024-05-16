@@ -84,7 +84,7 @@ nav {
     border-bottom: 1px solid #C9ADA7;
 }
 
-nav li a {
+nav li a , li h3{
     color: #22223B;;
     text-decoration: none;
 }
@@ -451,10 +451,11 @@ header #userpic {
         align-items: center;
     }
 
-    #sort_options, #filter_options {
+    #sort_options, #filter_options, #applied_filters {
         display: flex;
         flex-direction: row;
-        gap: 1em;
+        gap: 3em;
+        margin: 0;
     }
 
     #sort_options *, #filter_options *{
@@ -469,18 +470,96 @@ header #userpic {
         font-size: 2rem;
     }
 
-    #reset_order {
+    #reset_order, #reset_filters {
         color: red;
+        background-color: transparent;
     }
 
-    @keyframes slide-in {
-        0% { transform: translateX(100%); }
-        100% { transform: translateX(0); }
+    #reset_order:hover, #reset_filters:hover {
+        background-color:#fbd9d3;
     }
 
-    @keyframes slide-out {
-        0% { transform: translateX(0); }
-        100% { transform: translateX(100%); }
+    [id^="drop-filter"] {
+        display: none;
+        border-radius: 1rem;
+        position: absolute;
+        background-color: #f1f1f1;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+    }
+      
+    [id^="drop-filter"] * {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        border-radius: 1rem;
+        border-style: none;
+    }
+      
+    [id^="drop-filter"] div:hover {
+        background-color: #ddd;
+    }
+      
+    li:hover [id^="drop-filter"] {display: block;}
+
+    #filter_menu ul {
+        padding: 0;
+    }
+
+    #feed_menu li {
+        text-align: center;
+        list-style-type: none;
+    }
+
+    #feed_menu h3 {
+        font-weight: normal;
+        margin: 0;
+    }
+
+    #sort_menu h3, #reset_filters {
+        padding: 1em;
+        border-radius: 1.5rem;
+    }
+
+    #feed_menu h3:hover, #sort_btn:hover, [id^="drop-filter"] > div:hover {
+        cursor: pointer;
+    }
+
+    /* Price Filter */
+
+    [id^="drop-filter"] input {
+        margin: 1em;
+    }
+
+    [id^="drop-filter"] input:focus {
+        outline: none;
+    }
+
+    [id^="drop-filter"] form { 
+        padding: 0;
+    }
+
+    [id^="drop-filter"] button {
+        margin: auto;
+    }
+
+    /* Applied Filters */
+
+    #applied_filters {
+        padding: 0;
+    }
+
+    [id^="applied_filters"] *{
+        background-color: #f08080;
+        padding: 1rem;
+        border-radius: 5rem;
+    }
+
+    [id^="applied_filters"] *:hover {
+        cursor: pointer;
+        background-color: #f39f9f;
     }
 
 /* Profile Page */

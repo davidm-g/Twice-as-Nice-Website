@@ -1,23 +1,3 @@
-/*
-document.getElementById('orderBy').addEventListener('click', function() {
-    const sortOptions = document.getElementById('sort_options');
-    if(sortOptions.style.display == 'none') {
-        sortOptions.style.display = 'flex';
-        sortOptions.style.animation = 'slide-in 0.5s forwards';
-        sortOptions.removeEventListener('animationend', hideAfterAnimation);
-    }
-    else {
-        sortOptions.style.animation = 'slide-out 0.5s forwards';
-        sortOptions.addEventListener('animationend', hideAfterAnimation);
-    }
-    
-    function hideAfterAnimation() {
-        sortOptions.style.display = 'none';
-        sortOptions.removeEventListener('animationend', hideAfterAnimation);
-    }
-});
-*/
-
 const sort_btn = document.getElementById('sort_btn');
 
 sort_btn.addEventListener('click', function() {
@@ -73,6 +53,10 @@ orders.forEach(order => {
         .then(response => response.json())
         .then(data => {
             reset.style.display = 'flex';
+            orders.forEach(order => {
+                order.style.backgroundColor = 'transparent';
+            });
+            order.style.backgroundColor = '#C9ADA7';
         })
         .catch(error => {
             console.error('Error:', error);
@@ -90,6 +74,9 @@ reset.addEventListener('click', async function() {
     .then(response => response.json())
     .then(data => {
         reset.style.display = 'none';
+        orders.forEach(order => {
+            order.style.backgroundColor = 'transparent';
+        });
     })
     .catch(error => {
         console.error('Error:', error);

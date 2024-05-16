@@ -16,6 +16,10 @@
         $_SESSION['picture'] = getProfilePic($db, $username);  // set session variables
         $_SESSION['sortOrder'] = '0';   
         $_SESSION['direction'] = '0';                       // set default sort direction = ASC
+        $_SESSION['brands'] = array();
+        $_SESSION['sizes'] = array();
+        $_SESSION['conditions'] = array(); 
+        $_SESSION['price'] = '';                     
     }
     
     header('Location: index.php');         // redirect to the page we came from

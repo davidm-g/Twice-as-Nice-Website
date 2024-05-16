@@ -24,6 +24,7 @@
     <script src="scripts/check_empty_page.js" defer></script>
     <script src="scripts/picture_handler.js" defer></script>
     <script src="scripts/sort_menu.js" defer></script>
+    <script src="scripts/filter_menu.js" defer></script>
 </head>
 <body>
     <header>

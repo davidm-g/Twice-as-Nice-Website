@@ -9,7 +9,7 @@
     if (!isset($_SESSION['csrf'])) {
         $_SESSION['csrf'] = generate_random_token();
     }   
-    $items = getItems($db);
+    $items = getFilteredItems($db);
     $cats = getCategories($db);
 
 output_header();

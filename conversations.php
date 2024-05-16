@@ -14,20 +14,29 @@
     $cats = getCategories($db);
     output_header();
     output_categories($db, $cats);
-    foreach ($conversations as $conversation) {
-        $otherUser = htmlspecialchars($conversation['other_user']);
-        $itemId = htmlspecialchars($conversation['item_id']);
-        $itemName = htmlspecialchars(getItemName($db,$itemId));
-        if (isItemForSale($db, $itemId)) { ?>
-        <div class='conversation'>
-            <h3><a href="messages.php?user=<?= $otherUser ?>&item=<?= $itemId ?>"><?= $itemName ?></a></h3>
-            <p><?= $otherUser ?></p>
-        </div>
+?>
+
+<div class="conversation-container"> <!-- Container for all conversation containers -->
+<?php
+foreach ($conversations as $conversation) {
+    $otherUser = htmlspecialchars($conversation['other_user']);
+    $itemId = htmlspecialchars($conversation['item_id']);
+    $itemName = htmlspecialchars(getItemName($db,$itemId));
+    if (isItemForSale($db, $itemId)) { ?>
+        <a href="messages.php?user=<?= $otherUser ?>&item=<?= $itemId ?>" class='conversation-link'>
+            <div class='conversation'> <!-- Removed custom-margin class -->
+                <h3><?= $itemName ?></h3>
+                <p><?= $otherUser ?></p>
+            </div>
+        </a>
     <?php } else { ?>
-        <div class='conversation'>
+        <div class='conversation'> <!-- Removed custom-margin class -->
             <h2>Item not available.</h2>
         </div>
     <?php }
-    }
+}
+?>
+</div> <!-- Close conversation-container -->
+<?php
     output_footer();
 ?>

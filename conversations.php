@@ -20,7 +20,8 @@
         $itemName = htmlspecialchars(getItemName($db,$itemId));
         if (isItemForSale($db, $itemId)) { ?>
         <div class='conversation'>
-            <h2><a href="messages.php?user=<?= $otherUser ?>&item=<?= $itemId ?>">Conversation with <?= $otherUser ?> about <?= $itemName ?></a></h2>
+            <h3><a href="messages.php?user=<?= $otherUser ?>&item=<?= $itemId ?>"><?= $itemName ?></a></h3>
+            <p><?= $otherUser ?></p>
         </div>
     <?php } else { ?>
         <div class='conversation'>

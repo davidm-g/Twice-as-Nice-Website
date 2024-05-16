@@ -5,7 +5,7 @@
 .msg-container {
     padding: 3% 2% 3% 2%;
     border-radius: 15px;
-    background-color: #D8DBE2;
+    background-color: #C9ADA7;
 }
 
 /* Message Headers */
@@ -33,7 +33,7 @@
 
 /* Other User's Messages */
 .messages .msg-container .other_user {
-    background-color: #A9BCD0;
+    background-color: #9A8C98;
     color: #22223B;
     margin-right: auto;
     padding-left: 2%;
@@ -64,8 +64,8 @@
     margin-bottom: 10px;
     border: 1px solid #4A4E69;
     border-radius: 5px;
-    background-color: #F2E9E4;
-    color: #22223B;
+    background-color: transparent;
+    color: #F2E9E4;
 }
 
 .messages form input[type="submit"],
@@ -77,9 +77,45 @@
     background-color: #4A4E69;
     color: #F2E9E4;
     cursor: pointer;
+    transition: all ease 0.3s;
 }
 
 .messages form input[type="submit"]:hover,
 .messages form button[type="submit"]:hover {
     background-color: #22223B;
+    transition: all ease 0.3s;
+}
+
+
+/* Styling for the negotiation form */
+
+#negotiateFields input[type="number"] {
+    padding: 10px;
+    border: 1px solid #4A4E69;
+    border-radius: 5px;
+    background-color: transparent;
+    color: #22223B;
+}
+
+#negotiateFields button[type="submit"] {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4A4E69;
+    color: #F2E9E4;
+    cursor: pointer;
+    transition: all ease 0.3s;
+}
+
+#negotiateFields button[type="submit"]:hover {
+    background-color: #22223B;
+    transition: all ease 0.3s;
+}
+
+#negotiateFields {
+    background: #9A8C98;
+    margin:0;
+    padding: 10px;
+    padding-bottom: 1px;
+    border-radius: 10px;;
 }

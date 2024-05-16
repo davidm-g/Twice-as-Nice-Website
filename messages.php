@@ -26,15 +26,7 @@
         echo "<p class='success'>" . htmlspecialchars($_SESSION['payment_success']) . "</p>";
         unset($_SESSION['payment_success']);
     }
-    
-    if ($username != $seller && $transaction['status'] != 'sold') { ?>
-        <form action="send_message.php" method="post" id="negotiateFields">
-            <input type="hidden" name="receiver" value="<?= htmlspecialchars($otherUser) ?>">
-            <input type="hidden" name="item_id" value="<?= htmlspecialchars($itemId) ?>">
-            <input type="number" name="price" placeholder="Proposed Price" required>
-            <button type="submit">Send Proposal</button>
-        </form>
-        <?php } ?>
+    ?>
      
     <div class='messages'>
     <div class="msg-container">
@@ -91,6 +83,14 @@
         <input type="text" name="message_text" placeholder="Write your message here...">
         <input type="submit" value="Send">
     </form>
+    <?php if ($username != $seller && $transaction['status'] != 'sold') { ?>
+        <form action="send_message.php" method="post" id="negotiateFields">
+            <input type="hidden" name="receiver" value="<?= htmlspecialchars($otherUser) ?>">
+            <input type="hidden" name="item_id" value="<?= htmlspecialchars($itemId) ?>">
+            <input type="number" name="price" placeholder="Proposed Price" required>
+            <button type="submit">Send Proposal</button>
+        </form>
+        <?php } ?>
 </div>
 <script src="/scripts/negotiate_price.js" defer></script>
 <?php 

@@ -18,6 +18,7 @@
     output_categories($db, $cats);
 ?>
         <h1><?=$username?>'s profile</h1>
+        <div id="profile-form">
         <div id="photoContainer">
             <img id="photoPreview" src="<?=$_SESSION['picture']?>" alt="Add photo" />
             <input type="file" id="photoInput" accept="image/*" style="display: none;">
@@ -26,7 +27,7 @@
             <i id="removePhoto" class="fa-solid fa-trash" style="display: none;"></i>
         </div>
         <form action="action_profile.php" method="post">
-        <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
+            <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
             <input type="hidden" id="picture" name="picture" value="">
             <button type="submit" name="update_picture"> Update Picture </button>
         </form>
@@ -53,15 +54,16 @@
             <input type="hidden" name="update_password" value="1">
             <button type="submit"> Update Password </button>
         </form>
+        </div>
         
 
 <?php if (isAdmin($_SESSION['username'],$db)) { ?>
     <form action="action_profile.php" method="post" onsubmit="return validateForm(event)">
-    <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
-    <label for="elevate_username">User to elevate to admin:</label><br>
-    <input type="text" id="elevate_username" name="elevate_username" required><br>
-    <input type="submit" name="elevate" value="Elevate to Admin">
-</form>
+        <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
+        <label for="elevate_username">User to elevate to admin:</label><br>
+        <input type="text" id="elevate_username" name="elevate_username" required><br>
+        <input type="submit" name="elevate" value="Elevate to Admin">
+    </form>
     <form action="action_profile.php" method="post">
     <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
         <label for="new_category">New Category:</label><br>
@@ -124,7 +126,8 @@
             }
         } ?>    
     </aside>
-<a href="sell.php">Sell More Items!!!</a>
+<button type="button" id="sellmorebtn" href="sell.php">Sell More Items!!!</button>
+
 <script src="/scripts/manage_items.js" defer></script>
 <script src="/scripts/verify_user.js" defer></script>    
 <script src="/scripts/update_password.js" defer></script>  

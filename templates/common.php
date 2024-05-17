@@ -10,6 +10,7 @@
     <link href="css/item_page.css" rel="stylesheet">
     <link href="css/conversation.css" rel="stylesheet">
     <link href="css/messages.css" rel="stylesheet">
+    <link href="css/profile.css" rel="stylesheet">
     <script src="scripts/modal_login.js" defer></script>
     <?php if(isset($_SESSION['login'])): ?>
     <script>
@@ -32,6 +33,7 @@
     <header>
         <h1><a href="index.php">Second-Hand Website</a></h1>
         <form id="searchbar">
+            <i class="fa-solid fa-magnifying-glass"></i>
             <input type="text" placeholder="Search">
             <ul id="itemList"></ul>
         </form>

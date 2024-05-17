@@ -1,0 +1,108 @@
+#profile-form {
+    width: 50%;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #e8e8e4;
+    text-align: center;
+}
+
+#profile-form *:not(#photoPreview) {
+   padding: 1%;
+}
+
+#profile-form label {
+    font-weight: bold;
+}
+
+#profile-form input[type="text"],
+#profile-form input[type="email"],
+#profile-form input[type="password"] {
+    border: none;
+    background: none;
+    border-bottom: 1px solid #4A4E69;
+    width: 75%;
+    margin: 20px;
+}
+
+#profile-form button[type="submit"], #sellmorebtn {
+    background-color: #9A8C98; 
+    color: #F2E9E4;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-align: center;
+    font-family: "Hanken Grotesk";
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    text-transform: lowercase;
+    border: 1.5px solid #9A8C98;
+}
+
+#sellmorebtn {
+    width: 30%;
+    align-self: center;
+    margin: 5%;
+}
+
+#profile-form button[type="submit"]:hover, #sellmorebtn:hover {
+    background-color: transparent;
+    border: 1.5px solid #9A8C98;
+    color: #22223B;
+}
+
+#profile-form #photoContainer {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#photoPreview {
+    width: 125px;
+    height: 125px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+#photoInput {
+    display: none;
+}
+
+#profile-form .fa-camera,
+#profile-form .fa-trash {
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+#profile-form #webcamStream {
+    width: 125px;
+    height: 125px;
+    border-radius: 50%;
+}
+
+#profile-form #new-price- {
+    margin-top: 10px;
+}
+
+#profile-form input[type="number"] {
+    width: 150px;
+    padding: 8px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+
+#profile-form select {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+

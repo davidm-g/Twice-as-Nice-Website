@@ -125,7 +125,8 @@
             }
         } ?>    
     </aside>
-<button type="button" id="sellmorebtn" href="sell.php">Sell More Items!!!<button/>
+<button type="button" id="sellmorebtn" href="sell.php">Sell More Items!!!</button>
+
 <script src="/scripts/manage_items.js" defer></script>
 <script src="/scripts/verify_user.js" defer></script>    
 <script src="/scripts/update_password.js" defer></script>  

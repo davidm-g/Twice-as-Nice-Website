@@ -33,6 +33,7 @@
     <header>
         <h1><a href="index.php">Second-Hand Website</a></h1>
         <form id="searchbar">
+            <i class="fa-solid fa-magnifying-glass"></i>
             <input type="text" placeholder="Search">
             <ul id="itemList"></ul>
         </form>

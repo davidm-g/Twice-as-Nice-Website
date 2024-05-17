@@ -24,24 +24,25 @@ function getFilteredItems($db)
     $direction = ($_SESSION['direction'] == '1') ? 'DESC' : 'ASC';
     $query = "SELECT * FROM items 
         JOIN transactions ON transactions.item_id = items.id
+        JOIN item_categories ON item_categories.item_id = items.id
         WHERE transactions.status = 'for sale'";
+    if(isset($_SESSION['search']) && !empty($_SESSION['search'])) {
+        $query .= " AND name LIKE '%" . $_SESSION['search'] . "%'";
+    }
+    if(isset($_GET['category']) && !empty($_GET['category'])) {
+        $query .= " AND category_id = " . $_GET['category'];
+    }
+    if(isset($_GET['subcategory']) && !empty($_GET['subcategory'])) {
+        $query .= " AND subcategory_id = " . $_GET['subcategory'];
+    }
     if(isset($_SESSION['brands']) && count($_SESSION['brands']) > 0) {
         $query .= " AND brand IN ( " . implode(',', $_SESSION['brands']) . " )";
-        /*foreach ($_SESSION['brands'] as $brand) {
-            $query .= " AND brand = " . $brand;
-        }*/
     }
     if(isset($_SESSION['sizes']) && count($_SESSION['sizes']) > 0) {
         $query .= " AND size IN ( " . implode(',', $_SESSION['sizes']) . " )";
-        /*foreach ($_SESSION['sizes'] as $size) {
-            $query .= " AND size = " . $size;
-        }*/
     }
     if(isset($_SESSION['conditions']) && count($_SESSION['conditions']) > 0) {
         $query .= " AND condition IN ( " . implode(',', $_SESSION['conditions']) . " )";
-        /*foreach ($_SESSION['conditions'] as $condition) {
-            $query .= " AND condition = " . $condition;
-        }*/
     }
     if(isset($_SESSION['price']) && !empty($_SESSION['price'])) {
         $parts = explode('-', $_SESSION['price']);
@@ -406,14 +407,6 @@ function getOrders($db)
     return $orders;
 }
 
-function areFiltersApplied()
-{
-    return (isset($_SESSION['brands']) && count($_SESSION['brands']) > 0) 
-    || (isset($_SESSION['sizes']) && count($_SESSION['sizes']) > 0) 
-    || (isset($_SESSION['conditions']) && count($_SESSION['conditions']) > 0) 
-    || (isset($_SESSION['price']) && !empty($_SESSION['price']));
-}
-
 function getApplied($db) {
     $stmt = $db->prepare("SELECT * FROM applied_filters");
     $stmt->execute();
@@ -423,14 +416,31 @@ function getApplied($db) {
 
 function addFilter($db, $id, $name)
 {
-    $stmt = $db->prepare("INSERT INTO applied_filters (id, name) VALUES (:id, :name)");
-    $stmt->execute([':id' => $id, ':name' => $name]);
+    // Check if a filter with the given id already exists
+    $stmt = $db->prepare("SELECT * FROM applied_filters WHERE id = :id");
+    $stmt->execute([':id' => $id]);
+    $filter = $stmt->fetch();
+
+    if ($filter) {
+        // If a filter with the given id exists, update it
+        updateFilter($db, $id, $name);
+    } else {
+        // If no filter with the given id exists, add a new one
+        $stmt = $db->prepare("INSERT INTO applied_filters (id, name) VALUES (:id, :name)");
+        $stmt->execute([':id' => $id, ':name' => $name]);
+    }
 }
 
 function removeFilter($db, $id)
 {
     $stmt = $db->prepare("DELETE FROM applied_filters WHERE id = :id");
     $stmt->execute([':id' => $id]);
+}
+
+function updateFilter($db, $id, $name)
+{
+    $stmt = $db->prepare("UPDATE applied_filters SET name = :name WHERE id = :id");
+    $stmt->execute([':id' => $id, ':name' => $name]);
 }
 
 function outputItem($db, $item)
@@ -501,7 +511,7 @@ function outputItems($db, $items)
                     </div>
                 </li>
             </ul>
-            <h3 id="reset_filters" style="display: <?= areFiltersApplied() ? 'flex' : 'none' ?>">Reset filters</h3>
+            <h3 id="reset_filters" style="display: <?= getApplied($db) ? 'flex' : 'none' ?>">Reset filters</h3>
         </div>
         <ul id="applied_filters">
             <?php foreach (getApplied($db) as $appf) { ?>

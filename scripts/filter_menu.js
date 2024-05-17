@@ -31,6 +31,18 @@ filtersbrd.forEach(filterbrd => {
             .catch(error => {
                 console.error('Error:', error);
             });
+
+            fetch('api_updateItems.php', {
+                method: 'POST'
+            })
+            .then(response => response.text())
+            .then(data => {
+                console.log(data);
+                document.getElementById('random_items').innerHTML = data;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
         } else {
             console.log('Element with id ' + 'choicerembrd' + filterId + ' already exists');
         }
@@ -60,6 +72,18 @@ filterssz.forEach(filtersz => {
             .catch(error => {
                 console.error('Error:', error);
             });
+
+            fetch('api_updateItems.php', {
+                method: 'POST'
+            })
+            .then(response => response.text())
+            .then(data => {
+                console.log(data);
+                document.getElementById('random_items').innerHTML = data;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
         } else {
             console.log('Element with id ' + 'choiceremsz' + filterId + ' already exists');
         }
@@ -85,6 +109,18 @@ filterscond.forEach(filtercond => {
                     li.innerHTML = data;
                     appfilters.appendChild(li);
                     resetf.style.display = 'flex';
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+
+            fetch('api_updateItems.php', {
+                method: 'POST'
+            })
+            .then(response => response.text())
+            .then(data => {
+                console.log(data);
+                document.getElementById('random_items').innerHTML = data;
             })
             .catch(error => {
                 console.error('Error:', error);
@@ -177,25 +213,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
             if (num == 1) {
                 resetf.style.display = 'none';
             }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
-    });
-});
-
-// Update items
-const choices = document.querySelectorAll('[id^="choice"]');
-
-choices.forEach(choice => {
-    choice.addEventListener('click', async function() {
-        fetch('api_updateItems.php', {
-            method: 'POST'
-        })
-        .then(response => response.text())
-        .then(data => {
-            console.log(data);
-            document.getElementById('random_items').innerHTML = data;
         })
         .catch(error => {
             console.error('Error:', error);

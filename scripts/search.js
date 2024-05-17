@@ -33,7 +33,37 @@ if (search) {
     });
 
     search.addEventListener('submit', (event) => {
-        event.preventDefault();
-        window.location.href = "search.php?query=" + input.value;
+        const formData = new FormData();
+        formData.append('search', input.value);
+        fetch('api_filter_items.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.text())
+        .then(data => {
+            if(!document.getElementById('choiceremsearch')) {
+                let li = document.createElement('li');
+                li.setAttribute('id', 'choiceremsearch');
+            }
+            document.getElementById('choiceremsearch').innerHTML = data;
+            console.log(data);
+            appfilters.appendChild(document.getElementById('choiceremsearch'));
+            resetf.style.display = 'flex';
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+        
+        fetch('api_updateItems.php', {
+            method: 'POST'
+        })
+        .then(response => response.text())
+        .then(data => {
+            console.log(data);
+            document.getElementById('random_items').innerHTML = data;
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
     });
 };

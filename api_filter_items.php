@@ -29,6 +29,12 @@
             echo $_POST['price'];
         }
 
+        else if(isset($_POST['search'])) {
+            $_SESSION['search'] = $_POST['search'];
+            addFilter($db, 'search', "'" . $_POST['search'] . "'");
+            echo ("'" . $_POST['search'] . "'");
+        }
+
         else if(isset($_POST['remove'])) {
             if(strpos($_POST['remove'], 'brd') === 0) {
                 $id = substr($_POST['remove'], 3);
@@ -63,6 +69,10 @@
                 unset($_SESSION['price']);
                 removeFilter($db, 'price');
             }
+            else if($_POST['remove'] == 'search') {
+                unset($_SESSION['search']);
+                removeFilter($db, 'search');
+            }
         }
 
         else if(isset($_POST['reset'])) {
@@ -70,6 +80,7 @@
             $_SESSION['sizes'] = array();
             $_SESSION['conditions'] = array();
             $_SESSION['price'] = '';
+            $_SESSION['search'] = '';
             foreach(getApplied($db) as $filter) {
                 removeFilter($db, $filter['id']);
             }

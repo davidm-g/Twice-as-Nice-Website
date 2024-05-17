@@ -1,4 +1,5 @@
 <?php
+    session_set_cookie_params(0, '/', 'localhost', false, true);
     session_start();                                         // starts the session
 
     require_once('database/connection.php');                 // database connection
@@ -15,7 +16,7 @@
             updateName($name, $username, $db);
         }
         elseif (isset($_POST['update_email'])) {
-            $email = $_POST['email'];
+            $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
             updateEmail($email, $username, $db);
         }
         elseif (isset($_POST['update_password'])) {

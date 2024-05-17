@@ -1,4 +1,5 @@
 <?php
+    session_set_cookie_params(0, '/', 'localhost', false, true);
     session_start();                                         // starts the session
 
     require_once('database/connection.php');                 // database connection
@@ -12,7 +13,7 @@
     $username = htmlspecialchars($_POST['username']);
     $name = htmlspecialchars($_POST['name']);
     $email = htmlspecialchars($_POST['email']);
-    $password = htmlspecialchars($_POST['password']);
+    $password = $_POST['password'];
 
     addUser($db, $picture, $username, $name, $email, $password); // add user to the database
     

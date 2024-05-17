@@ -9,7 +9,7 @@
         die('Error: Invalid request. Please refresh the page and try again.');
     }
     $username = htmlspecialchars($_POST['username']);
-    $password = htmlspecialchars($_POST['password']);
+    $password = $_POST['password'];
 
     if (userExists($db, $username, $password)) {  // test if user exists
         $_SESSION['username'] = $username;  

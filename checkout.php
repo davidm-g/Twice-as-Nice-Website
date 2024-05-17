@@ -3,6 +3,7 @@
     require_once('templates/categories.php');
     require_once('templates/common.php');
     require_once('database/items.php');
+    session_set_cookie_params(0, '/', 'localhost', false, true);
     $db = getDatabaseConnection();
     $cats = getCategories($db);
     session_start();

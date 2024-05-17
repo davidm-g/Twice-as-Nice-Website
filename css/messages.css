@@ -6,6 +6,8 @@
     padding: 3% 2% 3% 2%;
     border-radius: 15px;
     background-color: #C9ADA7;
+    max-height: 450px; /* Set a maximum height for the container */
+    overflow-y: auto; /* Enable vertical scrolling */
 }
 
 /* Message Headers */
@@ -119,3 +121,4 @@
     padding-bottom: 1px;
     border-radius: 10px;;
 }
+

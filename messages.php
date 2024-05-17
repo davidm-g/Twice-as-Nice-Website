@@ -29,8 +29,8 @@
     ?>
      
     <div class='messages'>
-    <div class="msg-container">
         <h2>Messages with <a href="seller.php"><?= htmlspecialchars($otherUser) ?></a> about <?= htmlspecialchars($itemName) ?></h2>
+    <div class="msg-container">
         <?php foreach($messages as $message){ 
         $class = $message['sender'] === $username ? 'user' : 'other_user';
         $date = date('F j, Y, g:i a', $message['timestamp']); 
@@ -93,5 +93,12 @@
         <?php } ?>
 </div>
 <script src="/scripts/negotiate_price.js" defer></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var msgContainer = document.querySelector('.msg-container');
+        msgContainer.scrollTop = msgContainer.scrollHeight;
+    });
+</script>
+
 <?php 
 output_footer(); ?>

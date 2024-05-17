@@ -52,12 +52,13 @@
 }
 
 #profile-pic {
-    width: 50%;
-    height: auto;
-    border-radius: 100%;
+    width: 45%; /* Or any other value */
+    aspect-ratio: 1 / 1; /* This maintains the 1:1 aspect ratio */
+    border-radius: 50%; /* Ensures a circular shape */
     margin: 10px;
     border: 2px solid #4A4E69;
     transition: all 0.25s ease;
+    object-fit: cover; /* Ensures the image covers the area without distortion */
 }
 
 #profile-pic:hover {

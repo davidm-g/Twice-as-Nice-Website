@@ -1,4 +1,3 @@
-document.addEventListener('DOMContentLoaded', () => {
     const search = document.querySelector('#searchbar');
 
     if (search) {

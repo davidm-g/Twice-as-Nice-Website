@@ -321,12 +321,12 @@ body > header > #searchbar > input[type=text] {
 
 
 #loginfields input, #registerfields input{
-    border: none;
-    background: none;
-    border-bottom: 1px solid #4A4E69;
-    width: 75%;
-    margin: 20px;
-    padding: 5px;
+        border: none;
+        background: none;
+        border-bottom: 1px solid #4A4E69;
+        width: 75%;
+        margin: 20px;
+        padding: 5px;
 }
 
 #loginfields button, #registerfields button {

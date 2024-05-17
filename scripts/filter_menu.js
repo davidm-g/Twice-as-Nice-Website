@@ -12,28 +12,28 @@ const resetf = document.getElementById('reset_filters');
 filtersbrd.forEach(filterbrd => {
     filterbrd.addEventListener('click', async function() {
         const filterId = filterbrd.id.replace('choicebrd', '');
-        const formData = new FormData();
-        formData.append('brand', filterId);
-        fetch('api_filter_items.php', {
-            method: 'POST',
-            body: formData
-        })
-        .then(response => response.text())
-        .then(data => {
-            let id = 'choicerembrd' + filterId;
-            if (!document.getElementById(id)) {
+        let id = 'choicerembrd' + filterId;
+        if (!document.getElementById(id)) {
+            const formData = new FormData();
+            formData.append('brand', filterId);
+            fetch('api_filter_items.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.text())
+            .then(data => {
                 let li = document.createElement('li');
                 li.setAttribute('id', id);
                 li.innerHTML = data;
                 appfilters.appendChild(li);
                 resetf.style.display = 'flex';
-            } else {
-                console.log('Element with id ' + 'choicerembrd' + filterId + ' already exists');
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        } else {
+            console.log('Element with id ' + 'choicerembrd' + filterId + ' already exists');
+        }
     });
 });
 
@@ -41,28 +41,28 @@ filtersbrd.forEach(filterbrd => {
 filterssz.forEach(filtersz => {
     filtersz.addEventListener('click', async function() {
         const filterId = filtersz.id.replace('choicesz', '');
-        const formData = new FormData();
-        formData.append('size', filterId);
-        fetch('api_filter_items.php', {
-            method: 'POST',
-            body: formData
-        })
-        .then(response => response.text())
-        .then(data => {
-            let id = 'choiceremsz' + filterId;
-            if (!document.getElementById(id)) {
-                let li = document.createElement('li');
-                li.setAttribute('id', id);
-                li.innerHTML = data;
-                appfilters.appendChild(li);
-                resetf.style.display = 'flex';
-            } else {
-                console.log('Element with id ' + 'choiceremsz' + filterId + ' already exists');
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
+        let id = 'choiceremsz' + filterId;
+        if (!document.getElementById(id)) {
+            const formData = new FormData();
+            formData.append('size', filterId);
+            fetch('api_filter_items.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.text())
+            .then(data => {
+                    let li = document.createElement('li');
+                    li.setAttribute('id', id);
+                    li.innerHTML = data;
+                    appfilters.appendChild(li);
+                    resetf.style.display = 'flex';
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        } else {
+            console.log('Element with id ' + 'choiceremsz' + filterId + ' already exists');
+        }
     });
 });
 
@@ -70,28 +70,28 @@ filterssz.forEach(filtersz => {
 filterscond.forEach(filtercond => {
     filtercond.addEventListener('click', async function() {
         const filterId = filtercond.id.replace('choicecond', '');
-        const formData = new FormData();
-        formData.append('condition', filterId);
-        fetch('api_filter_items.php', {
-            method: 'POST',
-            body: formData
-        })
-        .then(response => response.text())
-        .then(data => {
-            let id = 'choiceremcond' + filterId;
-            if (!document.getElementById(id)) {
-                let li = document.createElement('li');
-                li.setAttribute('id', id);
-                li.innerHTML = data;
-                appfilters.appendChild(li);
-                resetf.style.display = 'flex';
-            } else {
-                console.log('Element with id ' + 'choiceremcond' + filterId + ' already exists');
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
+        let id = 'choiceremcond' + filterId;
+        if (!document.getElementById(id)) {
+            const formData = new FormData();
+            formData.append('condition', filterId);
+            fetch('api_filter_items.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.text())
+            .then(data => {
+                    let li = document.createElement('li');
+                    li.setAttribute('id', id);
+                    li.innerHTML = data;
+                    appfilters.appendChild(li);
+                    resetf.style.display = 'flex';
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        } else {
+            console.log('Element with id ' + 'choiceremcond' + filterId + ' already exists');
+        }
     });
 });
 
@@ -148,6 +148,7 @@ pricefilter.addEventListener('submit', function(event) {
 document.addEventListener('DOMContentLoaded', (event) => {
     // Attach event listener to parent
     appfilters.addEventListener('click', function(event) {
+        const num = appfilters.childElementCount;
         const filterId = event.target.id.replace('choicerem', '');
         const formData = new FormData();
         formData.append('remove', filterId);
@@ -173,6 +174,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
         .then(data => {
             console.log(data);
             document.getElementById('random_items').innerHTML = data;
+            if (num == 1) {
+                resetf.style.display = 'none';
+            }
         })
         .catch(error => {
             console.error('Error:', error);

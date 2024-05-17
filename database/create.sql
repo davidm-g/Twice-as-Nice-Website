@@ -107,3 +107,8 @@ CREATE TABLE orders (
   order_name VARCHAR NOT NULL UNIQUE
 );
 
+DROP TABLE IF EXISTS applied_filters;
+CREATE TABLE applied_filters (
+  id VARCHAR NOT NULL UNIQUE PRIMARY KEY,
+  name VARCHAR NOT NULL UNIQUE
+);

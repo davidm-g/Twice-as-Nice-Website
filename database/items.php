@@ -414,6 +414,25 @@ function areFiltersApplied()
     || (isset($_SESSION['price']) && !empty($_SESSION['price']));
 }
 
+function getApplied($db) {
+    $stmt = $db->prepare("SELECT * FROM applied_filters");
+    $stmt->execute();
+    $applied = $stmt->fetchAll();
+    return $applied;
+}
+
+function addFilter($db, $id, $name)
+{
+    $stmt = $db->prepare("INSERT INTO applied_filters (id, name) VALUES (:id, :name)");
+    $stmt->execute([':id' => $id, ':name' => $name]);
+}
+
+function removeFilter($db, $id)
+{
+    $stmt = $db->prepare("DELETE FROM applied_filters WHERE id = :id");
+    $stmt->execute([':id' => $id]);
+}
+
 function outputItem($db, $item)
 {
     $img_url = getImage($db, $item['id']);
@@ -482,12 +501,12 @@ function outputItems($db, $items)
                     </div>
                 </li>
             </ul>
-            <h3 id="reset_filters" style="display: <?= ((isset($_SESSION['brands']) && count($_SESSION['brands']) > 0) 
-                || (isset($_SESSION['sizes']) && count($_SESSION['sizes']) > 0) 
-                || (isset($_SESSION['conditions']) && count($_SESSION['conditions']) > 0) 
-                || (isset($_SESSION['price']) && !empty($_SESSION['price'])) == true) ? 'flex' : 'none' ?>">Reset filters</h3>
+            <h3 id="reset_filters" style="display: <?= areFiltersApplied() ? 'flex' : 'none' ?>">Reset filters</h3>
         </div>
         <ul id="applied_filters">
+            <?php foreach (getApplied($db) as $appf) { ?>
+                <li id="choicerem<?= $appf['id'] ?>"><?= $appf['name'] ?></li>
+            <?php } ?>
         </ul>
     </div>
     <aside id="random_items">

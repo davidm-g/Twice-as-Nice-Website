@@ -19,7 +19,8 @@
         $_SESSION['brands'] = array();
         $_SESSION['sizes'] = array();
         $_SESSION['conditions'] = array(); 
-        $_SESSION['price'] = '';                     
+        $_SESSION['price'] = '';     
+        $_SESSION['search'] = '';                           // set default search value                
     }
     
     header('Location: index.php');         // redirect to the page we came from

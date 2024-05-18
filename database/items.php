@@ -29,11 +29,11 @@ function getFilteredItems($db)
     if(isset($_SESSION['search']) && !empty($_SESSION['search'])) {
         $query .= " AND name LIKE '%" . $_SESSION['search'] . "%'";
     }
-    if(isset($_GET['category']) && !empty($_GET['category'])) {
-        $query .= " AND category_id = " . $_GET['category'];
-    }
-    if(isset($_GET['subcategory']) && !empty($_GET['subcategory'])) {
-        $query .= " AND subcategory_id = " . $_GET['subcategory'];
+    if(isset($_SESSION['category']) && !empty($_SESSION['category'])) {
+        if(strpos($_SESSION['category'], 'sub') === 0)
+            $query .= " AND subcategory_id = " . substr($_SESSION['category'], 3);
+        else
+            $query .= " AND category_id = " . substr($_SESSION['category'], 3);
     }
     if(isset($_SESSION['brands']) && count($_SESSION['brands']) > 0) {
         $query .= " AND brand IN ( " . implode(',', $_SESSION['brands']) . " )";
@@ -46,7 +46,14 @@ function getFilteredItems($db)
     }
     if(isset($_SESSION['price']) && !empty($_SESSION['price'])) {
         $parts = explode('-', $_SESSION['price']);
-        $query .= " AND price >= " . $parts[0] . " AND price <= " . $parts[1];
+        $min = $parts[0];
+        $max = $parts[1];
+        if(!empty($min))
+            $query .= " AND price >= " . $min;
+        else if(!empty($max))
+            $query .= " AND price <= " . $max;
+        else
+            $query .= " AND price >= " . $min . " AND price <= " . $max;
     }
     $query .= " ORDER BY $sortOrder COLLATE NOCASE $direction";
     $stmt = $db->prepare($query);
@@ -177,6 +184,23 @@ function getCategorySub($db, $subcat_id)
     $stmt2->execute([':cat_id' => $cat_id]);
     $cat = $stmt2->fetch();
     return $cat;
+}
+
+function getCategoryNameSub($db, $subcat_id)
+{
+    $stmt = $db->prepare(
+        "SELECT category_id from subcategories
+            WHERE id = :subcat_id"
+    );
+    $stmt->execute([':subcat_id' => $subcat_id]);
+    $cat_id = ($stmt->fetch())['category_id'];
+    $stmt2 = $db->prepare(
+        "SELECT name from categories
+            WHERE id = :cat_id"
+    );
+    $stmt2->execute([':cat_id' => $cat_id]);
+    $cat = $stmt2->fetch();
+    return $cat['name'];
 }
 
 function getCategoryId($db, $id)

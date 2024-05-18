@@ -1,6 +1,7 @@
 const filtersbrd = document.querySelectorAll('[id^="choicebrd"]');
 const filterssz = document.querySelectorAll('[id^="choicesz"]');
 const filterscond = document.querySelectorAll('[id^="choicecond"]');
+const filterscat = document.querySelectorAll('[id^="choicecats"]');
 
 const appfilters = document.getElementById('applied_filters');
 
@@ -131,37 +132,34 @@ filterscond.forEach(filtercond => {
     });
 });
 
-// Filter for price
-pricefilter.addEventListener('submit', function(event) {
-    event.preventDefault(); // prevent the form from submitting and refreshing the page
-    let min = document.getElementById('min_price').value;
-    let max = document.getElementById('max_price').value;
-    if (min == '' || max == '' || min >= max) {
-        console.log('Invalid price range');
-        document.getElementById('min_price').value = '';
-        document.getElementById('max_price').value = '';
-        return;
-    }
-    if (!document.getElementById('choiceremprice')) {
-        const filterId = min + '-' + max;
+// Filters for category
+filterscat.forEach(filtercat => {
+    filtercat.addEventListener('click', async function() {
+        let id = filtercat.id.replace('choicecats', '');
         const formData = new FormData();
-        formData.append('price', filterId);
+        formData.append('category', id);
         fetch('api_filter_items.php', {
             method: 'POST',
             body: formData
         })
         .then(response => response.text())
         .then(data => {
-            let li = document.createElement('li');
-            li.setAttribute('id', 'choiceremprice');
-            li.innerHTML = min + ' - ' + max;
-            appfilters.appendChild(li);
+            if (!document.getElementById('choiceremcats')) {
+                let li = document.createElement('li');
+                li.setAttribute('id', 'choiceremcats');
+                li.innerHTML = data;
+                appfilters.appendChild(li);
+            }
+            else {
+                document.getElementById('choiceremcats').innerHTML = data;
+            }
+            console.log(data);
             resetf.style.display = 'flex';
         })
         .catch(error => {
             console.error('Error:', error);
         });
-
+        
         fetch('api_updateItems.php', {
             method: 'POST'
         })
@@ -173,9 +171,57 @@ pricefilter.addEventListener('submit', function(event) {
         .catch(error => {
             console.error('Error:', error);
         });
-    } else {
-        console.log('Price filter already exists');
+    });
+});
+
+
+// Filter for price
+pricefilter.addEventListener('submit', function(event) {
+    event.preventDefault(); // prevent the form from submitting and refreshing the page
+    let min = document.getElementById('min_price').value;
+    let max = document.getElementById('max_price').value;
+    if ((min == '' && max == '') || ((min != '' && max != '') && (min >= max))) {
+        console.log('Invalid price range');
+        document.getElementById('min_price').value = '';
+        document.getElementById('max_price').value = '';
+        return;
     }
+    const filterId = min + '-' + max;
+    const formData = new FormData();
+    formData.append('price', filterId);
+    fetch('api_filter_items.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.text())
+    .then(data => {
+        if (!document.getElementById('choiceremprice')) {
+            let li = document.createElement('li');
+            li.setAttribute('id', 'choiceremprice');
+            li.innerHTML = min + ' - ' + max;
+            appfilters.appendChild(li);
+        }
+        else {
+            document.getElementById('choiceremprice').innerHTML = min + ' - ' + max;
+        }
+        console.log(data);
+        resetf.style.display = 'flex';
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+
+    fetch('api_updateItems.php', {
+        method: 'POST'
+    })
+    .then(response => response.text())
+    .then(data => {
+        console.log(data);
+        document.getElementById('random_items').innerHTML = data;
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
     document.getElementById('min_price').value = '';
     document.getElementById('max_price').value = '';
 });

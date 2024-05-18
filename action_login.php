@@ -13,14 +13,15 @@
 
     if (userExists($db, $username, $password)) {  // test if user exists
         $_SESSION['username'] = $username;  
-        $_SESSION['picture'] = getProfilePic($db, $username);  // set session variables
+        $_SESSION['picture'] = getProfilePic($db, $username);  
         $_SESSION['sortOrder'] = '0';   
         $_SESSION['direction'] = '0';                       // set default sort direction = ASC
         $_SESSION['brands'] = array();
         $_SESSION['sizes'] = array();
         $_SESSION['conditions'] = array(); 
         $_SESSION['price'] = '';     
-        $_SESSION['search'] = '';                           // set default search value                
+        $_SESSION['search'] = '';                           
+        $_SESSION['category'] = '';                         
     }
     
     header('Location: index.php');         // redirect to the page we came from

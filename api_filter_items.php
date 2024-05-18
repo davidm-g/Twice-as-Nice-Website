@@ -36,6 +36,17 @@
             echo ("'" . $_POST['search'] . "'");
         }
 
+        else if(isset($_POST['category'])) {
+            $_SESSION['category'] = $_POST['category'];
+            if(strpos($_POST['category'], 'sub') === 0) {
+                addFilter($db, 'cats', getCategoryNameSub($db, substr($_POST['category'], 3)) . ' -> ' . getSubcategoryName($db, substr($_POST['category'], 3)));
+                echo getCategoryNameSub($db, substr($_POST['category'], 3)) . ' -> ' . getSubcategoryName($db, substr($_POST['category'], 3));
+            } else {
+                addFilter($db, 'cats', getCategoryName($db, substr($_POST['category'], 3)));
+                echo getCategoryName($db, substr($_POST['category'], 3));
+            }
+        }
+    
         else if(isset($_POST['remove'])) {
             if(strpos($_POST['remove'], 'brd') === 0) {
                 $id = substr($_POST['remove'], 3);
@@ -74,6 +85,10 @@
                 unset($_SESSION['search']);
                 removeFilter($db, 'search');
             }
+            else if($_POST['remove'] == 'cats') {
+                unset($_SESSION['category']);
+                removeFilter($db, 'cats');
+            }
         }
 
         else if(isset($_POST['reset'])) {
@@ -82,6 +97,7 @@
             $_SESSION['conditions'] = array();
             $_SESSION['price'] = '';
             $_SESSION['search'] = '';
+            $_SESSION['category'] = '';
             foreach(getApplied($db) as $filter) {
                 removeFilter($db, $filter['id']);
             }

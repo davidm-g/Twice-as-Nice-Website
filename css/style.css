@@ -281,6 +281,7 @@ body > header > #searchbar > input[type=text] {
     transition: 0.25s;
     opacity: 1;
     pointer-events: all;
+    z-index: 20;
 }
 
 #fadeLogin, #fadeRegister{
@@ -291,6 +292,7 @@ body > header > #searchbar > input[type=text] {
     height: 100%;
     background: rgba(149, 143, 143, 0.46);
     backdrop-filter: blur(12.5px);
+    z-index: 20;
 }
 
 #loginmodal, #registermodal {
@@ -307,11 +309,13 @@ body > header > #searchbar > input[type=text] {
     padding: 1.2rem;
     border-radius: 20px;
     box-shadow: 0px 0px 50px 5px rgba(0, 0, 0, 0.25);
+    z-index: 25;
 }
 
 .modalheader {
     text-align: center;
     padding: 1rem;
+    z-index: 25;
 }
 
 #loginmodal.hide, #registermodal.hide, #fadeLogin.hide, #fadeRegister.hide {

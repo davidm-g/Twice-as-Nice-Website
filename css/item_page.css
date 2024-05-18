@@ -2,6 +2,7 @@
     display: grid;
     grid-template-columns: [side1] 13vw [mainpic] 43.5vw [space2] 2.5vw [info] 28vw [side2] 13vw;
     grid-template-rows: auto auto;
+    z-index: -1;
 }
 
 

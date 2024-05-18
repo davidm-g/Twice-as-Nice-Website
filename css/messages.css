@@ -1,13 +1,13 @@
 .messages {
-    padding: 3% 12% 3% 12%;
+    padding: 3% 12%;
 }
 
 .msg-container {
-    padding: 3% 2% 3% 2%;
+    padding: 3% 2%;
     border-radius: 15px;
     background-color: #C9ADA7;
-    max-height: 450px; /* Set a maximum height for the container */
-    overflow-y: auto; /* Enable vertical scrolling */
+    max-height: 70%;
+    overflow-y: auto;
 }
 
 /* Message Headers */
@@ -67,7 +67,6 @@
     border: 1px solid #4A4E69;
     border-radius: 5px;
     background-color: transparent;
-    color: #F2E9E4;
 }
 
 .messages form input[type="submit"],
@@ -77,7 +76,7 @@
     border: none;
     border-radius: 5px;
     background-color: #4A4E69;
-    color: #F2E9E4;
+    color: #22223B;
     cursor: pointer;
     transition: all ease 0.3s;
 }
@@ -88,9 +87,7 @@
     transition: all ease 0.3s;
 }
 
-
 /* Styling for the negotiation form */
-
 #negotiateFields input[type="number"] {
     padding: 10px;
     border: 1px solid #4A4E69;
@@ -116,9 +113,65 @@
 
 #negotiateFields {
     background: #9A8C98;
-    margin:0;
+    margin: 0;
     padding: 10px;
     padding-bottom: 1px;
-    border-radius: 10px;;
+    border-radius: 10px;
+}
+
+/* Counter Offer and Accept Proposal Buttons */
+a.accept-offer,
+button.counter-offer {
+    padding: 5px 10px;
+    margin: 5px 0;
+    border: none;
+    border-radius: 5px;
+    background-color: #4A4E69;
+    color: #F2E9E4;
+    cursor: pointer;
+    transition: all ease 0.3s;
+    text-decoration: none;
+}
+
+a.accept-offer:hover,
+button.counter-offer:hover {
+    background-color: #22223B;
+    transition: all ease 0.3s;
+}
+
+/* Counter Offer Form */
+.counter-offer-form {
+    display: none;
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #4A4E69;
+    border-radius: 10px;
+    background-color: #F2E9E4;
+    color: #22223B;
+}
+
+.counter-offer-form input[type="number"] {
+    padding: 10px;
+    border: 1px solid #4A4E69;
+    border-radius: 5px;
+    background-color: transparent;
+    color: #22223B;
+    margin-right: 10px;
+}
+
+.counter-offer-form button[type="submit"] {
+    padding: 10px 20px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4A4E69;
+    color: #F2E9E4;
+    cursor: pointer;
+    transition: all ease 0.3s;;
+}
+
+.counter-offer-form button[type="submit"]:hover {
+    background-color: #22223B;
+    transition: all ease 0.3s;
 }
 

@@ -296,4 +296,3 @@ resetf.addEventListener('click', async function() {
         console.error('Error:', error);
     });
 });
-

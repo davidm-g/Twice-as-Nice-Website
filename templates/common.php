@@ -11,6 +11,7 @@
     <link href="css/conversation.css" rel="stylesheet">
     <link href="css/messages.css" rel="stylesheet">
     <link href="css/profile.css" rel="stylesheet">
+    <link href="css/label.css" rel="stylesheet">
     <script src="scripts/modal_login.js" defer></script>
     <?php if(isset($_SESSION['login'])): ?>
     <script>

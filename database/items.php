@@ -476,7 +476,7 @@ function outputItem($db, $item)
             <img src=<?= $img_url ?> alt=<?= $item['description'] ?>>
         </a>
         <p><?= $item['name'] ?></p>
-        <p><?= $price ?> €</p>
+        <p class="item-price" id="item-price-<?= $item['id'] ?>"> <?= $price ?> €</p>
         <?php if (isset($_SESSION['username'])) { ?>
             <i id="wish<?= $item['id'] ?>" class="<?= (isOnWishlist($db, $item['id'], $_SESSION['username'])) ? 'fa-solid fa-heart' : 'fa-regular fa-heart' ?>">
             </i>

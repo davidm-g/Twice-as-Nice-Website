@@ -110,9 +110,9 @@
     <aside id="random_items">
         <?php foreach ($items as $item) { 
             if(getSeller($db,$item['id']) == $_SESSION['username']){
-                if (isItemForSale($db, $item['id'])) {
-                    outputItem($db, $item);?>
-                    <p class="item-price">Price: <?=getPrice($db, $item['id'])?> €</p>
+                if (isItemForSale($db, $item['id'])) { ?>
+                    <div id="item-container-<?=$item['id']?>" class="item-container">
+                    <?php outputItem($db, $item);?>
                     <form id="manage-item-<?=$item['id']?>">
                         <input type="hidden" name="item_id" value="<?=$item['id']?>">
                         <div id="new-price-<?=$item['id']?>" style="display: none;">
@@ -122,11 +122,12 @@
                         <button type="button" onclick="showNewPrice('<?=$item['id']?>')">Change Price</button>
                         <input type="button" onclick="deleteItem('<?=$item['id']?>')" value="Delete Item">
                     </form>
+                    </div>
                 <?php }
             }
         } ?>    
     </aside>
-<button type="button" id="sellmorebtn" href="sell.php">Sell More Items!!!</button>
+<button type="button" id="sellmorebtn" >Sell More Items!!!</button>
 
 <script src="/scripts/manage_items.js" defer></script>
 <script src="/scripts/verify_user.js" defer></script>    

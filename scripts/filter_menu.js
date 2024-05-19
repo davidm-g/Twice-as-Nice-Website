@@ -40,6 +40,7 @@ filtersbrd.forEach(filterbrd => {
             .then(data => {
                 console.log(data);
                 document.getElementById('random_items').innerHTML = data;
+                attachWishlistListeners();
             })
             .catch(error => {
                 console.error('Error:', error);
@@ -81,6 +82,7 @@ filterssz.forEach(filtersz => {
             .then(data => {
                 console.log(data);
                 document.getElementById('random_items').innerHTML = data;
+                attachWishlistListeners();
             })
             .catch(error => {
                 console.error('Error:', error);
@@ -122,6 +124,7 @@ filterscond.forEach(filtercond => {
             .then(data => {
                 console.log(data);
                 document.getElementById('random_items').innerHTML = data;
+                attachWishlistListeners();
             })
             .catch(error => {
                 console.error('Error:', error);
@@ -167,6 +170,7 @@ filterscat.forEach(filtercat => {
         .then(data => {
             console.log(data);
             document.getElementById('random_items').innerHTML = data;
+            attachWishlistListeners();
         })
         .catch(error => {
             console.error('Error:', error);
@@ -218,6 +222,7 @@ pricefilter.addEventListener('submit', function(event) {
     .then(data => {
         console.log(data);
         document.getElementById('random_items').innerHTML = data;
+        attachWishlistListeners();
     })
     .catch(error => {
         console.error('Error:', error);
@@ -256,6 +261,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         .then(data => {
             console.log(data);
             document.getElementById('random_items').innerHTML = data;
+            attachWishlistListeners();
             if (num == 1) {
                 resetf.style.display = 'none';
             }
@@ -291,6 +297,7 @@ resetf.addEventListener('click', async function() {
     .then(data => {
         console.log(data);
         document.getElementById('random_items').innerHTML = data;
+        attachWishlistListeners();
     })
     .catch(error => {
         console.error('Error:', error);

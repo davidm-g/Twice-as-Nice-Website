@@ -3,6 +3,7 @@
     session_start();
     require_once ('database/connection.php');
     require_once ('database/items.php');
+    
     $db = getDatabaseConnection();
     $items = getFilteredItems($db);
 
@@ -11,3 +12,6 @@
         $temp_string .= outputItem($db,$item);
     }
     echo $temp_string;
+    
+  
+    

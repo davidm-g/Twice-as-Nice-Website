@@ -27,4 +27,4 @@ if ($username !== $seller) { // If the user is the buyer
 // Redirect the user
 header('Location: ' . $redirectUrl);
 exit;
-?>
+

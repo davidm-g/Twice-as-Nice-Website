@@ -48,10 +48,10 @@ function getFilteredItems($db)
         $parts = explode('-', $_SESSION['price']);
         $min = $parts[0];
         $max = $parts[1];
-        if(!empty($min))
-            $query .= " AND price >= " . $min;
-        else if(!empty($max))
+        if(empty($min))
             $query .= " AND price <= " . $max;
+        else if(empty($max))
+            $query .= " AND price >= " . $min;
         else
             $query .= " AND price >= " . $min . " AND price <= " . $max;
     }
@@ -492,9 +492,9 @@ function outputItems($db, $items)
             <h2>Order by</h2><i id="sort_btn" class="fa-solid fa-sort-up"></i>
             <div id="sort_options">
                 <?php foreach (getOrders($db) as $order) { ?>
-                    <h3 id="order<?= $order['id'] ?>"><?= $order['order_name'] ?></h3>
+                    <h3 id="order<?= $order['id'] ?>" style="background-color:<?= ($_SESSION['sortOrder'] == $order['id']) ? '#C9ADA7' : '' ?>"><?= $order['order_name'] ?></h3>
                 <?php } ?>
-                <h3 id="reset_order" style="display: <?= ($_SESSION['sortOrder'] != '1') ? 'none' : 'flex' ?>">Reset order</h3>
+                <h3 id="reset_order" style="display: <?= ($_SESSION['sortOrder'] > '0') ? 'flex' : 'none' ?>">Reset order</h3>
             </div>
         </div>
         <div id='filter_menu'>

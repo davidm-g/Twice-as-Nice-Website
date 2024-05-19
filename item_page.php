@@ -25,7 +25,7 @@
             <p>Size: <span id="item-size"><?= getSize($db, $id) ?></span></p>
 
             <div id="seller-info">
-                <a href="seller.php"><img id="profile-pic" src=<?= getSellerImage($db, $id) ?> title="<?= getSellerName($db, $id) ?>" alt="Seller Profile Pic"></a>
+                <a href="seller.php?seller=<?= getSeller($db, $id) ?>"><img id="profile-pic" src=<?= getSellerImage($db, $id) ?> title="<?= getSellerName($db, $id) ?>" alt="Seller Profile Pic"></a>
                 <button id="msg-button" onclick="messageSeller()"><i class="fa-solid fa-square-envelope"></i></i></i></button>
             </div>
 

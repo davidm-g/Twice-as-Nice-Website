@@ -20,7 +20,7 @@
     
 ?>
         <h1>Sell an Item</h1>
-                <form action="action_post_item.php" method="post" enctype="multipart/form-data">
+                <form action="actions/action_post_item.php" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
             <label for="name">Name:</label><br>
             <input type="text" id="name" name="name"><br>

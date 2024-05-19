@@ -23,7 +23,7 @@
 <p>Seller: <?= htmlspecialchars($item['seller']) ?></p>
 <p>Price: <?= htmlspecialchars($price) ?> €</p>
 
-<form action="api_process_payment.php" method="post">
+<form action="apis/api_process_payment.php" method="post">
     <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
     <input type="hidden" name="item_id" value="<?= htmlspecialchars($itemId) ?>">
     <input type="hidden" name="price" value="<?= htmlspecialchars($price) ?>">

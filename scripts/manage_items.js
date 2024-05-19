@@ -19,7 +19,7 @@ function deleteItem(itemId) {
     formData.append('action', 'delete');
     formData.append('item_id', itemId);
 
-    fetch('api_manage_items.php', {
+    fetch('apis/api_manage_items.php', {
         method: 'POST',
         body: formData
     })
@@ -57,7 +57,7 @@ function changePrice(itemId) {
     formData.append('action', 'change_price');
     document.getElementById('new-price-' + itemId).style.display = 'none';
 
-    fetch('api_manage_items.php', {
+    fetch('apis/api_manage_items.php', {
         method: 'POST',
         body: formData
     })

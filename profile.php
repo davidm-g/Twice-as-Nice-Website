@@ -26,24 +26,24 @@
             <i id="capturePhoto" class="fa-solid fa-camera" style="display: none;"></i>
             <i id="removePhoto" class="fa-solid fa-trash" style="display: none;"></i>
         </div>
-        <form action="action_profile.php" method="post">
+        <form action="actions/action_profile.php" method="post">
             <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
             <input type="hidden" id="picture" name="picture" value="">
             <button type="submit" name="update_picture"> Update Picture </button>
         </form>
-        <form action="action_profile.php" method="post">
+        <form action="actions/action_profile.php" method="post">
             <label for="name">Name:</label><br>
             <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
             <input type="text" id="name" name="name" value="<?=$user['name']?>"><br>
             <button type="submit" name="update_name"> Update Name </button>
         </form>
-        <form action="action_profile.php" method="post">
+        <form action="actions/action_profile.php" method="post">
         <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
             <label for="email">Email:</label><br>
             <input type="email" id="email" name="email" value="<?=$user['email']?>"><br>
             <button type="submit" name="update_email"> Update Email </button>
         </form>
-        <form action="action_profile.php" method="post" id="password_update_form">
+        <form action="actions/action_profile.php" method="post" id="password_update_form">
         <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
             <label for="current_password">Current Password:</label><br>
             <input type="password" id="current_password" name="current_password" required><br>
@@ -58,19 +58,19 @@
         
 
 <?php if (isAdmin($_SESSION['username'],$db)) { ?>
-    <form action="action_profile.php" method="post" onsubmit="return validateForm(event)">
+    <form action="actions/action_profile.php" method="post" onsubmit="return validateForm(event)">
         <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
         <label for="elevate_username">User to elevate to admin:</label><br>
         <input type="text" id="elevate_username" name="elevate_username" required><br>
         <input type="submit" name="elevate" value="Elevate to Admin">
     </form>
-    <form action="action_profile.php" method="post">
+    <form action="actions/action_profile.php" method="post">
     <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
         <label for="new_category">New Category:</label><br>
         <input type="text" id="new_category" name="category" required><br>
         <button type="submit" name="add_category"> Add Category </button>
     </form>
-    <form action="action_profile.php" method="post">
+    <form action="actions/action_profile.php" method="post">
     <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
     <label for="category">Select a category to add a subcategory to:</label><br>
     <select id="category" name="category_id" required>
@@ -87,19 +87,19 @@
     <input type="text" id="subcategory" name="subcategory" required><br>
     <button type="submit" name="add_subcategory"> Add Subcategory </button>
     </form>
-    <form action="action_profile.php" method="post">
+    <form action="actions/action_profile.php" method="post">
     <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
         <label for="size">New Size:</label><br>
         <input type="text" id="size" name="size" required><br>
         <button type="submit" name="add_size"> Add Size </button>
     </form>
-    <form action="action_profile.php" method="post">
+    <form action="actions/action_profile.php" method="post">
     <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
         <label for="brand">New Brand:</label><br>
         <input type="text" id="brand" name="brand" required><br>
         <button type="submit" name="add_brand"> Add Brand </button>
     </form>
-    <form action="action_profile.php" method="post">
+    <form action="actions/action_profile.php" method="post">
         <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
         <label for="condition">New Condition:</label><br>
         <input type="text" id="condition" name="condition" required><br>

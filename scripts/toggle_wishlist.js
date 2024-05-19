@@ -10,7 +10,7 @@ function attachWishlistListeners() {
             const formData = new FormData();
             formData.append('item_id', itemId);
             formData.append('type', '0');
-            fetch('action_wishlist.php', {
+            fetch('actions/action_wishlist.php', {
                 method: 'POST',
                 body: formData
             })
@@ -29,7 +29,7 @@ function attachWishlistListeners() {
             const itemId = item.id.replace('btnwish', '');
             const formData = new FormData();
             formData.append('item_id', itemId);
-            fetch('action_wishlist.php', {
+            fetch('actions/action_wishlist.php', {
                 method: 'POST',
                 body: formData
             })

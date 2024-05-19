@@ -12,7 +12,7 @@
                 ul.innerHTML = '';
             } else {
                 try {
-                    const response = await fetch(`api_search.php?query=${encodeURIComponent(query)}`);
+                    const response = await fetch(`apis/api_search.php?query=${encodeURIComponent(query)}`);
                     const items = await response.json();
 
                     ul.innerHTML = '';
@@ -41,7 +41,7 @@
     search.addEventListener('submit', (event) => {
         const formData = new FormData();
         formData.append('search', input.value);
-        fetch('api_filter_items.php', {
+        fetch('apis/api_filter_items.php', {
             method: 'POST',
             body: formData
         })
@@ -60,7 +60,7 @@
             console.error('Error:', error);
         });
         
-        fetch('api_updateItems.php', {
+        fetch('apis/api_updateItems.php', {
             method: 'POST'
         })
         .then(response => response.text())

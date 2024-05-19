@@ -1,7 +1,7 @@
 
 document.getElementById('category').addEventListener('change', function() {
     const categoryId = this.value;
-    fetch('/api_subcategories.php?category_id=' + categoryId)
+    fetch('/apis/api_subcategories.php?category_id=' + categoryId)
         .then(response => response.json())
         .then(data => {
             const subcategorySelect = document.getElementById('subcategory');

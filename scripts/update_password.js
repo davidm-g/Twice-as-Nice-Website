@@ -13,7 +13,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
             alert('New password must be at least 8 characters.');
             return;
         }
-        const response = await fetch('verify_password.php', {
+        const response = await fetch('apis/api_verify_password.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',

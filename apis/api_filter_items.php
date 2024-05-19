@@ -1,10 +1,10 @@
 <?php
     session_set_cookie_params(0, '/', 'localhost', false, true);
     session_start();                                         // starts the session
-    require_once('database/connection.php'); 
-    require_once('database/items.php');  
+    require_once('../database/connection.php'); 
+    require_once('../database/items.php');  
     header('Content-Type: application/json');
-    $db = getDatabaseConnection();
+    $db = getDatabaseConnection_folder();
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if(isset($_POST['brand'])){
             $_SESSION['brands'][] = $_POST['brand'];

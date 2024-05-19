@@ -17,7 +17,7 @@ filtersbrd.forEach(filterbrd => {
         if (!document.getElementById(id)) {
             const formData = new FormData();
             formData.append('brand', filterId);
-            fetch('api_filter_items.php', {
+            fetch('apis/api_filter_items.php', {
                 method: 'POST',
                 body: formData
             })
@@ -33,7 +33,7 @@ filtersbrd.forEach(filterbrd => {
                 console.error('Error:', error);
             });
 
-            fetch('api_updateItems.php', {
+            fetch('apis/api_updateItems.php', {
                 method: 'POST'
             })
             .then(response => response.text())
@@ -59,7 +59,7 @@ filterssz.forEach(filtersz => {
         if (!document.getElementById(id)) {
             const formData = new FormData();
             formData.append('size', filterId);
-            fetch('api_filter_items.php', {
+            fetch('apis/api_filter_items.php', {
                 method: 'POST',
                 body: formData
             })
@@ -75,7 +75,7 @@ filterssz.forEach(filtersz => {
                 console.error('Error:', error);
             });
 
-            fetch('api_updateItems.php', {
+            fetch('apis/api_updateItems.php', {
                 method: 'POST'
             })
             .then(response => response.text())
@@ -101,7 +101,7 @@ filterscond.forEach(filtercond => {
         if (!document.getElementById(id)) {
             const formData = new FormData();
             formData.append('condition', filterId);
-            fetch('api_filter_items.php', {
+            fetch('apis/api_filter_items.php', {
                 method: 'POST',
                 body: formData
             })
@@ -117,7 +117,7 @@ filterscond.forEach(filtercond => {
                 console.error('Error:', error);
             });
 
-            fetch('api_updateItems.php', {
+            fetch('apis/api_updateItems.php', {
                 method: 'POST'
             })
             .then(response => response.text())
@@ -141,7 +141,7 @@ filterscat.forEach(filtercat => {
         let id = filtercat.id.replace('choicecats', '');
         const formData = new FormData();
         formData.append('category', id);
-        fetch('api_filter_items.php', {
+        fetch('apis/api_filter_items.php', {
             method: 'POST',
             body: formData
         })
@@ -163,7 +163,7 @@ filterscat.forEach(filtercat => {
             console.error('Error:', error);
         });
         
-        fetch('api_updateItems.php', {
+        fetch('apis/api_updateItems.php', {
             method: 'POST'
         })
         .then(response => response.text())
@@ -193,7 +193,7 @@ pricefilter.addEventListener('submit', function(event) {
     const filterId = min + '-' + max;
     const formData = new FormData();
     formData.append('price', filterId);
-    fetch('api_filter_items.php', {
+    fetch('apis/api_filter_items.php', {
         method: 'POST',
         body: formData
     })
@@ -215,7 +215,7 @@ pricefilter.addEventListener('submit', function(event) {
         console.error('Error:', error);
     });
 
-    fetch('api_updateItems.php', {
+    fetch('apis/api_updateItems.php', {
         method: 'POST'
     })
     .then(response => response.text())
@@ -239,7 +239,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         const filterId = event.target.id.replace('choicerem', '');
         const formData = new FormData();
         formData.append('remove', filterId);
-        fetch('api_filter_items.php', {
+        fetch('apis/api_filter_items.php', {
             method: 'POST',
             body: formData
         })
@@ -254,7 +254,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             console.error('Error:', error);
         });
 
-        fetch('api_updateItems.php', {
+        fetch('apis/api_updateItems.php', {
             method: 'POST'
         })
         .then(response => response.text())
@@ -277,7 +277,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 resetf.addEventListener('click', async function() {
     const formData = new FormData();
     formData.append('reset', '1');
-    fetch('api_filter_items.php', {
+    fetch('apis/api_filter_items.php', {
         method: 'POST',
         body: formData
     })
@@ -290,7 +290,7 @@ resetf.addEventListener('click', async function() {
         console.error('Error:', error);
     });
 
-    fetch('api_updateItems.php', {
+    fetch('apis/api_updateItems.php', {
         method: 'POST'
     })
     .then(response => response.text())

@@ -46,7 +46,7 @@
                     <i class="fa-regular fa-message" onmouseover="this.className='fa-solid fa-message';" onmouseout="this.className='fa-regular fa-message';"></i>
                 </div></a>
                 <a href="profile.php"><img id='userpic' src="<?=$_SESSION['picture']?>"/></a>
-                <a href="action_logout.php"><button type="button" class="logout">Logout</button></a>
+                <a href="actions/action_logout.php"><button type="button" class="logout">Logout</button></a>
             <?php } else { ?>
                 <button type="button" id="register">Register</button>
                 <button type="button" id="login">Login</button>
@@ -58,7 +58,7 @@
         <div id="loginmodal" class="hide">
             <h2 class="modalheader">Login</h2>
             <button id="closebtnL"><i class="fa-regular fa-circle-xmark"></i></button>
-            <form action="action_login.php" method="post" id="loginfields">
+            <form action="actions/action_login.php" method="post" id="loginfields">
             <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
                 <input type="text" name="username" placeholder="Username" required>
                 <input type="password" name="password" placeholder="Password"required>
@@ -77,7 +77,7 @@
                 <i id="removePhoto" class="fa-solid fa-trash" style="display: none;"></i>
             </div>
             <button id="closebtnR"><i class="fa-regular fa-circle-xmark"></i></button>
-            <form action="action_register.php" method="post" id="registerfields" onsubmit="return verifyPassword()">
+            <form action="actions/action_register.php" method="post" id="registerfields" onsubmit="return verifyPassword()">
             <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
                 <input type="hidden" id="picture" name="picture" value="">
                 <input type="text" name="name" placeholder="Name" required>

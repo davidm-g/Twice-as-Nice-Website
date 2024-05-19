@@ -66,12 +66,12 @@ if (isset($_SESSION['payment_success'])) {
                                 Buyer's proposal: <?= htmlspecialchars($message['price']) ?> €
                                 <br>
                                 <?php if ($transaction['status'] != 'sold') { ?>
-                                    <a href='api_accept_offer.php?price=<?= htmlspecialchars($message['price']) ?>&item_id=<?= htmlspecialchars($itemId) ?>&message_id=<?= htmlspecialchars($message['id']) ?>&user=<?= htmlspecialchars($otherUser) ?>' class='accept-offer'>Accept Offer</a>
+                                    <a href='apis/api_accept_offer.php?price=<?= htmlspecialchars($message['price']) ?>&item_id=<?= htmlspecialchars($itemId) ?>&message_id=<?= htmlspecialchars($message['id']) ?>&user=<?= htmlspecialchars($otherUser) ?>' class='accept-offer'>Accept Offer</a>
                                 <?php } ?>
                             <?php } else { ?>
                                 Seller's proposal: <?= htmlspecialchars($message['price']) ?> €
                                 <?php if ($transaction['status'] != 'sold') { ?>
-                                    <a href='api_accept_offer.php?price=<?= htmlspecialchars($message['price']) ?>&item_id=<?= htmlspecialchars($itemId) ?>&message_id=<?= htmlspecialchars($message['id']) ?>&user=<?= htmlspecialchars($otherUser) ?>' class='accept-offer'>Accept Offer</a>
+                                    <a href='apis/api_accept_offer.php?price=<?= htmlspecialchars($message['price']) ?>&item_id=<?= htmlspecialchars($itemId) ?>&message_id=<?= htmlspecialchars($message['id']) ?>&user=<?= htmlspecialchars($otherUser) ?>' class='accept-offer'>Accept Offer</a>
                                 <?php } ?>
                             <?php } ?>
                         <?php } ?>

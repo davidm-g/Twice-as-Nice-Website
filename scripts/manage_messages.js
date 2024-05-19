@@ -14,7 +14,7 @@ function showCounterOfferForm(itemId) {
  // Track the last message ID
 
 function fetchMessages() {
-    fetch(`/fetch_new_messages.php?user=${encodeURIComponent(otherUser)}&item=${encodeURIComponent(itemId)}&last_message_id=${lastMessageId}`)
+    fetch(`/apis/api_fetch_new_messages.php?user=${encodeURIComponent(otherUser)}&item=${encodeURIComponent(itemId)}&last_message_id=${lastMessageId}`)
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok ' + response.statusText);
@@ -74,12 +74,12 @@ function updateMessages(newMessages) {
                     if (!message.offer_accepted && username !== seller) {
                         // Show "Accept Offer" button for the buyer
                         messageContent += `
-                            <a href='api_accept_offer.php?price=${message.price}&item_id=${itemId}&message_id=${message.id}&user=${otherUser}' class='accept-offer'>Accept Offer</a>
+                            <a href='apis/api_accept_offer.php?price=${message.price}&item_id=${itemId}&message_id=${message.id}&user=${otherUser}' class='accept-offer'>Accept Offer</a>
                         `;
                     } else if (username === seller && transactionStatus !== 'sold') {
                         // Show "Accept Offer" button for the seller
                         messageContent += `
-                            <a href='api_accept_offer.php?price=${message.price}&item_id=${itemId}&message_id=${message.id}&user=${otherUser}' class='accept-offer'>Accept Offer</a>
+                            <a href='apis/api_accept_offer.php?price=${message.price}&item_id=${itemId}&message_id=${message.id}&user=${otherUser}' class='accept-offer'>Accept Offer</a>
                         `;
                     }
                 }

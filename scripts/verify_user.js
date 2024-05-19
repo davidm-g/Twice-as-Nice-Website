@@ -1,7 +1,7 @@
 async function validateForm(event) {
     event.preventDefault();
     const username = document.getElementById('elevate_username').value;
-    return fetch("check_user_exists.php?username=" + username)
+    return fetch("actions/action_check_user_exists.php?username=" + username)
         .then(response => response.text())
         .then(text => {
             if (text == 'false') {

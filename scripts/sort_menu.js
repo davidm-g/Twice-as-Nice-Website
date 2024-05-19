@@ -12,7 +12,7 @@ sort_btn.addEventListener('click', function() {
         const direction = '1';
         formData.append('direction', direction);
     }
-    fetch('api_sort_items.php', {
+    fetch('apis/api_sort_items.php', {
         method: 'POST',
         body: formData
     })
@@ -24,7 +24,7 @@ sort_btn.addEventListener('click', function() {
         console.error('Error:', error);
     });
     
-    fetch('api_updateItems.php', {
+    fetch('apis/api_updateItems.php', {
         method: 'POST'
     })
     .then(response => response.text())
@@ -46,7 +46,7 @@ orders.forEach(order => {
         const sortId = order.id.replace('order', '');
         const formData = new FormData();
         formData.append('sortOrder', sortId);
-        fetch('api_sort_items.php', {
+        fetch('apis/api_sort_items.php', {
             method: 'POST',
             body: formData
         })
@@ -67,7 +67,7 @@ orders.forEach(order => {
 reset.addEventListener('click', async function() {
     const formData = new FormData();
     formData.append('sortOrder', '0');
-    fetch('api_sort_items.php', {
+    fetch('apis/api_sort_items.php', {
         method: 'POST',
         body: formData
     })
@@ -88,7 +88,7 @@ const children = parent.children;
 
 for (let i = 0; i < children.length; i++) {
     children[i].addEventListener('click', function() {
-        fetch('api_updateItems.php', {
+        fetch('apis/api_updateItems.php', {
             method: 'POST'
         })
         .then(response => response.text())

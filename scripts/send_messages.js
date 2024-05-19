@@ -5,7 +5,7 @@ function sendMessage() {
     formData.append('item_id', itemId);
     formData.append('message_text', messageText);
 
-    fetch('send_message_ajax.php', {
+    fetch('apis/api_send_message_ajax.php', {
         method: 'POST',
         body: formData
     })
@@ -25,7 +25,7 @@ function sendProposal() {
     formData.append('item_id', itemId);
     formData.append('new_price', proposalPrice);
 
-    fetch('send_message_ajax.php', {
+    fetch('apis/api_send_message_ajax.php', {
         method: 'POST',
         body: formData
     })
@@ -39,7 +39,7 @@ function sendProposal() {
 }
 
 function sendMessageAjax(receiver, itemId, messageText) {
-    fetch('send_message_ajax.php', {
+    fetch('apis/api_send_message_ajax.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
@@ -66,7 +66,7 @@ function sendMessageAjax(receiver, itemId, messageText) {
 }
 
 function sendProposalAjax(receiver, itemId, price) {
-    fetch('send_message_ajax.php', {
+    fetch('apis/api_send_message_ajax.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
@@ -93,7 +93,7 @@ function sendProposalAjax(receiver, itemId, price) {
 }
 // Function to handle accepting an offer asynchronously
 function acceptOffer(messageId, price) {
-    fetch(`api_accept_offer.php?price=${encodeURIComponent(price)}&item_id=${encodeURIComponent(itemId)}&message_id=${encodeURIComponent(messageId)}&user=${encodeURIComponent(otherUser)}`)
+    fetch(`apis/api_accept_offer.php?price=${encodeURIComponent(price)}&item_id=${encodeURIComponent(itemId)}&message_id=${encodeURIComponent(messageId)}&user=${encodeURIComponent(otherUser)}`)
         .then(response => response.json())
         .then(data => {
             console.log('Offer accepted successfully');
@@ -109,7 +109,7 @@ function sendCounterOffer(itemId, otherUser) {
     const formData = new FormData(form);
     formData.append('receiver', otherUser);
     formData.append('item_id', itemId);
-    fetch('send_message_ajax.php', {
+    fetch('apis/api_send_message_ajax.php', {
         method: 'POST',
         body: formData
     })

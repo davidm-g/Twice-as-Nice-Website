@@ -70,7 +70,7 @@
 }
 
 .messages form input[type="submit"],
-.messages form button[type="submit"] {
+.messages form button[type="button"] {
     padding: 10px 20px;
     margin-left: 10px;
     border: none;
@@ -82,13 +82,13 @@
 }
 
 .messages form input[type="submit"]:hover,
-.messages form button[type="submit"]:hover {
+.messages form button[type="button"]:hover {
     background-color: #22223B;
     transition: all ease 0.3s;
 }
 
 /* Styling for the negotiation form */
-#negotiateFields input[type="number"] {
+#proposalForm input[type="number"] {
     padding: 10px;
     border: 1px solid #4A4E69;
     border-radius: 5px;
@@ -96,7 +96,7 @@
     color: #22223B;
 }
 
-#negotiateFields button[type="submit"] {
+#proposalForm button[type="submit"] {
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
@@ -106,12 +106,12 @@
     transition: all ease 0.3s;
 }
 
-#negotiateFields button[type="submit"]:hover {
+#proposalForm button[type="submit"]:hover {
     background-color: #22223B;
     transition: all ease 0.3s;
 }
 
-#negotiateFields {
+#proposalForm {
     background: #9A8C98;
     margin: 0;
     padding: 10px;

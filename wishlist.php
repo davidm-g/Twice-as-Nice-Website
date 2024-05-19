@@ -1,6 +1,9 @@
 <?php
     session_set_cookie_params(0, '/', 'localhost', false, true);
     session_start();
+    if (!isset($_SESSION['csrf'])) {
+        $_SESSION['csrf'] = generate_random_token();
+      }
     require_once ('database/connection.php');
     require_once ('database/items.php');
     require_once('templates/common.php');   

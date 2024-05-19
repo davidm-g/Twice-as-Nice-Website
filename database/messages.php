@@ -28,16 +28,22 @@
         return $messages;
     }
 
-    function sendMessage($db, $sender, $receiver, $itemId, $messageText, $price = null) {
-        $query = $db->prepare("INSERT INTO messages (sender, receiver, item_id, message_text, price, timestamp) VALUES (:sender, :receiver, :item_id, :message_text, :price, strftime('%s','now'))");
-        $query->execute(['sender' => $sender, 'receiver' => $receiver, 'item_id' => $itemId, 'message_text' => $messageText, 'price' => $price]);
-    }
-
     function remove_proposals($db, $sender, $receiver, $itemId) {
         $query = $db->prepare("UPDATE messages SET price = NULL, message_text = 'Cancelled offer' WHERE sender = :sender AND receiver = :receiver AND item_id = :item_id AND price IS NOT NULL");
         $query->execute([':sender' => $sender, ':receiver' => $receiver, ':item_id' => $itemId]);
     }
-
+    
+    function sendMessage($db, $sender, $receiver, $itemId, $messageText, $price) {
+        $query = $db->prepare("INSERT INTO messages (sender, receiver, item_id, message_text, price, timestamp) VALUES (:sender, :receiver, :item_id, :message_text, :price, :timestamp)");
+        $query->execute([
+            ':sender' => $sender,
+            ':receiver' => $receiver,
+            ':item_id' => $itemId,
+            ':message_text' => $messageText,
+            ':price' => $price,
+            ':timestamp' => time()
+        ]);
+    }
     function update_message($db, $messageId) {
         $stmt = $db->prepare("UPDATE messages SET price=NULL, message_text='Offer accepted.' WHERE id = :message_id");
         $stmt->execute([':message_id' => $messageId]);
@@ -54,3 +60,9 @@
         ]);
     }
 
+    function getNewMessages($db, $user, $item, $lastMessageId) {
+        $query = $db->prepare("SELECT * FROM messages WHERE (receiver = :user OR sender = :user) AND item_id = :item AND id > :lastMessageId ORDER BY id ASC");
+        $query->execute([':user' => $user, ':item' => $item, ':lastMessageId' => $lastMessageId]);
+        return $query->fetchAll(PDO::FETCH_ASSOC);
+    }
+    

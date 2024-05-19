@@ -16,15 +16,16 @@
     output_header();
     output_categories($db, $cats);
 ?>
-        <h1><?= $seller ?>'s profile</h1>
-<?php
-    foreach ($items as $item) { 
+    <h1><?= getNameSeller($db, $seller) ?>'s profile</h1>
+    <aside id="random_items">
+    <?php foreach ($items as $item) { 
         if(getSeller($db, $item['id']) == $seller){
             if (isItemForSale($db, htmlspecialchars($item['id']))) {
                 outputItem($db, $item);
             }
         }
-    }
-
+    } ?>
+    </aside>
+<?php
     output_footer();
 ?>

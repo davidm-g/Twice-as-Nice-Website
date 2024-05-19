@@ -73,6 +73,17 @@ function getImage($db, $it_id)
     return $img['image_url'];
 }
 
+function getNameSeller($db, $seller_uname)
+{
+    $stmt = $db->prepare(
+        "SELECT name from users
+            WHERE username = :seller_uname"
+    );
+    $stmt->execute([':seller_uname' => $seller_uname]);
+    $name = $stmt->fetch();
+    return $name['name'];
+}
+
 function getSellerImage($db, $it_id)
 {
     $stmt = $db->prepare(

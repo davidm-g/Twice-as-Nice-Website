@@ -2,18 +2,16 @@
 
 ## Group ltw15g10
 
-- Tomás Marques (up202206667)33%
+- Tomás Marques (up202206667) 33%
 - David Gonçalves (up202208795) 33%
 - João Lunet (up202207150) 33%
 
 ## Install Instructions
 
-(adapt this)
-
-    git clone <your_repo_url>
-    git checkout final-delivery-v1
-    sqlite database/database.db < database/script.sql
+    git clone https://github.com/FEUP-LTW-2024/ltw-project-2024-ltw15g10.git
+    git checkout ltw-project-2024-ltw15g10
     php -S localhost:9000
+    open the "localhost:9000" URL on your browser
 
 ## External Libraries
 
@@ -23,7 +21,14 @@ We have used the following external libraries:
 
 ## Screenshots
 
-(2 or 3 screenshots of your website)
+### Main Page
+![](/docs/SCREENSHOT_1.png)
+
+### Register new account page
+![](/docs/SCREENSHOT_2.png)
+
+### Messages screen
+![](/docs/SCREENSHOT_3.png)
 
 ## Implemented Features
 
@@ -60,7 +65,9 @@ We have been careful with the following security aspects:
 - [X] **Cross-Site Scripting (XSS)**
 - [X] **Cross-Site Request Forgery (CSRF)**
 
-**Password Storage Mechanism**: hash_password&verify_password
+**Password Storage Mechanism**: 
+
+    PASSWORD_DEFAULT --> bcrypt algorithm (default as of PHP 5.5.0)
 
 **Aditional Requirements**:
 

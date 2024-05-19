@@ -12,7 +12,6 @@
     } 
     $username = htmlspecialchars($_SESSION['username']);
     $conversations = getConversations($db, $username);
-    $cats = getCategories($db);
     output_header();
     output_categories($db, $cats);
 ?>

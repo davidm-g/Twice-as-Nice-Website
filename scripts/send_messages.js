@@ -1,4 +1,5 @@
 function sendMessage() {
+    event.preventDefault();
     const messageText = document.getElementById('messageText').value;
     const formData = new FormData();
     formData.append('receiver', otherUser);

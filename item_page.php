@@ -26,12 +26,13 @@
 
             <div id="seller-info">
                 <a href="seller.php?seller=<?= getSeller($db, $id) ?>"><img id="profile-pic" src=<?= getSellerImage($db, $id) ?> title="<?= getSellerName($db, $id) ?>" alt="Seller Profile Pic"></a>
-                <button id="msg-button" onclick="messageSeller()"><i class="fa-solid fa-square-envelope"></i></i></i></button>
+                <?php if (isset($_SESSION['username'])) { ?>
+                    <button id="msg-button" onclick="window.location.href = 'messages.php?user=<?= getSeller($db, $id) ?>&item=<?= $id ?>'"><i class="fa-solid fa-square-envelope"></i></button>
+                    <?php } ?>
             </div>
 
             <?php if (isset($_SESSION['username'])) { ?>
                 <div id="action-buttons">
-                    <button id="cart-button" onclick="addToCart()"><i class="fa-solid fa-cart-plus"></i>Add to Cart</button>
                     <button id="negotiate-button" onclick="window.location.href='negotiate_price_page.html'"><i class="fa-solid fa-tag"></i>Negotiate Price</button>
                     <button id="btnwish<?= $id ?>" , style="background-color:<?= isOnWishlist($db, $id, $_SESSION['username']) ? '#4A4E69' : 'transparent' ?>; 
                         color:<?= isOnWishlist($db, $id, $_SESSION['username']) ? '#F2E9E4' : '#4A4E69' ?>">

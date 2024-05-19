@@ -83,8 +83,10 @@ if (isset($_SESSION['payment_success'])) {
             </p>
         <?php } ?>
     </div>
-    <form id="messageForm">
+    <form id="messageForm", onsubmit="sendMessage()">
         <input type="text" id="messageText" placeholder="Write your message here..." required>
+        <input type="hidden" id="otherUser" value="<?= $otherUser ?>">
+        <input type="hidden" id="itemId" value="<?= $itemId ?>">
         <button type="button" onclick="sendMessage()">Send</button>
     </form>
     <?php if ( $transaction['status'] != 'sold') { ?>

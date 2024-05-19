@@ -20,6 +20,7 @@
     
 ?>
         <h1>Sell an Item</h1>
+        <div id="sell-form">
                 <form action="actions/action_post_item.php" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
             <label for="name">Name:</label><br>
@@ -63,6 +64,7 @@
             <textarea id="description" name="description" required></textarea><br>
             <input type="submit" value="Post Item">
         </form>
+        </div>
     <script src="/scripts/select_subdirectories.js"></script>
 <?php 
     output_footer();

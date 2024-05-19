@@ -120,7 +120,7 @@
                             <input type="button" onclick="changePrice('<?=$item['id']?>')" value="Submit New Price">
                         </div>
                         <button type="button" onclick="showNewPrice('<?=$item['id']?>')">Change Price</button>
-                        <input type="button" onclick="deleteItem('<?=$item['id']?>')" value="Delete Item">
+                        <button type="button" onclick="deleteItem('<?=$item['id']?>')" value="Delete Item">Delete Item</button>
                     </form>
                     </div>
                 <?php }

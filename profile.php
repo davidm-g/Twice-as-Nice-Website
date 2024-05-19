@@ -58,6 +58,7 @@
         
 
 <?php if (isAdmin($_SESSION['username'],$db)) { ?>
+    <div id="admin-form">
     <form action="actions/action_profile.php" method="post" onsubmit="return validateForm(event)">
         <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
         <label for="elevate_username">User to elevate to admin:</label><br>
@@ -105,6 +106,7 @@
         <input type="text" id="condition" name="condition" required><br>
         <button type="submit" name="add_condition"> Add Condition </button>
     </form>
+    </div>
 <?php } ?>
 <h1>Wardrobe</h1>
     <aside id="random_items">

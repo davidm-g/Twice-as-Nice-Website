@@ -58,6 +58,7 @@
         
 
 <?php if (isAdmin($_SESSION['username'],$db)) { ?>
+    <div id="admin-form">
     <form action="actions/action_profile.php" method="post" onsubmit="return validateForm(event)">
         <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
         <label for="elevate_username">User to elevate to admin:</label><br>
@@ -105,6 +106,7 @@
         <input type="text" id="condition" name="condition" required><br>
         <button type="submit" name="add_condition"> Add Condition </button>
     </form>
+    </div>
 <?php } ?>
 <h1>Wardrobe</h1>
     <aside id="random_items">
@@ -120,7 +122,7 @@
                             <input type="button" onclick="changePrice('<?=$item['id']?>')" value="Submit New Price">
                         </div>
                         <button type="button" onclick="showNewPrice('<?=$item['id']?>')">Change Price</button>
-                        <input type="button" onclick="deleteItem('<?=$item['id']?>')" value="Delete Item">
+                        <button type="button" onclick="deleteItem('<?=$item['id']?>')" value="Delete Item">Delete Item</button>
                     </form>
                     </div>
                 <?php }
@@ -132,6 +134,20 @@
 <script src="/scripts/manage_items.js" defer></script>
 <script src="/scripts/verify_user.js" defer></script>    
 <script src="/scripts/update_password.js" defer></script>  
+
+<style>
+    #random_items .card {
+    width: 80%;
+    margin: auto;
+    padding: 0;
+    border-radius: 30px;
+    background: #C9ADA7;
+    box-shadow: 2px 2px 10px #9A8C98;
+    align-self:     center;
+    justify-self: unset;
+}
+
+</style>
 <?php 
     output_footer();
 ?>

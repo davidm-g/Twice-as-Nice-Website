@@ -1,0 +1,114 @@
+#checkout-form {
+    width: 50%;
+    margin: 1% auto 3% auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #e8e8e4;
+    text-align: center;
+}
+
+#checkout-form * {
+    padding: 1%;
+}
+
+#checkout-form label {
+    font-weight: bold;
+}
+
+#checkout-form input[type="text"],
+#checkout-form input[type="number"],
+#checkout-form textarea,
+#checkout-form select {
+    border: none;
+    background: none;
+    border-bottom: 1px solid #4A4E69;
+    width: 75%;
+    margin: 10px 0;
+    padding: 8px;
+    border-radius: 3px;
+}
+
+#checkout-form textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+#checkout-form select {
+    width: 75%;
+    margin: 10px 0;
+    padding: 8px;
+    border-radius: 3px;
+}
+
+#checkout-form input[type="submit"] {
+    background-color: #9A8C98;
+    color: #F2E9E4;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-family: "Hanken Grotesk";
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    text-transform: lowercase;
+    border: 1.5px solid #9A8C98;
+    margin: 2% auto 2% auto;
+}
+
+#checkout-form input[type="submit"]:hover {
+    background-color: transparent;
+    border: 1.5px solid #9A8C98;
+    color: #22223B;
+}
+
+#checkout-form fieldset {
+    margin-top: 10px;
+    display: none;
+    border: none;
+}
+
+#checkout-form legend {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+#checkout-form input[type="text"],
+#checkout-form input[type="number"],
+#checkout-form textarea {
+    border-radius: 3px;
+    border: 1px solid #ccc;
+}
+
+#checkout-form select,
+#checkout-form input[type="number"] {
+    border-radius: 3px;
+    border: 1px solid #ccc;
+}
+
+#checkout-form option[disabled] {
+    color: #999;
+}
+
+#checkout-form option {
+    color: #22223B;
+}
+
+/* Additional Styles */
+
+#checkout-form #country,
+#checkout-form #city,
+#checkout-form #zipcode,
+input {
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #4A4E69;
+    padding: 0;
+    margin: 2% auto 2% auto;
+    outline: none;
+}
+
+

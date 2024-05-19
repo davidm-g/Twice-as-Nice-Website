@@ -20,9 +20,9 @@
 ?>
 
 <h1>Checkout for <?= htmlspecialchars($item['name']) ?></h1>
-<p>Seller: <?= htmlspecialchars($item['seller']) ?></p>
-<p>Price: <?= htmlspecialchars($price) ?> €</p>
-
+<h1>Seller: <?= htmlspecialchars($item['seller']) ?></h1>
+<h1>Price: <?= htmlspecialchars($price) ?> €</h1>
+<div id="checkout-form">
 <form action="apis/api_process_payment.php" method="post">
     <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
     <input type="hidden" name="item_id" value="<?= htmlspecialchars($itemId) ?>">
@@ -67,5 +67,6 @@
 
     <input type="submit" value="Confirm Payment">
 </form>
+</div>
 <script src="/scripts/payment_options.js" defer></script>
 <?php output_footer(); ?>

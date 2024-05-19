@@ -274,7 +274,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
 // Reset filters
 
-async function resetOrder() {
+async function resetFilters() {
     const formData = new FormData();
     formData.append('reset', '1');
     fetch('apis/api_filter_items.php', {

@@ -13,6 +13,7 @@
     <link href="css/profile.css" rel="stylesheet">
     <link href="css/label.css" rel="stylesheet">
     <link href="css/sell.css" rel="stylesheet">
+    <link href="css/checkout.css" rel="stylesheet">
     <script src="scripts/modal_login.js" defer></script>
     <?php if(isset($_SESSION['login'])): ?>
     <script>

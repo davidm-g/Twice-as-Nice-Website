@@ -528,8 +528,8 @@ function outputItems($db, $items)
                     <h3>Price</h3>
                     <div id="drop-filter4">
                         <form id="price_filter">
-                            <input type="number" id="min_price" placeholder="Min price" step="10">
-                            <input type="number" id="max_price" placeholder="Max price" step="10">
+                            <input type="number" id="min_price" placeholder="Min price" step="10" min="0">
+                            <input type="number" id="max_price" placeholder="Max price" step="10" min="0">
                             <button id="choiceprc" type="submit">Type ENTER to apply</button>
                         </form>
                     </div>

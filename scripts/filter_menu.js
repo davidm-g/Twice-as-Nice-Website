@@ -184,7 +184,7 @@ pricefilter.addEventListener('submit', function(event) {
     event.preventDefault(); // prevent the form from submitting and refreshing the page
     let min = document.getElementById('min_price').value;
     let max = document.getElementById('max_price').value;
-    if ((min == '' && max == '') || ((min != '' && max != '') && (min >= max))) {
+    if ((min == '' && max == '') || ((min != '' && max != '') && (min >= max)) || (min < 0 || max < 0)) {
         console.log('Invalid price range');
         document.getElementById('min_price').value = '';
         document.getElementById('max_price').value = '';

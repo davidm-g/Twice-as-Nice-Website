@@ -89,7 +89,7 @@ if (isset($_SESSION['payment_success'])) {
     </form>
     <?php if ( $transaction['status'] != 'sold') { ?>
         <form id="proposalForm">
-            <input type="number" id="proposalPrice" placeholder="Proposed Price" required>
+            <input type="number" id="proposalPrice" placeholder="Proposed Price" min="0" step="10" required>
             <button type="button" onclick="sendProposal()">Send Proposal</button>
         </form>
     <?php } ?>

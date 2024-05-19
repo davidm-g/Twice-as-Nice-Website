@@ -64,7 +64,7 @@ orders.forEach(order => {
     });
 });
 
-reset.addEventListener('click', async function() {
+async function resetFilters() {
     const formData = new FormData();
     formData.append('sortOrder', '0');
     fetch('apis/api_sort_items.php', {
@@ -81,7 +81,9 @@ reset.addEventListener('click', async function() {
     .catch(error => {
         console.error('Error:', error);
     });
-});
+}
+
+reset.addEventListener('click', resetFilters);
 
 const parent = document.getElementById('sort_options');
 const children = parent.children;

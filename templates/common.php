@@ -35,7 +35,7 @@
 </head>
 <body>
     <header>
-        <h1><a href="index.php">Second-Hand Website</a></h1>
+        <h1><a href="index.php" onclick="resetOrder(); resetFilters();">Twice as Nice</a></h1>
         <form id="searchbar">
             <i class="fa-solid fa-magnifying-glass"></i>
             <input type="text" placeholder="Search">

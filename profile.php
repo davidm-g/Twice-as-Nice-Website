@@ -132,6 +132,20 @@
 <script src="/scripts/manage_items.js" defer></script>
 <script src="/scripts/verify_user.js" defer></script>    
 <script src="/scripts/update_password.js" defer></script>  
+
+<style>
+    #random_items .card {
+    width: 80%;
+    margin: auto;
+    padding: 0;
+    border-radius: 30px;
+    background: #C9ADA7;
+    box-shadow: 2px 2px 10px #9A8C98;
+    align-self:     center;
+    justify-self: unset;
+}
+
+</style>
 <?php 
     output_footer();
 ?>

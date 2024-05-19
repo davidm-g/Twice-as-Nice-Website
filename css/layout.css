@@ -79,7 +79,7 @@ main {
 #random_items, #cat_items {
     flex-grow: 2;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     flex-wrap: wrap;
     align-items: center;
 }
@@ -111,4 +111,22 @@ main {
 #loginfields button, #registerfields button {
     position: absolute;
     bottom: 10%;
+}
+
+[id^="item-container-"] {
+    width: 20%;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    align-content: stretch;
+}
+
+[id^="manage-item-"] {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 5px;
+    justify-content: space-between;
+    margin: auto;
+    justify-content: space-around;
 }

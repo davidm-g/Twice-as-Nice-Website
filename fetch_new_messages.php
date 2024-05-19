@@ -12,7 +12,7 @@ if (isset($_GET['user']) && isset($_GET['item']) && isset($_GET['last_message_id
     $lastMessageId = intval($_GET['last_message_id']);
 
     $messages = getNewMessages($db, $user, $item, $lastMessageId);
-
+    
     echo json_encode($messages);
 } else {
     echo json_encode([]);

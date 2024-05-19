@@ -66,3 +66,9 @@
         return $query->fetchAll(PDO::FETCH_ASSOC);
     }
     
+    function getLatestMessageId($db, $username, $otherUser, $itemId) {
+        $stmt = $db->prepare('SELECT MAX(id) AS max_id FROM messages WHERE (sender = ? AND receiver = ? OR sender = ? AND receiver = ?) AND item_id = ?');
+        $stmt->execute([$username, $otherUser, $otherUser, $username, $itemId]);
+        $result = $stmt->fetch();
+        return $result['max_id'] ?? 10;
+    }

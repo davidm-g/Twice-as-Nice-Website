@@ -21,6 +21,7 @@ $seller = htmlspecialchars(getSellerUsername($db, $itemId));
 date_default_timezone_set('Europe/Lisbon');
 $messages = getMessages($db, $username, $otherUser, $itemId);
 $transactionStatus = $transaction['status'];
+$latestMessageId = getLatestMessageId($db, $username, $otherUser, $itemId);
 output_header();
 output_categories($db, $cats);
 
@@ -29,13 +30,13 @@ if (isset($_SESSION['payment_success'])) {
     unset($_SESSION['payment_success']);
 }
 ?>
-
 <script>
     const transactionStatus = <?= json_encode($transactionStatus) ?>;
     const seller = <?= json_encode($seller) ?>;
     const otherUser = <?= json_encode($otherUser) ?>;
     const itemId = <?= json_encode($itemId) ?>;
     const username = <?= json_encode($username) ?>;
+    let lastMessageId = <?= json_encode($latestMessageId) ?>;
 </script>
 <div class='messages'>
     <h2>Messages with <a href="seller.php"><?= htmlspecialchars($otherUser) ?></a> about <?= htmlspecialchars($itemName) ?></h2>

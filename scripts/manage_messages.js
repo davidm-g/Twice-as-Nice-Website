@@ -11,7 +11,7 @@ function showCounterOfferForm(itemId) {
         element.style.display = 'block';
     }
 }
-let lastMessageId = 10; // Track the last message ID
+ // Track the last message ID
 
 function fetchMessages() {
     fetch(`/fetch_new_messages.php?user=${encodeURIComponent(otherUser)}&item=${encodeURIComponent(itemId)}&last_message_id=${lastMessageId}`)
@@ -91,7 +91,9 @@ function updateMessages(newMessages) {
             <br><small>Sent on ${dateFormatted}</small>
         `;
 
+        
         messagesContainer.appendChild(messageElement);
+        
     });
 
     // Scroll to the bottom of the message container

@@ -136,3 +136,6 @@ main {
     margin-bottom: 0;
 }
 
+#messageText, #proposalPrice {
+    margin: auto auto 0.5% auto;
+}

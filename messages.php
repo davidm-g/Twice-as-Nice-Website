@@ -51,7 +51,10 @@ if (isset($_SESSION['payment_success'])) {
                 <?php } ?>
                 <?php if ($message['offer_accepted'] && $transaction['status'] != 'sold') { ?>
                     <?php if ($username !== $seller) { ?>
-                        <a href='checkout.php?price=<?= htmlspecialchars($message['price']) ?>&item_id=<?= htmlspecialchars($itemId) ?>&user=<?= htmlspecialchars($otherUser) ?>' class='accept-offer'>Proceed to checkout</a>
+                        
+                        <a onclick="goToCheckout(<?= htmlspecialchars($itemId) ?>, <?= htmlspecialchars($message['price']) ?>, '<?= htmlspecialchars($otherUser) ?>')" class='accept-offer'>Proceed to checkout</a> 
+
+                        <!-- <a onclick="window.location.href = `checkout.php?item=<?= $itemId ?>&price=<?= $message['price'] ?>&user=<?= $otherUser ?>`" class='accept-offer'>Proceed to checkout</a> -->
                     <?php } else { ?>
                         You accepted the offer of <?= htmlspecialchars($message['price']) ?> €.
                     <?php } ?>
@@ -90,7 +93,7 @@ if (isset($_SESSION['payment_success'])) {
         <button type="button" onclick="sendMessage()">Send</button>
     </form>
     <?php if ( $transaction['status'] != 'sold') { ?>
-        <form id="proposalForm">
+        <form id="proposalForm", onsubmit="sendProposal()">
             <input type="number" id="proposalPrice" placeholder="Proposed Price" min="0" step="10" required>
             <button type="button" onclick="sendProposal()">Send Proposal</button>
         </form>

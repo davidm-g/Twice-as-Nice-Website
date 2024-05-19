@@ -33,7 +33,14 @@
 
             <?php if (isset($_SESSION['username'])) { ?>
                 <div id="action-buttons">
-                    <button id="negotiate-button" onclick="window.location.href='negotiate_price_page.html'"><i class="fa-solid fa-tag"></i>Negotiate Price</button>
+
+                <form method="POST" action="checkout.php" id="checkoutForm" style="display:none">
+                    <input type="hidden" name="item_id" value="<?= $id ?>">
+                    <input type="hidden" name="price" value="<?= getPrice($db, $id) ?>">
+                    <input type="hidden" name="user" value="<?= getSeller($db, $id) ?>">
+                </form>
+
+                    <button id="buy-button" onclick="document.getElementById('checkoutForm').submit();"><i class="fa-solid fa-shopping-cart"></i>Buy Now</button>
                     <button id="btnwish<?= $id ?>" , style="background-color:<?= isOnWishlist($db, $id, $_SESSION['username']) ? '#4A4E69' : 'transparent' ?>; 
                         color:<?= isOnWishlist($db, $id, $_SESSION['username']) ? '#F2E9E4' : '#4A4E69' ?>">
                         <?= (isOnWishlist($db, $id, $_SESSION['username'])) ? 'Remove from Wishlist' : 'Add to Wishlist' ?>

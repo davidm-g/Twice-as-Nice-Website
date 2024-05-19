@@ -31,6 +31,7 @@
     <script src="scripts/picture_handler.js" defer></script>
     <script src="scripts/sort_menu.js" defer></script>
     <script src="scripts/filter_menu.js" defer></script>
+    <script src="scripts/send_messages.js" defer></script>
 </head>
 <body>
     <header>

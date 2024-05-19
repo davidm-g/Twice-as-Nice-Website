@@ -11,9 +11,9 @@
         $_SESSION['csrf'] = generate_random_token();
     } 
     $username = htmlspecialchars($_SESSION['username']);
-    $itemId = htmlspecialchars($_GET['item_id']);
-    $price = htmlspecialchars($_GET['price']);
-    $otherUser = htmlspecialchars($_GET['user']);
+    $itemId = htmlspecialchars($_POST['item_id']);
+    $price = htmlspecialchars($_POST['price']);
+    $otherUser = htmlspecialchars($_POST['user']);
     $item = getItem($db, $itemId);
     output_header();
     output_categories($db, $cats);

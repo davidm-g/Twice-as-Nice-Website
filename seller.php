@@ -13,6 +13,7 @@
     }   
     $seller = $_GET['seller'];
     $items = getItems($db);
+    $cats = getCategories($db);
     output_header();
     output_categories($db, $cats);
 ?>

@@ -1,3 +1,27 @@
+function goToCheckout(item, price, otherUser) {
+    // Create form
+    var form = document.createElement("form");
+    form.setAttribute("method", "post");
+    form.setAttribute("action", "checkout.php");
+
+    // Append inputs
+    var fields = ['item_id', 'price', 'user'];
+    var values = [item, price, otherUser];
+    for (var i = 0; i < fields.length; i++) {
+        var hiddenField = document.createElement("input");
+        hiddenField.setAttribute("type", "hidden");
+        hiddenField.setAttribute("name", fields[i]);
+        hiddenField.setAttribute("value", values[i]);
+        form.appendChild(hiddenField);
+    }
+
+    // Append form to body
+    document.body.appendChild(form);
+
+    // Submit form
+    form.submit();
+}
+
 function sendMessage() {
     event.preventDefault();
     const messageText = document.getElementById('messageText').value;
@@ -20,6 +44,7 @@ function sendMessage() {
 }
 
 function sendProposal() {
+    event.preventDefault();
     const proposalPrice = document.getElementById('proposalPrice').value;
     const formData = new FormData();
     formData.append('receiver', otherUser);

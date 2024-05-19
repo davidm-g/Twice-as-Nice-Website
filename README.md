@@ -8,8 +8,8 @@
 
 ## Install Instructions
 
-    git clone https://github.com/FEUP-LTW-2024/ltw-project-2024-ltw15g10.git
-    git checkout ltw-project-2024-ltw15g10
+    git clone git@github.com:FEUP-LTW-2024/ltw-project-2024-ltw15g10.git
+    cd ltw-project-2024-ltw15g10/
     php -S localhost:9000
     open the "localhost:9000" URL on your browser
 

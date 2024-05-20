@@ -209,3 +209,13 @@
     border-radius: 3px;
     box-sizing: border-box;
 }
+#random_items .card {
+    width: 80%;
+    margin: auto;
+    padding: 0;
+    border-radius: 30px;
+    background: #C9ADA7;
+    box-shadow: 2px 2px 10px #9A8C98;
+    align-self:     center;
+    justify-self: unset;
+}

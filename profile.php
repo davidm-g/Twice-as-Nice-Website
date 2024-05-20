@@ -1,6 +1,7 @@
 <?php
     session_set_cookie_params(0, '/', 'localhost', false, true);
     session_start();
+    
     require_once ('database/connection.php');
     require_once ('database/items.php');
     require_once('templates/common.php');   
@@ -17,6 +18,7 @@
     output_header();
     output_categories($db, $cats);
 ?>
+<link href="css/profile.css" rel="stylesheet">
         <h1><?=$username?>'s profile</h1>
         <div id="profile-form">
         <div id="photoContainer">
@@ -118,7 +120,7 @@
                     <form id="manage-item-<?=$item['id']?>">
                         <input type="hidden" name="item_id" value="<?=$item['id']?>">
                         <div id="new-price-<?=$item['id']?>" style="display: none;">
-                            <input type="number" name="new_price" min="0" step="5" placeholder="New price" required>
+                            <input type="number" name="new_price" min="0"  placeholder="New price" required>
                             <input type="button" onclick="changePrice('<?=$item['id']?>')" value="Submit New Price">
                         </div>
                         <button type="button" onclick="showNewPrice('<?=$item['id']?>')">Change Price</button>
@@ -135,19 +137,7 @@
 <script src="/scripts/verify_user.js" defer></script>    
 <script src="/scripts/update_password.js" defer></script>  
 
-<style>
-    #random_items .card {
-    width: 80%;
-    margin: auto;
-    padding: 0;
-    border-radius: 30px;
-    background: #C9ADA7;
-    box-shadow: 2px 2px 10px #9A8C98;
-    align-self:     center;
-    justify-self: unset;
-}
 
-</style>
 <?php 
     output_footer();
 ?>

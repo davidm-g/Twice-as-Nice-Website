@@ -31,6 +31,7 @@ sort_btn.addEventListener('click', function() {
     .then(data => {
         console.log(data);
         document.getElementById('random_items').innerHTML = data;
+        attachWishlistListeners();
     })
     .catch(error => {
         console.error('Error:', error);
@@ -57,6 +58,7 @@ orders.forEach(order => {
                 order.style.backgroundColor = 'transparent';
             });
             order.style.backgroundColor = '#C9ADA7';
+            
         })
         .catch(error => {
             console.error('Error:', error);
@@ -77,6 +79,7 @@ async function resetFilters() {
         orders.forEach(order => {
             order.style.backgroundColor = 'transparent';
         });
+        attachWishlistListeners();
     })
     .catch(error => {
         console.error('Error:', error);
@@ -97,6 +100,7 @@ for (let i = 0; i < children.length; i++) {
         .then(data => {
             console.log(data);
             document.getElementById('random_items').innerHTML = data;
+            attachWishlistListeners();
         })
         .catch(error => {
             console.error('Error:', error);

@@ -10,7 +10,7 @@
     <link href="css/item_page.css" rel="stylesheet">
     <link href="css/conversation.css" rel="stylesheet">
     <link href="css/messages.css" rel="stylesheet">
-    <link href="css/profile.css" rel="stylesheet">
+    
     <link href="css/label.css" rel="stylesheet">
     <link href="css/sell.css" rel="stylesheet">
     <link href="css/checkout.css" rel="stylesheet">

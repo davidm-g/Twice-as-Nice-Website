@@ -74,7 +74,7 @@ if (isset($_SESSION['payment_success'])) {
                             <?php } else { ?>
                                 Seller's proposal: <?= htmlspecialchars($message['price']) ?> €
                                 <?php if ($transaction['status'] != 'sold') { ?>
-                                    <a href='apis/api_accept_offer.php?price=<?= htmlspecialchars($message['price']) ?>&item_id=<?= htmlspecialchars($itemId) ?>&message_id=<?= htmlspecialchars($message['id']) ?>&user=<?= htmlspecialchars($otherUser) ?>' class='accept-offer'>Accept Offer</a>
+                                    <a onclick="goToCheckout(<?= htmlspecialchars($itemId) ?>, <?= htmlspecialchars($message['price']) ?>, '<?= htmlspecialchars($otherUser) ?>')" class='accept-offer'>Accept Offer</a>
                                 <?php } ?>
                             <?php } ?>
                         <?php } ?>
@@ -94,7 +94,7 @@ if (isset($_SESSION['payment_success'])) {
     </form>
     <?php if ( $transaction['status'] != 'sold') { ?>
         <form id="proposalForm", onsubmit="sendProposal()">
-            <input type="number" id="proposalPrice" placeholder="Proposed Price" min="0" step="10" required>
+            <input type="number" id="proposalPrice" placeholder="Proposed Price" min="0"  required>
             <button type="button" onclick="sendProposal()">Send Proposal</button>
         </form>
     <?php } ?>

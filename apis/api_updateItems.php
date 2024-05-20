@@ -9,6 +9,7 @@
 
     $temp_string = '';
     foreach ($items as $item) { 
+        if (isItemForSale($db, $item['id']) && getSellerUsername($db, $item['id']) != $_SESSION['username'])
         $temp_string .= outputItem($db,$item);
     }
     echo $temp_string;

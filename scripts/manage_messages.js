@@ -55,7 +55,7 @@ function updateMessages(newMessages) {
                 // Offer accepted
                 if (username !== seller) {
                     // Buyer's view
-                    messageContent = `<a href='checkout.php?price=${message.price}&item_id=${itemId}&user=${otherUser}' class='accept-offer'>Proceed to checkout</a>`;
+                    messageContent = `<a onclick="goToCheckout(${itemId}, ${message.price}, '${otherUser}')" class='accept-offer'>Proceed to checkout</a>`;
                 } else {
                     // Seller's view
                     messageContent = `You accepted the offer of ${message.price} €.`;
@@ -74,7 +74,7 @@ function updateMessages(newMessages) {
                     if (!message.offer_accepted && username !== seller) {
                         // Show "Accept Offer" button for the buyer
                         messageContent += `
-                            <a href='apis/api_accept_offer.php?price=${message.price}&item_id=${itemId}&message_id=${message.id}&user=${otherUser}' class='accept-offer'>Accept Offer</a>
+                            <a onclick="goToCheckout(${itemId}, ${message.price}, '${otherUser}')" class='accept-offer'>Accept Offer</a>
                         `;
                     } else if (username === seller && transactionStatus !== 'sold') {
                         // Show "Accept Offer" button for the seller

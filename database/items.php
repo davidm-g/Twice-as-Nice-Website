@@ -556,7 +556,7 @@ function outputItems($db, $items)
     </div>
     <aside id="random_items">
         <?php foreach ($items as $item) {
-            if (isItemForSale($db, $item['id'])) {
+            if (isItemForSale($db, $item['id']) && getSellerUsername($db, $item['id']) != $_SESSION['username']) {
                 outputItem($db, $item);
             }
         } ?>

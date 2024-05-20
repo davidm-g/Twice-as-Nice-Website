@@ -17,12 +17,9 @@ $otherUser = htmlspecialchars($_GET['user']);
 update_message($db, $messageId);
 create_offer_message($db, $username, $otherUser, $itemId, $price);
 
-// Prepare the redirect URL
-if ($username !== $seller) { // If the user is the buyer
-    $redirectUrl = '../checkout.php?item_id=' . urlencode($itemId) . '&price=' . urlencode($price) . '&user=' . urlencode($otherUser);
-} else {
+
     $redirectUrl = '../messages.php?user=' . urlencode($otherUser) . '&item=' . urlencode($itemId);
-}
+
 
 // Redirect the user
 header('Location: ' . $redirectUrl);

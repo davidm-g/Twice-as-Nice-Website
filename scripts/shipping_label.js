@@ -1,3 +1,3 @@
 window.onafterprint = function(){
-    window.location.href = '../index.php';
+    window.location.href = 'index.php';
  }

@@ -39,7 +39,7 @@ Project done in the Web Languages and Technologies class of the 2nd year of L.EI
 #### EXTRA
 If you need to reset to the original project database just execute these commands:
 
-    cd Twice-as-Nice/database/
+    cd Twice-as-Nice-Website/database/
     sqlite3 site.db
         .read create.sql
         .read populate.sql

@@ -1,23 +1,51 @@
-# Twice as Nice
+# Twice as Nice  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" title="HTML" alt="HTML Logo" width="55" height="55" align="right" />&nbsp; <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" title="CSS" alt="CSS Logo" width="55" height="55" align="right" />&nbsp; <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" title="JavaScript" alt="JavaScript Logo" width="55" height="55" align="right" />&nbsp; <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg" title="PHP" alt="PHP Logo" width="55" height="55" align="right" />&nbsp;
+          
+          
+           
 
-## Group ltw15g10
+#### Project done in collaboration with:  
+[Tomás Marques](https://github.com/Torpedoooo)  
+[Pedro Lunet](https://github.com/PedroLunet)  
 
-- Tomás Marques (up202206667) 33%
-- David Gonçalves (up202208795) 33%
-- João Lunet (up202207150) 33%
+### Overview
+A second hand shopping website with dynamically generated PHP pages and an SQLite database based on 2 main SQL files.
 
-## Install Instructions
+HTML and CSS provide all the styling that beautifies the website and makes its pages responsive.
 
-    git clone git@github.com:FEUP-LTW-2024/ltw-project-2024-ltw15g10.git
-    cd ltw-project-2024-ltw15g10/
+JavaScript makes the website more interactive and with the resource to Ajax live search results and assynchronous data updates are possible;
+
+Project done in the Web Languages and Technologies class of the 2nd year of L.EIC course.
+
+### Installing and running the project:
+
+1 - Install SQLite3 and PHP
+
+    sudo apt-get install php-cli sqlite3 php-sqlite3 unzip wget
+
+2 - Clone this repository
+  
+    git clone https://github.com/davidm-g/Twice-as-Nice-Website.git
+
+3 - Navigate to the main directory
+	
+    cd Twice-as-Nice-Website/
+
+4 - Open a localhost to access our webpages
+
     php -S localhost:9000
-    open the "localhost:9000" URL on your browser
 
-## External Libraries
+5 - Navigate to 'localhost:9000' on your favourite browser and explore our website
 
-We have used the following external libraries:
+#### EXTRA
+If you need to reset to the original project database just execute these commands:
 
-- Font Awesome
+    cd Twice-as-Nice/database/
+    sqlite3 site.db
+        .read create.sql
+        .read populate.sql
+        .exit 
+
+###  Instructions: [Project Description](/docs/instructions.pdf)
 
 ## Screenshots
 
@@ -29,6 +57,12 @@ We have used the following external libraries:
 
 ### Messages screen
 ![](/docs/SCREENSHOT_3.png)
+
+## External Libraries
+
+We have used the following external libraries:
+
+- Font Awesome
 
 ## Implemented Features
 
@@ -83,3 +117,6 @@ We also implemented the following additional requirements (you can add more):
 - [X] **User Preferences**
 - [ ] **Shipping Costs**
 - [X] **Real-Time Messaging System**
+
+Made by David Gonçalves | davidmgoncalves.pt@gmail.com  
+<div id="badge"> <a href="https://www.linkedin.com/in/davidm-g"/> <img src="https://img.shields.io/badge/LinkedIn-blue?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn Badge"/>&nbsp;

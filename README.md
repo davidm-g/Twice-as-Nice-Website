@@ -7,6 +7,8 @@
 [Tomás Marques](https://github.com/Torpedoooo)  
 [Pedro Lunet](https://github.com/PedroLunet)  
 
+## Grade: 15.9/20
+
 ### Overview
 A second hand shopping website with dynamically generated PHP pages and an SQLite database based on 2 main SQL files.
 
